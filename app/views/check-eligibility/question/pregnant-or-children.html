@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check eligibility - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/check-eligibility/">Back</a>
+
+      <form action="/check-eligibility/question/over-18" method="get" class="form">
+
+        <h2 class="heading-large">
+          Are you pregnant or do you have any children under 4 years old?
+        </h2>
+
+        <div class="form-group">
+          <fieldset class="inline">
+
+            <legend class="visuallyhidden">Are you pregnant or do you have any children under 4 years old?</legend>
+
+            <div class="multiple-choice">
+              <input id="pregnantOrChildrenTrue" type="radio" name="pregnantOrChildren" value="true" required>
+              <label for="pregnantOrChildrenTrue">Yes</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="pregnantOrChildrenFalse" type="radio" name="pregnantOrChildren" value="false" required>
+              <label for="pregnantOrChildrenFalse">No</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

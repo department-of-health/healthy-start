@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check eligibility - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/check-eligibility/question/over-18">Back</a>
+
+      <form action="/application" method="get" class="form">
+
+        <h2 class="heading-large">
+          Tick all the benefits you are getting
+        </h2>
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend class="visuallyhidden">Are you pregnant or do you have any children under 4 years old?</legend>
+
+            <div class="multiple-choice">
+              <input id="incomeSupport" name="incomeSupport" type="checkbox" value="true">
+              <label for="incomeSupport">Income support</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="incomeRelatedEmploymentAndSupportAllowance" name="incomeRelatedEmploymentAndSupportAllowance" type="checkbox" value="true">
+              <label for="incomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="incomeBasesJobseekersAllowance" name="incomeBasesJobseekersAllowance" type="checkbox" value="true">
+              <label for="incomeBasesJobseekersAllowance">Income-based jobseeker's Allowance</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="childTaxCredit" name="childTaxCredit" type="checkbox" value="true">
+              <label for="childTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="universalCredit" name="universalCredit" type="checkbox" value="true">
+              <label for="universalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue">
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
