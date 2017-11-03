@@ -6,17 +6,23 @@
 
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div id="content" role="main">
+	
+  {% include "includes/phase_banner_beta.html" %}
 
-    <h1 class="heading-xlarge">
-      Test playground
-    </h1>
+	<div class="grid-row">
+	  <div class="column-two-thirds">
 
-	  <label class="form-label" for="full-name-f1">Full name</label>
-    <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+	    <h1 class="heading-xlarge">
+	      Test playground
+	    </h1>
 
-  </div>
+		  <label class="form-label" for="full-name-f1">Full name</label>
+	    <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+
+	  </div>
+	</div>
+
 </div>
 
 {% endblock %}

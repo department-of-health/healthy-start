@@ -6,24 +6,30 @@
 
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div id="content" role="main">
 
-    <h1 class="heading-xlarge">Healthy Start</h1>
+  {% include "includes/phase_banner_beta.html" %}
 
-    <h2 class="heading-medium">Application</h2>
+  <div class="grid-row">
+    <div class="column-two-thirds">
 
-    <ul class="list list-bullet">
-      <li><a href="/apply">Begin application</a></li>
-    </ul>
+      <h1 class="heading-xlarge">Healthy Start</h1>
 
-    <h2 class="heading-medium">Testing</h2>
+      <h2 class="heading-medium">Application</h2>
 
-    <ul class="list list-bullet">
-      <li><a href="/test-playground">Test page</a></li>
-    </ul>
+      <ul class="list list-bullet">
+        <li><a href="/apply">Begin application</a></li>
+      </ul>
 
+      <h2 class="heading-medium">Testing</h2>
+
+      <ul class="list list-bullet">
+        <li><a href="/test-playground">Test page</a></li>
+      </ul>
+
+    </div>
   </div>
+  
 </div>
 
 {% endblock %}

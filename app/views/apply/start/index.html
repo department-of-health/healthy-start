@@ -6,51 +6,56 @@
 
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div id="content" role="main">
 
-    <form method="get" action="/apply/check-eligibility" class="form">
+  {% include "includes/phase_banner_beta.html" %}
 
-      <h1 class="heading-large">
-        Check eligibility, cost and time
-      </h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
 
-      <fieldset>
-        <legend class="visuallyhidden">
+      <form method="get" action="/apply/check-eligibility" class="form">
+
+        <h1 class="heading-large">
           Check eligibility, cost and time
-        </legend>
+        </h1>
 
-        <p class="">In this task you'll be asked between 4 and 6 questions.</p>
+        <fieldset>
+          <legend class="visuallyhidden">
+            Check eligibility, cost and time
+          </legend>
 
-        <p class="">The answers you give will show:</p>
+          <p class="">In this task you'll be asked between 4 and 6 questions.</p>
 
-        <ul class="list list-bullet ">  
-          <li>if you're eligible to transport goods</li>
-          <li>how much it will cost for you to apply</li>
-          <li>how long the application process will take</li>
-        </ul> 
+          <p class="">The answers you give will show:</p>
 
-        <p class="">This information will be different depending on your answers.</p>
+          <ul class="list list-bullet ">  
+            <li>if you're eligible to transport goods</li>
+            <li>how much it will cost for you to apply</li>
+            <li>how long the application process will take</li>
+          </ul> 
 
-      </fieldset>
+          <p class="">This information will be different depending on your answers.</p>
 
-      <br>
-      
-      <div class="form-group">
-        <label class="form-label" for="referral-code">Referral code
-          <span class="form-hint">
-            If you have a referral code please enter it here.
-          </span>
-        </label>
-        <input class="form-control" id="referral-code" type="text" name="referral-code">
-      </div>
-      <div class="form-group">
-        <input type="submit" class="button" value="Continue to questions">
-      </div>
+        </fieldset>
 
-    </form>
+        <br>
+        
+        <div class="form-group">
+          <label class="form-label" for="referral-code">Referral code
+            <span class="form-hint">
+              If you have a referral code please enter it here.
+            </span>
+          </label>
+          <input class="form-control" id="referral-code" type="text" name="referral-code">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="button" value="Continue to questions">
+        </div>
 
+      </form>
+
+    </div>
   </div>
+  
 </div>
-
 {% endblock %}
