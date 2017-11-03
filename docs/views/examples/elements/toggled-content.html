@@ -12,27 +12,23 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-xlarge">
-        Toggled content
-      </h1>
+      <form action="/" method="post" class="form">
 
-      <p>
-        This page shows how to use the <code class="code">data-target</code> attribute to show and hide content when a radio button or checkbox is selected.
-      </p>
-      <p>
-        These examples require show-hide-content.js - updated in GOV.UK frontend toolkit v5.1.2.
-      </p>
+        <h1 class="heading-xlarge">
+          Toggled content
+        </h1>
 
-      <form>
+        <p>
+          This page shows how to use the <code class="code">data-target</code> attribute to show and hide content when a radio button or checkbox is selected.
+        </p>
+        <p>
+          These examples require show-hide-content.js - updated in GOV.UK frontend toolkit v5.1.2.
+        </p>
+
         <div class="form-group">
           <fieldset>
 
-            <legend>
-              <h1 class="heading-medium">
-                What is your nationality?
-              </h1>
-              <span class="body-text">Select all options that are relevant to you.</span>
-            </legend>
+            <legend class="visually-hidden">What is your nationality?</legend>
 
             <div class="multiple-choice">
               <input id="nationalities-british" name="nationalities" type="checkbox" value="British">
@@ -53,17 +49,16 @@
 
           </fieldset>
         </div>
-      </form>
 
-      <form>
+        <h1 class="heading-large">
+          Where should we send your new<br> passport?
+        </h1>
+
         <div class="form-group">
           <fieldset>
 
-            <legend>
-              <h1 class="heading-medium">
-                Where should we send your new passport?
-              </h1>
-              <span class="body-text">Select one.</span>
+            <legend class="visuallyhidden">
+              Where should we send your new passport?
             </legend>
 
             <div class="multiple-choice">
@@ -112,6 +107,7 @@
             </div>
           </fieldset>
         </div>
+
       </form>
 
     </div>

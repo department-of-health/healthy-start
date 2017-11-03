@@ -8,7 +8,6 @@ $path: "/public/images/";
 
 // Take a look at in app/assets/sass/patterns/ to see which files are imported.
 @import 'patterns/check-your-answers';
-@import 'patterns/task-list';
 
 // Related items
 // (These styles will be moved to GOV.UK elements, duplicating here for now.)
@@ -26,6 +25,18 @@ $path: "/public/images/";
     margin-bottom: 10px;
     list-style-type: none;
   }
+}
+
+.link {
+  background:none!important;
+      border:none;
+      padding:0!important;
+
+     /*optional*/
+     font-family:arial,sans-serif; /*input has OS specific font-family*/
+      color:#069;
+      text-decoration:underline;
+      cursor:pointer;
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

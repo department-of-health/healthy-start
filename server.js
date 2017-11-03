@@ -1,4 +1,3 @@
-require('dotenv').config()
 var crypto = require('crypto')
 var path = require('path')
 var express = require('express')
@@ -29,7 +28,7 @@ var analyticsId = process.env.ANALYTICS_TRACKING_ID
 env = env.toLowerCase()
 useAuth = useAuth.toLowerCase()
 useHttps = useHttps.toLowerCase()
-useBrowserSync = useBrowserSync.toLowerCase()
+// useBrowserSync = useBrowserSync.toLowerCase()
 
 var useDocumentation = (config.useDocumentation === 'true')
 
@@ -289,7 +288,7 @@ utils.findAvailablePort(app, function (port) {
         ghostmode: false,
         open: false,
         notify: false,
-        logLevel: 'info'
+        logLevel: 'error'
       })
     })
   }

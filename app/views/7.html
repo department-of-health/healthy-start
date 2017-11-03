@@ -1,0 +1,60 @@
+{% extends "layout_bsa.html" %}
+
+{% block page_title %}
+  Prepay for NHS prescriptions
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+{% include "includes/phase_banner_beta.html" %}
+<br>
+     <a href="/" class="link-back"> Back to all versions</a>
+
+  <h2 class="heading-large">Version 7 - August/September 2017</h2>
+
+  <h3 class="heading-medium">Journeys</h3>
+
+  <ul class="list list-bullet">
+    <li><a href="/public/images/bsa/versions/s6-dd-payment.pdf">Direct Debit (PDF)</a></li>
+    <li><a href="/public/images/bsa/versions/s6-one-off-payment.pdf">Card payment (PDF)</a></li>
+    <li><a href="/public/images/bsa/versions/s6-return.pdf">Return journey (PDF)</a></li>
+    <!-- <li><a href="/ppc/start">Journey for a person prepaying for their prescriptions.</a></li>
+    <li><a href="/google/index">Journey starting with a Google search</a><br>(enter 'buy a prescription prepayment')</li>
+    <li><a href="/ppc/done-v3">Done screen</a></li>
+    <li><a href="/return/return_start">Return View</a></li>
+    <li><a href="pharmacy-web/list-pharmacy-web">Pharmacy Web</a></li>
+    <li><a href="../errors">Errors</a></li> -->
+  </ul>
+    <hr>
+<h3 class="heading-small">What we are testing</h3>
+  <ul class="list list-bullet">
+    <!-- <li>V6 with content changes since last verison.</li>
+    <li>Return journey.</li>
+    <li>Resend details - both send and change details </li>
+    <li>Change your details journey.</li>
+    <li>Security questions</li>
+    <li>Test BSA website</li> -->
+  </ul>
+    <hr>
+
+  <h3 class="heading-small">Email content:</h3>
+  <ul class="list list-bullet">
+    <li><a href="/email/purchased_3">Email</a></li>
+  </ul>
+<h3 class="heading-small">Text:</h3>
+<p>  You have prepaid for NHS prescriptions.</p>
+<p>
+  Prepayment for: Andrew McLean<br>
+  Prepayment number: 123 456 789<br>
+  Start date: 15 March 2017<br>
+  End date: 14 June 2017<br>
+</p>
+  <p>Visit https://ppc-prototype.herokuapp.com/return/return_start <br>if you need to change your personal details.</p>
+  <p>Visit http://bit.ly/2jPn3B1 to opt out of receiving text messages.</p>
+
+
+
+</main>
+
+{% endblock %}
