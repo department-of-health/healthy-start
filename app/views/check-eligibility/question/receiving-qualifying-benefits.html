@@ -12,36 +12,35 @@
 
       <a class="link-back" href="/check-eligibility/question/over-18">Back</a>
 
-      <form action="/application" method="get" class="form">
-
-        <h2 class="heading-large">
-          Tick all the benefits you are getting
-        </h2>
+      <form action="/check-eligibility/eligible" method="get" class="form">
 
         <div class="form-group">
-          <fieldset>
+          <fieldset class="inline">
+            
+            <legend>
+              <h1 class="heading-large">
+                Are you, your partner or your carer receiving any of the following benefits?
+              </h1>
+              <!-- <p class="body-text"></p> -->
+            </legend>
 
-            <legend class="visuallyhidden">Are you pregnant or do you have any children under 4 years old?</legend>
+            <ul class="list list-bullet">
+               <li>Income related Employment and Support Allowance</li>
+               <li>Income Support</li>
+               <li>Income based Jobseeker's Allowance</li>
+               <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
+               <li>Working Tax Credit (do not tick if you are getting WTC run-on only*)</li>
+               <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
+            </ul> 
 
             <div class="multiple-choice">
-              <input id="incomeSupport" name="incomeSupport" type="checkbox" value="true">
-              <label for="incomeSupport">Income support</label>
+              <input id="receivesBenefitTrue" type="radio" name="receivesBenefit" value="true" {{ checked('receivesBenefit', 'true') }}>
+              <label for="receivesBenefitTrue">Yes</label>
             </div>
+
             <div class="multiple-choice">
-              <input id="incomeRelatedEmploymentAndSupportAllowance" name="incomeRelatedEmploymentAndSupportAllowance" type="checkbox" value="true">
-              <label for="incomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="incomeBasesJobseekersAllowance" name="incomeBasesJobseekersAllowance" type="checkbox" value="true">
-              <label for="incomeBasesJobseekersAllowance">Income-based jobseeker's Allowance</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="childTaxCredit" name="childTaxCredit" type="checkbox" value="true">
-              <label for="childTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="universalCredit" name="universalCredit" type="checkbox" value="true">
-              <label for="universalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+              <input id="receivesBenefitFalse" type="radio" name="receivesBenefit" value="false" {{ checked('receivesBenefit', 'false') }}>
+              <label for="receivesBenefitFalse">No</label>
             </div>
 
           </fieldset>

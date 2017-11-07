@@ -14,22 +14,22 @@
 
       <form action="/check-eligibility/question/over-18" method="get" class="form">
 
-        <h2 class="heading-large">
-          Are you pregnant or do you have any children under 4 years old?
-        </h2>
-
         <div class="form-group">
-          <fieldset class="inline">
-
-            <legend class="visuallyhidden">Are you pregnant or do you have any children under 4 years old?</legend>
+          <fieldset>
+            <legend>
+              <h1 class="heading-large">
+                Are you pregnant or have children under 4?
+              </h1>
+              <!-- <p class="body-text"></p> -->
+            </legend>
 
             <div class="multiple-choice">
-              <input id="pregnantOrChildrenTrue" type="radio" name="pregnantOrChildren" value="true" required>
+              <input id="pregnantOrChildrenTrue" type="radio" name="pregnantOrChildren" value="true" required {{ checked('pregnantOrChildren', 'true') }}>
               <label for="pregnantOrChildrenTrue">Yes</label>
             </div>
 
             <div class="multiple-choice">
-              <input id="pregnantOrChildrenFalse" type="radio" name="pregnantOrChildren" value="false" required>
+              <input id="pregnantOrChildrenFalse" type="radio" name="pregnantOrChildren" value="false" required {{ checked('pregnantOrChildren', 'false') }}>
               <label for="pregnantOrChildrenFalse">No</label>
             </div>
 

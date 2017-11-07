@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/about-you/4">Back</a>
+
+      <form action="/application/question/applicant-contact-details/2" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Applicant contact details
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <div class="form-group">
+            <label class="form-label" for="phone-number">
+              What is your phone number?
+              <span class="form-hint">We will only use it to send free SMS messages.</span>
+            </label>
+
+            <input class="form-control" id="phone-number" type="text" name="phone-number" pattern="^\d+$" required value="{{ data['phone-number'] }}">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

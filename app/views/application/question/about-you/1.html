@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/check-eligibility/eligible">Back</a>
+
+      <form action="/application/question/about-you/2" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- DOB -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="dob">What is your date of birth?</label>
+
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="dob-day">Day</label>
+                  <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['dob-day'] }}">
+                </div>
+
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="dob-month">Month</label>
+                  <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['dob-month'] }}">
+                </div>
+
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="dob-year">Year</label>
+                  <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['dob-year'] }}">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          
+          <!-- Education -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="education">Are you in full time education?</label>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationTrue" type="radio" name="fullTimeEducation" value="true" required {{ checked('fullTimeEducation', 'true') }}>
+                <label for="fullTimeEducationTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationFalse" type="radio" name="fullTimeEducation" value="false" required {{ checked('fullTimeEducation', 'false') }}>
+                <label for="fullTimeEducationFalse">No</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <!-- National Insurance -->
+          <div class="form-group">
+            <label class="form-label" for="ni-number">
+              What is your national insurance number?
+              <span class="form-hint">
+                It's on your National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
+            </label>
+
+            <input class="form-control" id="ni-number" type="text" name="ni-number" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['ni-number'] }}">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

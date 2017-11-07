@@ -9,40 +9,35 @@ router.get('/', function (req, res) {
 // add your routes here
 
 // Branching
-	// Check eligibility form
-	router.get('/check-eligibility/question/over-18', function (req, res) {
-	  var pregnantOrChildren = req.query.pregnantOrChildren
+    // Check eligibility form
+    router.get('/check-eligibility/question/over-18', function (req, res) {
+      var pregnantOrChildren = req.query.pregnantOrChildren
 
-	  if (pregnantOrChildren === 'false') {
-	    res.redirect('/check-eligibility/not-eligible')
-	  } else {
-	    res.render('check-eligibility/question/over-18')
-	  }
-	})
+      if (pregnantOrChildren === 'false') {
+        res.redirect('/check-eligibility/not-eligible')
+      } else {
+        res.render('check-eligibility/question/over-18')
+      }
+    })
 
-	router.get('/check-eligibility/question/receiving-qualifying-benefits', function (req, res) {
-	  var over18 = req.query.over18
+    router.get('/check-eligibility/question/receiving-qualifying-benefits', function (req, res) {
+      var over18 = req.query.over18
 
-	  if (over18 === 'false') {
-	    res.redirect('/check-eligibility/not-eligible')
-	  } else {
-	    res.render('check-eligibility/question/receiving-qualifying-benefits')
-	  }
-	})
+      if (over18 === 'false') {
+        res.redirect('/check-eligibility/not-eligible')
+      } else {
+        res.render('check-eligibility/question/receiving-qualifying-benefits')
+      }
+    })
 
-	router.get('/application', function (req, res) {
-		var qualifyingBenefits = [];
-	  var incomeSupport = req.query.incomeSupport
-	  var incomeRelatedEmploymentAndSupportAllowance = req.query.incomeRelatedEmploymentAndSupportAllowance
-	  var incomeBasesJobseekersAllowance = req.query.incomeBasesJobseekersAllowance
-	  var childTaxCredit = req.query.childTaxCredit
-	  var universalCredit = req.query.universalCredit
+    router.get('/check-eligibility/eligibile', function (req, res) {
+      var receivesBenefit = req.query.receivesBenefit
 
-	  if (over18 === 'false') {
-	    res.redirect('/check-eligibility/not-eligible')
-	  } else {
-	    res.render('check-eligibility/question/receiving-qualifying-benefits')
-	  }
-	})
-
+      if (receivesBenefit === 'false') {
+        res.redirect('/check-eligibility/not-eligible')
+      } else {
+        res.render('check-eligibility/eligibile')
+      }
+    })
+    
 module.exports = router
