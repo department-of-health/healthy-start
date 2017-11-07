@@ -22,20 +22,24 @@
             <!-- <p class="body-text"></p> -->
           </legend>
 
-          <!-- Email -->
+          <!-- National Insurance -->
           <div class="form-group">
-            <label class="form-label" for="email">
-              Please provide a valid email address
-              <span class="form-hint">We will only use it to tell you about any changes to Healthy Start in the future</span>
+            <label class="form-label" for="ni-number">
+              What is your national insurance number?
+              <span class="form-hint">
+                It's on your National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
             </label>
 
-            <input type="text" class="form-control" id="email" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value="{{ data['email'] }}">
+            <input class="form-control" id="ni-number" type="text" name="ni-number" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['ni-number'] }}">
           </div>
 
           <div class="form-group">
             <input type="submit" class="button" value="Continue">
           </div>
-          
+
         </div>
       </form>
 

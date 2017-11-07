@@ -10,9 +10,9 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/application/question/about-you/3">Back</a>
+      <a class="link-back" href="/application/question/about-you/4">Back</a>
 
-      <form action="/application/question/about-you/5" method="get" class="form">
+      <form action="/application/question/about-you/6" method="get" class="form">
         <div class="form-group">
 
           <legend>
@@ -22,15 +22,14 @@
             <!-- <p class="body-text"></p> -->
           </legend>
 
-          <!-- Name(s) -->
+          <!-- Email -->
           <div class="form-group">
-            <label class="form-label" for="first-name">First name</label>
-            <input type="text" class="form-control" id="first-name" name="first-name" required value="{{ data['first-name'] }}">
-          </div>
+            <label class="form-label" for="email">
+              Please provide a valid email address
+              <span class="form-hint">We will only use it to tell you about any changes to Healthy Start in the future</span>
+            </label>
 
-          <div class="form-group">
-            <label class="form-label" for="surname">Surname</label>
-            <input type="text" class="form-control" id="surname" name="surname" required value="{{ data['surname'] }}">
+            <input type="text" class="form-control" id="email" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value="{{ data['email'] }}">
           </div>
 
           <div class="form-group">
