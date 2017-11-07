@@ -23,9 +23,9 @@
           </legend>
 
           <div class="form-group">
-            <label class="form-label" for="partner-relationship">Country</label>
+            <label class="form-label" for="partnerRelationship">Country</label>
 
-            <select class="form-control" id="partner-relationship" name="partner-relationship" onchange="showOther()">
+            <select class="form-control" id="partnerRelationship" name="partnerRelationship" onchange="showOther()">
               <option class="husband">Husband</option>
               <option class="wife">Wife</option>
               <option class="boyfriend">Boyfriend</option>
@@ -39,20 +39,20 @@
               }
 
               function showOther(){
-                if (document.getElementById('partner-relationship').value == 'Other') {
-                  document.getElementById('partner-relationship-other').style.display = "block";
+                if (document.getElementById('partnerRelationship').value == 'Other') {
+                  document.getElementById('partnerRelationshipOther').style.display = "block";
                 }
               }
 
-              document.getElementById('partner-relationship-other').style.display = "none";
-              setSelectValue('partner-relationship', '{{ data['partner-relationship'] }}');
+              document.getElementById('partnerRelationshipOther').style.display = "none";
+              setSelectValue('partnerRelationship', '{{ data['partnerRelationship'] }}');
               showOther();
             </script>
           </div>
 
-          <div class="form-group" id="partner-relationship-other">
-            <label class="form-label" for="partner-relationship-other">Other</label>
-            <input type="text" class="form-control" id="partner-relationship-other" name="partner-relationship-other" required value="{{ data['partner-relationship-other'] }}">
+          <div class="form-group" id="partnerRelationshipOther">
+            <label class="form-label" for="partnerRelationshipOther">Other</label>
+            <input type="text" class="form-control" id="partnerRelationshipOther" name="partnerRelationshipOther" required value="{{ data['partnerRelationshipOther'] }}">
           </div>
 
         </div>
