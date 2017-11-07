@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/your-partner/4">Back</a>
+
+      <form action="/application/question/your-partner/6" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <div class="form-group">
+            <label class="form-label" for="partner-relationship">Country</label>
+
+            <select class="form-control" id="partner-relationship" name="partner-relationship" onchange="showOther()">
+              <option class="husband">Husband</option>
+              <option class="wife">Wife</option>
+              <option class="boyfriend">Boyfriend</option>
+              <option class="girlfriend">Girlfriend</option>
+              <option class="other">Other</option>
+            </select>
+
+            <script>
+              function setSelectValue(id, val) {
+                  document.getElementById(id).value = val;
+              }
+
+              function showOther(){
+                if (document.getElementById('partner-relationship').value == 'Other') {
+                  document.getElementById('partner-relationship-other').style.display = "block";
+                }
+              }
+
+              document.getElementById('partner-relationship-other').style.display = "none";
+              setSelectValue('partner-relationship', '{{ data['partner-relationship'] }}');
+              showOther();
+            </script>
+          </div>
+
+          <div class="form-group" id="partner-relationship-other">
+            <label class="form-label" for="partner-relationship-other">Other</label>
+            <input type="text" class="form-control" id="partner-relationship-other" name="partner-relationship-other" required value="{{ data['partner-relationship-other'] }}">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
