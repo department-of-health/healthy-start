@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/check-eligibility/eligible">Back</a>
+
+      <form action="/application/section/applicant-contact-details" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- DOB -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="dob">
+                <h3 class="heading-small">What is your date of birth?</h3>
+                <!-- <span class="form-hint">
+
+                </span> -->
+              </label>
+
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="dobDay">Day</label>
+                  <input class="form-control" id="dobDay" name="dobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['dobDay'] }}">
+                </div>
+
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="dobMonth">Month</label>
+                  <input class="form-control" id="dobMonth" name="dobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['dobMonth'] }}">
+                </div>
+
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="dobYear">Year</label>
+                  <input class="form-control" id="dobYear" name="dobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['dobYear'] }}">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Education -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="education">
+                <h3 class="heading-small">Are you in full time education?</h3>
+                <!-- <span class="form-hint">
+
+                </span> -->
+              </label>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationTrue" type="radio" name="fullTimeEducation" value="true" required {{ checked('fullTimeEducation', 'true') }}>
+                <label for="fullTimeEducationTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationFalse" type="radio" name="fullTimeEducation" value="false" required {{ checked('fullTimeEducation', 'false') }}>
+                <label for="fullTimeEducationFalse">No</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <!-- National Insurance -->
+          <div class="form-group">
+            <label class="form-label" for="niNumber">
+              <h3 class="heading-small">What is your national insurance number?</h3>
+              <span class="form-hint">
+                It's on your National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
+            </label>
+
+            <input class="form-control" id="niNumber" type="text" name="niNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['niNumber'] }}">
+          </div>
+
+          <!-- Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">What is your name?</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="firstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="firstName" name="firstName" required value="{{ data['firstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="surname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="surname" name="surname" required value="{{ data['surname'] }}">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">
+              <h3 class="heading-small">Please provide a valid email address</h3>
+              <span class="form-hint">We will only use it to tell you about any changes to Healthy Start in the future</span>
+            </label>
+
+            <input type="text" class="form-control" id="email" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value="{{ data['email'] }}">
+          </div>
+
+          <!-- Benefits -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="benefits">
+                <h3 class="heading-small">Tell us which benefits you receive</h3>
+                <!-- <span class="form-hint"></span> -->
+              </label>
+
+              <div class="multiple-choice">
+                <input id="incomeRelatedEmploymentAndSupportAllowance" name="incomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('incomeRelatedEmploymentAndSupportAllowance', 'on') }}>
+                <label for="incomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="incomeSupport" name="incomeSupport" type="checkbox" {{ checked('incomeSupport', 'on') }}>
+                <label for="incomeSupport">Income support</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="incomeBasedJobseekersAllowance" name="incomeBasedJobseekersAllowance" type="checkbox" {{ checked('incomeBasedJobseekersAllowance', 'on') }}>
+                <label for="incomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="childTaxCredit" name="childTaxCredit" type="checkbox" {{ checked('childTaxCredit', 'on') }}>
+                <label for="childTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="workingTaxCredit" name="workingTaxCredit" type="checkbox" {{ checked('workingTaxCredit', 'on') }}>
+                <label for="workingTaxCredit">Working Tax Credit (do not tick if you are getting WTC run-on only*)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="universalCredit" name="universalCredit" type="checkbox" {{ checked('universalCredit', 'on') }}>
+                <label for="universalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="noneOfTheAbove" name="noneOfTheAbove" type="checkbox" {{ checked('noneOfTheAbove', 'on') }}>
+                <label for="noneOfTheAbove">None of the above</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 // Branching
     // Check eligibility form
     router.get('/check-eligibility/question/over-18', function (req, res) {
-      var pregnantOrChildren = req.query.pregnant-or-children
+      var pregnantOrChildren = req.query.pregnantOrChildren
 
       if (pregnantOrChildren === 'false') {
         res.redirect('/check-eligibility/not-eligible')
@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
     })
 
     router.get('/check-eligibility/question/receiving-qualifying-benefits', function (req, res) {
-      var over18 = req.query.over-18
+      var over18 = req.query.over18
 
       if (over18 === 'false') {
         res.redirect('/check-eligibility/not-eligible')
@@ -31,7 +31,7 @@ router.get('/', function (req, res) {
     })
 
     router.get('/check-eligibility/eligibile', function (req, res) {
-      var receivesBenefit = req.query.receives-benefit
+      var receivesBenefit = req.query.receivesBenefit
 
       if (receivesBenefit === 'false') {
         res.redirect('/check-eligibility/not-eligible')

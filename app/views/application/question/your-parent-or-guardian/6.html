@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/your-parent-or-guardian/5">Back</a>
+
+      <form action="/application/question/your-parent-or-guardian-partner/1" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your parent or guardian
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="parentGuardianBenefits">
+                Tick all the benefits your parent or guardian gets
+              </label>
+
+              <div class="multiple-choice">
+                <input id="parentGuardianIncomeRelatedEmploymentAndSupportAllowance" name="parentGuardianIncomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('parentGuardianIncomeRelatedEmploymentAndSupportAllowance', 'on') }}>
+                <label for="parentGuardianIncomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianIncomeSupport" name="parentGuardianIncomeSupport" type="checkbox" {{ checked('parentGuardianIncomeSupport', 'on') }}>
+                <label for="parentGuardianIncomeSupport">Income support</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianIncomeBasedJobseekersAllowance" name="parentGuardianIncomeBasedJobseekersAllowance" type="checkbox" {{ checked('parentGuardianIncomeBasedJobseekersAllowance', 'on') }}>
+                <label for="parentGuardianIncomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianChildTaxCredit" name="parentGuardianChildTaxCredit" type="checkbox" {{ checked('parentGuardianChildTaxCredit', 'on') }}>
+                <label for="parentGuardianChildTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianWorkingTaxCredit" name="parentGuardianWorkingTaxCredit" type="checkbox" {{ checked('parentGuardianWorkingTaxCredit', 'on') }}>
+                <label for="parentGuardianWorkingTaxCredit">Working Tax Credit (do not tick if you are getting WTC run-on only*)</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianUniversalCredit" name="parentGuardianUniversalCredit" type="checkbox" {{ checked('parentGuardianUniversalCredit', 'on') }}>
+                <label for="parentGuardianUniversalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="parentGuardianNoneOfTheAbove" name="parentGuardianNoneOfTheAbove" type="checkbox" {{ checked('parentGuardianNoneOfTheAbove', 'on') }}>
+                <label for="parentGuardianNoneOfTheAbove">None of the above</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

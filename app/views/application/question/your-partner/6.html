@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/your-partner/5">Back</a>
+
+      <form action="/application/question/your-parent-or-guardian/1" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="partnerBenefits">
+                Tick all the benefits your partner gets
+                <!-- <span class="form-hint">Please tick all the benefits you get</span> -->
+              </label>
+
+              <div class="multiple-choice">
+                <input id="partnerIncomeRelatedEmploymentAndSupportAllowance" name="partnerIncomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('partnerIncomeRelatedEmploymentAndSupportAllowance', 'on') }}>
+                <label for="partnerIncomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="partnerIncomeSupport" name="partnerIncomeSupport" type="checkbox" {{ checked('partnerIncomeSupport', 'on') }}>
+                <label for="partnerIncomeSupport">Income support</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="partnerIncomeBasedJobseekersAllowance" name="partnerIncomeBasedJobseekersAllowance" type="checkbox" {{ checked('partnerIncomeBasedJobseekersAllowance', 'on') }}>
+                <label for="partnerIncomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="partnerChildTaxCredit" name="partnerChildTaxCredit" type="checkbox" {{ checked('partnerChildTaxCredit', 'on') }}>
+                <label for="partnerChildTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="partnerWorkingTaxCredit" name="partnerWorkingTaxCredit" type="checkbox" {{ checked('partnerWorkingTaxCredit', 'on') }}>
+                <label for="partnerWorkingTaxCredit">Working Tax Credit (do not tick if you are getting WTC run-on only*)</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="partnerUniversalCredit" name="partnerUniversalCredit" type="checkbox" {{ checked('partnerUniversalCredit', 'on') }}>
+                <label for="partnerUniversalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="partnerNoneOfTheAbove" name="partnerNoneOfTheAbove" type="checkbox" {{ checked('partnerNoneOfTheAbove', 'on') }}>
+                <label for="partnerNoneOfTheAbove">None of the above</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

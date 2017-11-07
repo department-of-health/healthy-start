@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/applicant-contact-details">Back</a>
+
+      <form action="/application/check-answers" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Pregnancy and children
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- Pregnant -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="pregnant">
+                <h3 class="heading-small">Are you pregnant?</h3>
+                <!-- <span class="form-hint"></span> -->
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice">
+                  <input id="pregnantTrue" type="radio" name="pregnant" value="true" required {{ checked('pregnant', 'true') }}>
+                  <label for="pregnantTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="pregnantFalse" type="radio" name="pregnant" value="false" required {{ checked('pregnant', 'false') }}>
+                  <label for="pregnantFalse">No</label>
+                </div>
+              </fieldset>
+
+            </fieldset>
+          </div>
+
+          <!-- Pregnant -->
+          <div class="form-group">
+            <label class="form-label" for="childrenAmount">
+              <h3 class="heading-small">How many children under 4 do you have?</h3>
+            </label>
+
+            <input class="form-control" id="childrenAmount" type="text" name="childrenAmount" pattern="^\d+$" required value="{{ data['childrenAmount'] }}">
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

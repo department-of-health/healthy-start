@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/you-claim-parent-or-guardian-benefits/1">Back</a>
+
+      <form action="/application/pregnant-or-children/2" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- Education -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="pregnant">Are you pregnant?</label>
+
+              <div class="multiple-choice">
+                <input id="pregnantTrue" type="radio" name="pregnant" value="true" required {{ checked('pregnant', 'true') }}>
+                <label for="pregnantTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="pregnantFalse" type="radio" name="pregnant" value="false" required {{ checked('pregnant', 'false') }}>
+                <label for="pregnantFalse">No</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

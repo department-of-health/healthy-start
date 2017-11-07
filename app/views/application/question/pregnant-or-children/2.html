@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/question/about-you/1">Back</a>
+
+      <form action="/application/question/about-you/3" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="howManyChildren">How many children under 4 do you have?</label>
+              <input class="form-control" id="howManyChildren" name="howManyChildren" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['howManyChildren'] }}">
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

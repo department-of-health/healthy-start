@@ -12,9 +12,473 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">
-        Check answers
+        Check your answers before sending your application
       </h1>
 
+      <!-- About you -->
+      <h2 class="heading-medium">
+        You
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> DOB</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Full time education
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['fullTimeEducation']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> full time education</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            National insurance number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['niNumber'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> national insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['firstName']}} {{ data['surname']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Email address
+          </dt>
+          <dd class="cya-answer">
+            {{ data['email']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Benefits receiving
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ "- Income-related Employment and Support Allowance" if data['incomeRelatedEmploymentAndSupportAllowance'] }}</div>
+            <div>{{ "- Income support" if data['incomeSupport'] }}</div>
+            <div>{{ "- Income-based jobseeker's Allowance" if data['incomeBasedJobseekersAllowance'] }}</div>
+            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['childTaxCredit'] }}</div>
+            <div>{{ "- Working Tax Credit (do not tick if you are getting WTC run-on only*)" if data['workingTaxCredit'] }}</div>
+            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['universalCredit'] }}</div>
+            <div>{{ "- None" if data['noneOfTheAbove'] }}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/about">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- Appicant contact details -->
+      <h2 class="heading-medium">
+        Your contact details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Phone number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['phoneNumber'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/applicant-contact-details">
+              Change<span class="visually-hidden"> phone number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Address
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ data['addressLine1']}},</div>
+            <div>{{ data['addressLine2']}},</div>
+            <div>{{ data['town']}},</div>
+            <div>{{ data['country']}},</div>
+            <div>{{ data['postCode']}}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/applicant-contact-details">
+              Change<span class="visually-hidden"> address</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- Partner details -->
+      <h2 class="heading-medium">
+        Partner
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Living with partner
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['livingWithPartner'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner">
+              Change<span class="visually-hidden"> living with partner</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['livingWithPartner'] == 'true' %}
+        <div>
+          <dt class="cya-question">
+            Date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerDobDay'] }}/{{ data['partnerDobMonth'] }}/{{ data['partnerDobYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner/details">
+              Change<span class="visually-hidden"> DOB</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            National insurance number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerNiNumber'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner/details">
+              Change<span class="visually-hidden"> national insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerFirstName']}} {{ data['partnerSurname']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner/details">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Relationship
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerRelationship'] if data['partnerRelationship'] != 'Other' else data['partnerRelationshipOther'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner/details">
+              Change<span class="visually-hidden"> relationship</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Benefits receiving
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ "- Income-related Employment and Support Allowance" if data['partnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
+            <div>{{ "- Income support" if data['partnerIncomeSupport'] }}</div>
+            <div>{{ "- Income-based jobseeker's Allowance" if data['partnerIncomeBasedJobseekersAllowance'] }}</div>
+            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['partnerChildTaxCredit'] }}</div>
+            <div>{{ "- Working Tax Credit (do not tick if you are getting WTC run-on only*)" if data['partnerWorkingTaxCredit'] }}</div>
+            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['partnerUniversalCredit'] }}</div>
+            <div>{{ "- None" if data['partnerNoneOfTheAbove'] }}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/partner/details">
+              Change<span class="visually-hidden"> benefits</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
+
+      <!-- Parent/Guardian details -->
+      <h2 class="heading-medium">
+        Parent/Guardian details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Living with parent/guardian
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['livingWithParentGuardian'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian">
+              Change<span class="visually-hidden"> living with parent/guardian</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['livingWithParentGuardian'] == 'true' %}
+        <div>
+          <dt class="cya-question">
+            Date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianDobDay'] }}/{{ data['parentGuardianDobMonth'] }}/{{ data['parentGuardianDobYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian/details">
+              Change<span class="visually-hidden"> DOB</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            National insurance number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianNiNumber'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian/details">
+              Change<span class="visually-hidden"> national insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianFirstName']}} {{ data['parentGuardianSurname']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian/details">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Relationship
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianRelationship'] if data['parentGuardianRelationship'] != 'Other' else data['parentGuardianRelationshipOther'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian/details">
+              Change<span class="visually-hidden"> relationship</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Benefits receiving
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ "- Income-related Employment and Support Allowance" if data['parentGuardianIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
+            <div>{{ "- Income support" if data['parentGuardianIncomeSupport'] }}</div>
+            <div>{{ "- Income-based jobseeker's Allowance" if data['parentGuardianIncomeBasedJobseekersAllowance'] }}</div>
+            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['parentGuardianChildTaxCredit'] }}</div>
+            <div>{{ "- Working Tax Credit (do not tick if you are getting WTC run-on only*)" if data['parentGuardianWorkingTaxCredit'] }}</div>
+            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['parentGuardianUniversalCredit'] }}</div>
+            <div>{{ "- None" if data['parentGuardianNoneOfTheAbove'] }}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian/details">
+              Change<span class="visually-hidden"> benefits</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <!-- Parent/Guardian partner details -->
+      <h2 class="heading-medium">
+        Parent/Guardian partner details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Living with parent/guardian's partner
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['livingWithParentGuardianPartner'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner">
+              Change<span class="visually-hidden"> living with parent/guardian's partner</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['livingWithParentGuardianPartner'] == 'true' %}
+        <div>
+          <dt class="cya-question">
+            Date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianPartnerDobDay'] }}/{{ data['parentGuardianPartnerDobMonth'] }}/{{ data['parentGuardianPartnerDobYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> DOB</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            National insurance number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianPartnerNiNumber'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> national insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianPartnerFirstName']}} {{ data['parentGuardianPartnerSurname']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Relationship
+          </dt>
+          <dd class="cya-answer">
+            {{ data['parentGuardianPartnerRelationship'] if data['parentGuardianPartnerRelationship'] != 'Other' else data['parentGuardianPartnerRelationshipOther'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> relationship</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Benefits receiving
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ "- Income-related Employment and Support Allowance" if data['parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
+            <div>{{ "- Income support" if data['parentGuardianPartnerIncomeSupport'] }}</div>
+            <div>{{ "- Income-based jobseeker's Allowance" if data['parentGuardianPartnerIncomeBasedJobseekersAllowance'] }}</div>
+            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['parentGuardianPartnerChildTaxCredit'] }}</div>
+            <div>{{ "- Working Tax Credit (do not tick if you are getting WTC run-on only*)" if data['parentGuardianPartnerWorkingTaxCredit'] }}</div>
+            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['parentGuardianPartnerUniversalCredit'] }}</div>
+            <div>{{ "- None" if data['parentGuardianPartnerNoneOfTheAbove'] }}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> benfits</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['livingWithParentGuardianPartner'] == 'true' %}
+        <div>
+          <dt class="cya-question">
+            Parent or guardian’s benefits receiving
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ "- Income-related Employment and Support Allowance" if data['parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
+            <div>{{ "- Income support" if data['parentGuardianPartnerIncomeSupport'] }}</div>
+            <div>{{ "- Income-based jobseeker's Allowance" if data['parentGuardianPartnerIncomeBasedJobseekersAllowance'] }}</div>
+            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['parentGuardianPartnerChildTaxCredit'] }}</div>
+            <div>{{ "- Working Tax Credit (do not tick if you are getting WTC run-on only*)" if data['parentGuardianPartnerWorkingTaxCredit'] }}</div>
+            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['parentGuardianPartnerUniversalCredit'] }}</div>
+            <div>{{ "- None" if data['parentGuardianPartnerNoneOfTheAbove'] }}</div>
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/parent-guardian-partner/details">
+              Change<span class="visually-hidden"> benfits</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <h2 class="heading-medium">Now send your application</h2>
+
+      <p class="text">
+        By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <div class="form-group">
+        <a href="confirmation-page" class="button">Accept and send application</a>
+      </div>
     </div>
   </div>
 

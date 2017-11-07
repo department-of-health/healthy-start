@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/partner/details">Back</a>
+
+      <form action="/application/section/parent-guardian/details" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- Living with Parent/Guardian -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="livingWithParentGuardian">
+                <h3 class="heading-small">Do you live with a parent or guardian?</h3>
+                <span class="form-hint">
+                  By providing these details it may improve your chance of qualifying for Healthy Start.
+                </span>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice">
+                  <input id="livingWithParentGuardianTrue" type="radio" name="livingWithParentGuardian" value="true" {{ checked('livingWithParentGuardian', 'true') }}>
+                  <label for="livingWithParentGuardianTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="livingWithParentGuardianFalse" type="radio" name="livingWithParentGuardian" value="false" {{ checked('livingWithParentGuardian', 'false') }}>
+                  <label for="livingWithParentGuardianFalse">No</label>
+                </div>
+              </fieldset>
+
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

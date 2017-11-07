@@ -23,9 +23,9 @@
           </legend>
 
           <div class="form-group">
-            <label class="form-label" for="partnerRelationship">Country</label>
+            <label class="form-label" for="partnerRelationship">What is the status of your relationship with your partner?</label>
 
-            <select class="form-control" id="partnerRelationship" name="partnerRelationship" onchange="showOther()">
+            <select class="form-control" id="partnerRelationship" name="partnerRelationship" onchange="showOther()" onload="showOther()">
               <option class="husband">Husband</option>
               <option class="wife">Wife</option>
               <option class="boyfriend">Boyfriend</option>
@@ -44,15 +44,18 @@
                 }
               }
 
-              document.getElementById('partnerRelationshipOther').style.display = "none";
               setSelectValue('partnerRelationship', '{{ data['partnerRelationship'] }}');
               showOther();
             </script>
           </div>
 
-          <div class="form-group" id="partnerRelationshipOther">
-            <label class="form-label" for="partnerRelationshipOther">Other</label>
-            <input type="text" class="form-control" id="partnerRelationshipOther" name="partnerRelationshipOther" required value="{{ data['partnerRelationshipOther'] }}">
+          <div class="form-group" id="partnerRelationshipOther" style="display: none;">
+            <label class="form-label" for="partnerRelationshipOther">Please specify</label>
+            <input type="text" class="form-control" id="partnerRelationshipOther" name="partnerRelationshipOther" value="{{ data['partnerRelationshipOther'] }}">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
           </div>
 
         </div>
