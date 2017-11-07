@@ -23,22 +23,22 @@
           </legend>
 
           <div class="form-group">
-            <label class="form-label" for="ni-number">
+            <label class="form-label" for="living-with-partner">
               Do you live with a partner?
               <span class="form-hint">
                 By providing these details it may improve your chance of qualifying for Healthy Start.
               </span>
             </label>
-            
+
             <fieldset class="inline">
               <div class="multiple-choice">
-                <input id="over18True" type="radio" name="over18" value="true" {{ checked('over18', 'true') }}>
-                <label for="over18True">Yes</label>
+                <input id="living-with-partner-true" type="radio" name="living-with-partner" value="true" {{ checked('living-with-partner', 'true') }}>
+                <label for="living-with-partner-true">Yes</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="over18False" type="radio" name="over18" value="false" {{ checked('over18', 'false') }}>
-                <label for="over18False">No</label>
+                <input id="living-with-partner-false" type="radio" name="living-with-partner" value="false" {{ checked('living-with-partner', 'false') }}>
+                <label for="living-with-partner-false">No</label>
               </div>
             </fieldset>
           </div>
@@ -46,7 +46,7 @@
           <div class="form-group">
             <input type="submit" class="button" value="Continue">
           </div>
-          
+
         </div>
       </form>
 
