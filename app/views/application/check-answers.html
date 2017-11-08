@@ -40,7 +40,7 @@
             Full time education
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['fullTimeEducation']}}
+            {{ "Yes" if data['fullTimeEducation'] else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/about/education">
@@ -162,7 +162,7 @@
             Living with partner
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithPartner'] }}
+            {{ "Yes" if data['livingWithPartner'] else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/partner/living-with">
@@ -261,7 +261,7 @@
             Living with parent/guardian
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithParentGuardian'] }}
+            {{ "Yes" if data['livingWithParentGuardian'] else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian/living-with">
@@ -332,7 +332,7 @@
             Included in benefit claim
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['parentGuardianClaimBenefits'] }}
+            {{ "Yes" if data['parentGuardianClaimBenefits'] else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian/benefits">
@@ -354,7 +354,7 @@
             Living with parent/guardian's partner
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithParentGuardianPartner'] }}
+            {{ "Yes" if data['livingWithParentGuardianPartner'] else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian-partner/living-with">
@@ -425,7 +425,7 @@
               Included in benefit claim
             </dt>
             <dd class="cya-answer">
-              {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] }}
+              {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] else "No" }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/parent-guardian-partner/benefits">
@@ -462,6 +462,244 @@
             </a>
           </dd>
         </div>
+        {% endif %}
+      </dl>
+
+      <!-- Pregnant -->
+      <h2 class="heading-medium">
+        Pregnancy
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Pregnant
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['pregnant'] else "No" }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/pregnant">
+              Change<span class="visually-hidden"> pregnancy status</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['pregnant'] %}
+        <div>
+          <dt class="cya-question">
+            Expected delivery date
+          </dt>
+          <dd class="cya-answer">
+            {{ data['deliveryDateDay'] }}/{{ data['deliveryDateMonth'] }}/{{ data['deliveryDateYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/pregnant">
+              Change<span class="visually-hidden"> benfits</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+
+      <!-- Children -->
+      <h2 class="heading-medium">
+        Children
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Children
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['children'] else "No" }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/children">
+              Change<span class="visually-hidden"> pregnancy status</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['children'] %}
+        <div>
+          <dt class="cya-question">
+            First child DOB
+          </dt>
+          <dd class="cya-answer">
+            {{ data['childOneDobDay'] }}/{{ data['childOneDobMonth'] }}/{{ data['childOneDobYear'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/children">
+              Change<span class="visually-hidden"> benfits</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            First child Name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['childOneFirstName']}} {{ data['childOneSurname']}}
+          </dd>
+          <dd class="cya-change">
+            <a href="/application/section/children">
+              Change<span class="visually-hidden"> benfits</span>
+            </a>
+          </dd>
+        </div>
+
+          {% if data['childTwoFirstName'] %}
+          <div>
+            <dt class="cya-question">
+              Second child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childTwoDobDay'] }}/{{ data['childTwoDobDay'] }}/{{ data['childTwoDobDay'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Second child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childTwoFirstName']}} {{ data['childTwoSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childThree'] %}
+          <div>
+            <dt class="cya-question">
+              Third child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childThreeDobDay'] }}/{{ data['childThreeDobDay'] }}/{{ data['childThreeDobDay'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Third child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childThreeFirstName']}} {{ data['childThreeSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childFour'] %}
+          <div>
+            <dt class="cya-question">
+              Fourth child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFourDobDay'] }}/{{ data['childFourDobDay'] }}/{{ data['childFourDobDay'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Fourth child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFourFirstName']}} {{ data['childFourSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childFifth'] %}
+          <div>
+            <dt class="cya-question">
+              Fifth child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFifthDobDay'] }}/{{ data['childFifthDobDay'] }}/{{ data['childFifthDobDay'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Fifth child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFifthFirstName']}} {{ data['childFifthSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childSixth'] %}
+          <div>
+            <dt class="cya-question">
+              Sixth child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSixDobDay'] }}/{{ data['childSixDobDay'] }}/{{ data['childSixDobDay'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Sixth child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSixFirstName']}} {{ data['childSixSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> benfits</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
         {% endif %}
       </dl>
 
