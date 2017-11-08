@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/claim-to-benefits">Back</a>
+
+      <form action="/application/section/children" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Pregnancy
+            </h1>
+          </legend>
+
+          <!-- Children -->
+          <div class="form-group">
+            <label class="form-label" for="pregnant">
+              <h3 class="heading-small">Are you pregnant?</h3>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice" data-target="deliveryDate">
+                <input id="pregnantTrue" type="radio" name="pregnant" value="true" {{ checked('pregnant', 'true') }}>
+                <label for="pregnantTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="pregnantFalse" type="radio" name="pregnant" value="false" {{ checked('pregnant', 'false') }}>
+                <label for="pregnantFalse">No</label>
+              </div>
+
+              <div class="panel panel-border-narrow js-hidden" id="deliveryDate">
+                <label class="form-label" for="deliveryDate">
+                  <h3 class="heading-small">Expected date of delivery</h3>
+                </label>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="deliveryDateDay">Day</label>
+                    <input class="form-control" id="deliveryDateDay" name="deliveryDateDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['deliveryDateDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="deliveryDateMonth">Month</label>
+                    <input class="form-control" id="deliveryDateMonth" name="deliveryDateMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['deliveryDateMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="deliveryDateYear">Year</label>
+                    <input class="form-control" id="deliveryDateYear" name="deliveryDateYear" type="number" pattern="[0-9]*" min="2017" required value="{{ data['deliveryDateYear'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Complete application">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

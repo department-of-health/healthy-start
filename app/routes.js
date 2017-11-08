@@ -7,37 +7,85 @@ router.get('/', function (req, res) {
 })
 
 // add your routes here
+  // Branching
+  router.get('/application/section/about/education', function (req, res) {
+    function getAge(birth) {
+      ageMS = Date.parse(Date()) - Date.parse(birth);
+      age = new Date();
+      age.setTime(ageMS);
+      ageYear = age.getFullYear() - 1970;
 
-// Branching
-    // Check eligibility form
-    router.get('/check-eligibility/question/over-18', function (req, res) {
-      var pregnantOrChildren = req.query.pregnantOrChildren
+      return ageYear;
+    }
 
-      if (pregnantOrChildren === 'false') {
-        res.redirect('/check-eligibility/not-eligible')
-      } else {
-        res.render('check-eligibility/question/over-18')
-      }
-    })
+    var age = getAge(req.session.data['dobDay'] + '/' + req.session.data['dobMonth'] + '/' + req.session.data['dobYear']);
 
-    router.get('/check-eligibility/question/receiving-qualifying-benefits', function (req, res) {
-      var over18 = req.query.over18
+    if (age < 20) {
+      res.render('application/section/about/education')
+    } else {
+      res.redirect('/application/section/about/ni')
+    }
+  })
 
-      if (over18 === 'false') {
-        res.redirect('/check-eligibility/not-eligible')
-      } else {
-        res.render('check-eligibility/question/receiving-qualifying-benefits')
-      }
-    })
+  router.get('/application/section/partner/relationship', function (req, res) {
+    var livingWithPartner = req.session.data['livingWithPartner'];
 
-    router.get('/check-eligibility/eligibile', function (req, res) {
-      var receivesBenefit = req.query.receivesBenefit
+    if (livingWithPartner === 'true') {
+      res.render('application/section/partner/relationship')
+    } else {
+      res.redirect('/application/section/parent-guardian/living-with')
+    }
+  })
 
-      if (receivesBenefit === 'false') {
-        res.redirect('/check-eligibility/not-eligible')
-      } else {
-        res.render('check-eligibility/eligibile')
-      }
-    })
+  router.get('/application/section/parent-guardian/living-with', function (req, res) {
+    function getAge(birth) {
+      ageMS = Date.parse(Date()) - Date.parse(birth);
+      age = new Date();
+      age.setTime(ageMS);
+      ageYear = age.getFullYear() - 1970;
+
+      return ageYear;
+    }
+
+    var age = getAge(req.session.data['dobDay'] + '/' + req.session.data['dobMonth'] + '/' + req.session.data['dobYear']);
+    var inFullTimeEducation = req.session.data['fullTimeEducation'];
+
+    if (age < 18 || age < 20 && (inFullTimeEducation === 'true')) {
+      res.render('application/section/parent-guardian/living-with')
+    } else {
+      res.redirect('/application/section/pregnant')
+    }
+  })
+
+  router.get('/application/section/parent-guardian/relationship', function (req, res) {
+    var livingWithParentGuardian = req.session.data['livingWithParentGuardian'];
+
+    if (livingWithParentGuardian === 'true') {
+      res.render('application/section/parent-guardian/relationship')
+    } else {
+      res.redirect('/application/section/pregnant')
+    }
+  })
+
+  router.get('/application/section/parent-guardian-partner/relationship', function (req, res) {
+    var livingWithParentGuardianPartner = req.session.data['livingWithParentGuardianPartner'];
+
+    if (livingWithParentGuardianPartner === 'true') {
+      res.render('application/section/parent-guardian-partner/relationship')
+    } else {
+      res.redirect('/application/section/pregnant')
+    }
+  })
+
+  router.get('/application/section/claim-to-benefits', function (req, res) {
+    var parentGuardianClaimBenefits = req.session.data['parentGuardianClaimBenefits'];
+    var parentGuardianPartnerClaimBenefits = req.session.data['parentGuardianPartnerClaimBenefits'];
+
+    if (parentGuardianClaimBenefits === 'true' || parentGuardianPartnerClaimBenefits === 'true') {
+      res.render('application/section/claim-to-benefits/index.html')
+    } else {
+      res.redirect('/application/section/pregnant')
+    }
+  })
 
 module.exports = router

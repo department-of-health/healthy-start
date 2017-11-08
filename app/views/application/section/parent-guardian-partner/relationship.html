@@ -12,7 +12,7 @@
 
       <a class="link-back" href="/application/section/parent-guardian-partner/living-with">Back</a>
 
-      <form action="/application/section/parent-guardian-partner/dob" method="get" class="form">
+      <form action="/application/section/parent-guardian-partner/dob" method="post" class="form">
         <div class="form-group">
 
           <legend>
@@ -29,12 +29,17 @@
                 <h3 class="heading-small">Relationship with your parent or guardian’s partner</h3>
               </label>
 
-              <select class="form-control" id="parentGuardianPartnerRelationship" name="parentGuardianPartnerRelationship" onchange="showOther()" onload="showOther()">
+              <select class="form-control" id="parentGuardianPartnerRelationship" name="parentGuardianPartnerRelationship">
                 <option class="mother">Mother</option>
                 <option class="father">Father</option>
                 <option class="carer">Carer</option>
-                <option class="other">Other</option>
+                <option class="other" data-target="parentGuardianPartnerRelationshipOther">Other</option>
               </select>
+
+              <div class="panel panel-border-narrow js-hidden" id="parentGuardianPartnerRelationshipOther">
+                <label class="form-label" for="parentGuardianPartnerRelationshipOther">Please specify</label>
+                <input class="form-control" name="parentGuardianPartnerRelationshipOther" type="text" id="parentGuardianPartnerRelationshipOther">
+              </div>
 
               <script>
                 function setSelectValue(id, val) {
