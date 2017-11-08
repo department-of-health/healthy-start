@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Parent or guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/parent-guardian/ni">Back</a>
+
+      <form action="/application/section/parent-guardian/benefits" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian details
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- Parent/Guardian Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">Your parent or guardian's name</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="parentGuardianFirstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="parentGuardianFirstName" name="parentGuardianFirstName" required value="{{ data['parentGuardianFirstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="parentGuardianSurname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="parentGuardianSurname" name="parentGuardianSurname" value="{{ data['parentGuardianSurname'] }}">
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Parent or guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/parent-guardian/name">Back</a>
+
+      <form action="/application/section/parent-guardian-partner/living-with" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian details
+            </h1>
+          </legend>
+
+          <!-- Parent/Guardian Benefits -->
+          <div class="form-group">
+            <label class="form-label" for="parentGuardianClaimBenefits">
+              <h3 class="heading-small">Are you included in the claim for any of the following benefits that your parent or guardian receives?</h3>
+
+              <ul>
+                <li>Income related Employment and Support Allowance</li>
+                <li>Income Support</li>
+                <li>Income based Jobseeker's Allowance</li>
+                <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
+                <li>Working Tax Credit (do not tick if you are getting WTC run-on only*)</li>
+                <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
+              </ul>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice">
+                <input id="parentGuardianClaimBenefitsTrue" type="radio" name="parentGuardianClaimBenefits" value="true" {{ checked('parentGuardianClaimBenefits', 'true') }}>
+                <label for="parentGuardianClaimBenefitsTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="parentGuardianClaimBenefitsFalse" type="radio" name="parentGuardianClaimBenefits" value="false" {{ checked('parentGuardianClaimBenefits', 'false') }}>
+                <label for="parentGuardianClaimBenefitsFalse">No</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/partner/ni">Back</a>
+
+      <form action="/application/section/partner/benefits" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+          </legend>
+
+          <!-- Partner Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">Your partner's name</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="partnerFirstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="partnerFirstName" name="partnerFirstName" required value="{{ data['partnerFirstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="partnerSurname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="partnerSurname" name="partnerSurname" value="{{ data['partnerSurname'] }}">
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

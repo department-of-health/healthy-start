@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Parent or guardian's partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/parent-guardian-partner/living-with">Back</a>
+
+      <form action="/application/section/parent-guardian-partner/dob" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your parent or guardian's partner
+            </h1>
+          </legend>
+
+          <!-- Parent or guardian's partner's relationship -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="parentGuardianPartnerRelationship">
+                <h3 class="heading-small">Relationship with your parent or guardian’s partner</h3>
+              </label>
+
+              <select class="form-control" id="parentGuardianPartnerRelationship" name="parentGuardianPartnerRelationship" onchange="showOther()" onload="showOther()">
+                <option class="mother">Mother</option>
+                <option class="father">Father</option>
+                <option class="carer">Carer</option>
+                <option class="other">Other</option>
+              </select>
+
+              <script>
+                function setSelectValue(id, val) {
+                    document.getElementById(id).value = val;
+                }
+
+                setSelectValue('parentGuardianPartnerRelationship', '{{ data['parentGuardianPartnerRelationship'] }}');
+              </script>
+
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

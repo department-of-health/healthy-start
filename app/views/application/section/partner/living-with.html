@@ -10,38 +10,41 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/application/section/parent-guardian/">Back</a>
+      <a class="link-back" href="/application/section/contact-details">Back</a>
 
-      <form action="/application/section/parent-guardian/" method="get" class="form">
+      <form action="/application/section/partner/relationship" method="get" class="form">
         <div class="form-group">
 
           <legend>
             <h1 class="heading-large">
-              Parent or guardian
+              Your partner
             </h1>
             <!-- <p class="body-text"></p> -->
           </legend>
 
-          <!-- Living with Parent/Guardian -->
+          <!-- Living with partner -->
           <div class="form-group">
             <fieldset class="inline">
 
-              <label class="form-label" for="livingWithParentGuardian">
-                <h3 class="heading-small">Do you live with a parent or guardian?</h3>
+              <label class="form-label" for="livingWithPartner">
+                <h3 class="heading-small">Do you live with a partner?</h3>
                 <span class="form-hint">
+                  By partner we mean a person you are married to, or live with or your civil partner.
+                  <br>
+                  <br>
                   By providing these details it may improve your chance of qualifying for Healthy Start.
                 </span>
               </label>
 
               <fieldset class="inline">
                 <div class="multiple-choice">
-                  <input id="livingWithParentGuardianTrue" type="radio" name="livingWithParentGuardian" value="true" {{ checked('livingWithParentGuardian', 'true') }}>
-                  <label for="livingWithParentGuardianTrue">Yes</label>
+                  <input id="livingWithPartnerTrue" type="radio" name="livingWithPartner" value="true" {{ checked('livingWithPartner', 'true') }}>
+                  <label for="livingWithPartnerTrue">Yes</label>
                 </div>
 
                 <div class="multiple-choice">
-                  <input id="livingWithParentGuardianFalse" type="radio" name="livingWithParentGuardian" value="false" {{ checked('livingWithParentGuardian', 'false') }}>
-                  <label for="livingWithParentGuardianFalse">No</label>
+                  <input id="livingWithPartnerFalse" type="radio" name="livingWithPartner" value="false" {{ checked('livingWithPartner', 'false') }}>
+                  <label for="livingWithPartnerFalse">No</label>
                 </div>
               </fieldset>
 

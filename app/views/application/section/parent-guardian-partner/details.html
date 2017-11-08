@@ -10,14 +10,14 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/application/section/parent-guardian-partner">Back</a>
+      <a class="link-back" href="/application/section/parent-guardian-partner/">Back</a>
 
-      <form action="/application/section/claim-to-a-parent-guardian-benefit" method="get" class="form">
+      <form action="/application/section/parent-guardian-partner/" method="get" class="form">
         <div class="form-group">
 
           <legend>
             <h1 class="heading-large">
-              Your parent or guardian's partner details
+              Your parent or guardian's partner
             </h1>
             <!-- <p class="body-text"></p> -->
           </legend>
@@ -36,17 +36,17 @@
               <div class="form-date">
                 <div class="form-group form-group-day">
                   <label class="form-label" for="parentGuardianPartnerDobDay">Day</label>
-                  <input class="form-control" id="parentGuardianPartnerDobDay" name="parentGuardianPartnerDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['dobDay'] }}">
+                  <input class="form-control" id="parentGuardianPartnerDobDay" name="parentGuardianPartnerDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['parentGuardianPartnerDobDay'] }}">
                 </div>
 
                 <div class="form-group form-group-month">
                   <label class="form-label" for="parentGuardianPartnerDobMonth">Month</label>
-                  <input class="form-control" id="parentGuardianPartnerDobMonth" name="parentGuardianPartnerDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['dobMonth'] }}">
+                  <input class="form-control" id="parentGuardianPartnerDobMonth" name="parentGuardianPartnerDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['parentGuardianPartnerDobMonth'] }}">
                 </div>
 
                 <div class="form-group form-group-year">
                   <label class="form-label" for="parentGuardianPartnerDobYear">Year</label>
-                  <input class="form-control" id="parentGuardianPartnerDobYear" name="parentGuardianPartnerDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['dobYear'] }}">
+                  <input class="form-control" id="parentGuardianPartnerDobYear" name="parentGuardianPartnerDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['parentGuardianPartnerDobYear'] }}">
                 </div>
               </div>
             </fieldset>
@@ -63,7 +63,7 @@
               </span>
             </label>
 
-            <input class="form-control" id="parentGuardianPartnerNiNumber" type="text" name="parentGuardianPartnerNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['partnerNiNumber'] }}">
+            <input class="form-control" id="parentGuardianPartnerNiNumber" type="text" name="parentGuardianPartnerNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['parentGuardianPartnerNiNumber'] }}">
           </div>
 
           <!-- Parent or guardian's partner's Name(s) -->
@@ -76,7 +76,7 @@
                 <span>First name</span>
               </label>
 
-              <input type="text" class="form-control" id="parentGuardianPartnerFirstName" name="parentGuardianPartnerFirstName" required value="{{ data['partnerFirstName'] }}">
+              <input type="text" class="form-control" id="parentGuardianPartnerFirstName" name="parentGuardianPartnerFirstName" required value="{{ data['parentGuardianPartnerFirstName'] }}">
             </div>
 
             <!-- Surname -->
@@ -85,7 +85,7 @@
                 <span>Surname</span>
               </label>
 
-              <input type="text" class="form-control" id="parentGuardianPartnerSurname" name="parentGuardianPartnerSurname" value="{{ data['partnerSurname'] }}">
+              <input type="text" class="form-control" id="parentGuardianPartnerSurname" name="parentGuardianPartnerSurname" value="{{ data['parentGuardianPartnerSurname'] }}">
             </div>
           </div>
 
@@ -110,7 +110,7 @@
                     document.getElementById(id).value = val;
                 }
 
-                setSelectValue('partnerRelationship', '{{ data['partnerRelationship'] }}');
+                setSelectValue('parentGuardianPartnerRelationship', '{{ data['parentGuardianPartnerRelationship'] }}');
               </script>
 
             </fieldset>
@@ -126,37 +126,37 @@
               </label>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance" name="parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('partnerIncomeRelatedEmploymentAndSupportAllowance', 'on') }}>
+                <input id="parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance" name="parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance', 'on') }}>
                 <label for="parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerIncomeSupport" name="parentGuardianPartnerIncomeSupport" type="checkbox" {{ checked('partnerIncomeSupport', 'on') }}>
+                <input id="parentGuardianPartnerIncomeSupport" name="parentGuardianPartnerIncomeSupport" type="checkbox" {{ checked('parentGuardianPartnerIncomeSupport', 'on') }}>
                 <label for="parentGuardianPartnerIncomeSupport">Income support</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerIncomeBasedJobseekersAllowance" name="parentGuardianPartnerIncomeBasedJobseekersAllowance" type="checkbox" {{ checked('partnerIncomeBasedJobseekersAllowance', 'on') }}>
+                <input id="parentGuardianPartnerIncomeBasedJobseekersAllowance" name="parentGuardianPartnerIncomeBasedJobseekersAllowance" type="checkbox" {{ checked('parentGuardianPartnerIncomeBasedJobseekersAllowance', 'on') }}>
                 <label for="parentGuardianPartnerIncomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerChildTaxCredit" name="parentGuardianPartnerChildTaxCredit" type="checkbox" {{ checked('partnerChildTaxCredit', 'on') }}>
+                <input id="parentGuardianPartnerChildTaxCredit" name="parentGuardianPartnerChildTaxCredit" type="checkbox" {{ checked('parentGuardianPartnerChildTaxCredit', 'on') }}>
                 <label for="parentGuardianPartnerChildTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerWorkingTaxCredit" name="parentGuardianPartnerWorkingTaxCredit" type="checkbox" {{ checked('partnerWorkingTaxCredit', 'on') }}>
+                <input id="parentGuardianPartnerWorkingTaxCredit" name="parentGuardianPartnerWorkingTaxCredit" type="checkbox" {{ checked('parentGuardianPartnerWorkingTaxCredit', 'on') }}>
                 <label for="parentGuardianPartnerWorkingTaxCredit">Working Tax Credit (do not tick if you are getting WTC run-on only*)</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerUniversalCredit" name="parentGuardianPartnerUniversalCredit" type="checkbox" {{ checked('partnerUniversalCredit', 'on') }}>
+                <input id="parentGuardianPartnerUniversalCredit" name="parentGuardianPartnerUniversalCredit" type="checkbox" {{ checked('parentGuardianPartnerUniversalCredit', 'on') }}>
                 <label for="parentGuardianPartnerUniversalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="parentGuardianPartnerNoneOfTheAbove" name="parentGuardianPartnerNoneOfTheAbove" type="checkbox" {{ checked('partnerNoneOfTheAbove', 'on') }}>
+                <input id="parentGuardianPartnerNoneOfTheAbove" name="parentGuardianPartnerNoneOfTheAbove" type="checkbox" {{ checked('parentGuardianPartnerNoneOfTheAbove', 'on') }}>
                 <label for="parentGuardianPartnerNoneOfTheAbove">None of the above</label>
               </div>
 

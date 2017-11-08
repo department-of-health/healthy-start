@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/partner/dob">Back</a>
+
+      <form action="/application/section/partner/name" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+          </legend>
+
+          <!-- Partner National Insurance -->
+          <div class="form-group">
+            <label class="form-label" for="partnerNiNumber">
+              <h3 class="heading-small">Your partner's National Insurance Number</h3>
+              <span class="form-hint">
+                It's on their National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
+            </label>
+
+            <input class="form-control" id="partnerNiNumber" type="text" name="partnerNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['partnerNiNumber'] }}">
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

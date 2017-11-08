@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/partner/relationship">Back</a>
+
+      <form action="/application/section/partner/ni" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+          </legend>
+
+          <!-- Partner DOB -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="partnerDob">
+                <h3 class="heading-small">Your partner's date of birth</h3>
+              </label>
+
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="partnerDobDay">Day</label>
+                  <input class="form-control" id="partnerDobDay" name="partnerDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['partnerDobDay'] }}">
+                </div>
+
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="partnerDobMonth">Month</label>
+                  <input class="form-control" id="partnerDobMonth" name="partnerDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['partnerDobMonth'] }}">
+                </div>
+
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="partnerDobYear">Year</label>
+                  <input class="form-control" id="partnerDobYear" name="partnerDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['partnerDobYear'] }}">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

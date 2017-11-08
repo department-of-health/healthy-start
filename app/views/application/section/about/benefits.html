@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/about/name">Back</a>
+
+      <form action="/application/section/contact-details" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+          </legend>
+
+          <!-- Benefits -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="benefits">
+                <h3 class="heading-small">Tell us which benefits you receive</h3>
+                <!-- <span class="form-hint"></span> -->
+              </label>
+
+              <div class="multiple-choice">
+                <input id="incomeRelatedEmploymentAndSupportAllowance" name="incomeRelatedEmploymentAndSupportAllowance" type="checkbox" {{ checked('incomeRelatedEmploymentAndSupportAllowance', 'on') }}>
+                <label for="incomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="incomeSupport" name="incomeSupport" type="checkbox" {{ checked('incomeSupport', 'on') }}>
+                <label for="incomeSupport">Income support</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="incomeBasedJobseekersAllowance" name="incomeBasedJobseekersAllowance" type="checkbox" {{ checked('incomeBasedJobseekersAllowance', 'on') }}>
+                <label for="incomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="childTaxCredit" name="childTaxCredit" type="checkbox" {{ checked('childTaxCredit', 'on') }}>
+                <label for="childTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="workingTaxCredit" name="workingTaxCredit" type="checkbox" {{ checked('workingTaxCredit', 'on') }}>
+                <label for="workingTaxCredit">Working Tax Credit (do not tick if you are getting WTC run-on only*)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="universalCredit" name="universalCredit" type="checkbox" {{ checked('universalCredit', 'on') }}>
+                <label for="universalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="noneOfTheAbove" name="noneOfTheAbove" type="checkbox" {{ checked('noneOfTheAbove', 'on') }}>
+                <label for="noneOfTheAbove">None of the above</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

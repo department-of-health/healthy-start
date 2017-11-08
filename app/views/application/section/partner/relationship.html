@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/partner/living-with">Back</a>
+
+      <form action="/application/section/partner/dob" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Your partner
+            </h1>
+          </legend>
+
+          <!-- Partner relationship -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="partnerRelationship">
+                <h3 class="heading-small">Relationship with your partner</h3>
+              </label>
+
+              <select class="form-control" id="partnerRelationship" name="partnerRelationship" onchange="showOther()" onload="showOther()">
+                <option class="husband">Husband</option>
+                <option class="wife">Wife</option>
+                <option class="boyfriend">Boyfriend</option>
+                <option class="girlfriend">Girlfriend</option>
+                <option class="other">Other</option>
+              </select>
+
+              <script>
+                function setSelectValue(id, val) {
+                    document.getElementById(id).value = val;
+                }
+
+                function showOther(){
+                  if (document.getElementById('partnerRelationship').value == 'Other') {
+                    document.getElementById('partnerRelationshipOther').style.display = "block";
+                  }
+                }
+
+                setSelectValue('partnerRelationship', '{{ data['partnerRelationship'] }}');
+                showOther();
+              </script>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group" id="partnerRelationshipOther" style="display: none;">
+            <label class="form-label" for="partnerRelationshipOther">Please specify</label>
+            <input type="text" class="form-control" id="partnerRelationshipOther" name="partnerRelationshipOther" value="{{ data['partnerRelationshipOther'] }}">
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

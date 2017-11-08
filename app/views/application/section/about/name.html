@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/about/ni">Back</a>
+
+      <form action="/application/section/about/benefits" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+          </legend>
+
+          <!-- Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">Your name</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="firstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="firstName" name="firstName" required value="{{ data['firstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="surname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="surname" name="surname" required value="{{ data['surname'] }}">
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -10,9 +10,9 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/application/section/parent-guardian">Back</a>
+      <a class="link-back" href="/application/section/parent-guardian/">Back</a>
 
-      <form action="/application/section/parent-guardian-partner" method="get" class="form">
+      <form action="/application/section/parent-guardian/" method="get" class="form">
         <div class="form-group">
 
           <legend>
@@ -36,17 +36,17 @@
               <div class="form-date">
                 <div class="form-group form-group-day">
                   <label class="form-label" for="parentGuardianDobDay">Day</label>
-                  <input class="form-control" id="parentGuardianDobDay" name="parentGuardianDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['dobDay'] }}">
+                  <input class="form-control" id="parentGuardianDobDay" name="parentGuardianDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['parentGuardianDobDay'] }}">
                 </div>
 
                 <div class="form-group form-group-month">
                   <label class="form-label" for="parentGuardianDobMonth">Month</label>
-                  <input class="form-control" id="parentGuardianDobMonth" name="parentGuardianDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['dobMonth'] }}">
+                  <input class="form-control" id="parentGuardianDobMonth" name="parentGuardianDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['parentGuardianDobMonth'] }}">
                 </div>
 
                 <div class="form-group form-group-year">
                   <label class="form-label" for="parentGuardianDobYear">Year</label>
-                  <input class="form-control" id="parentGuardianDobYear" name="parentGuardianDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['dobYear'] }}">
+                  <input class="form-control" id="parentGuardianDobYear" name="parentGuardianDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['parentGuardianDobYear'] }}">
                 </div>
               </div>
             </fieldset>

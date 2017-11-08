@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - Your partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/application/section/claim-to-benefits">Back</a>
+
+      <form action="/application/section/pregnant-or-children/children" method="get" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Children
+            </h1>
+          </legend>
+
+          <!-- Children -->
+          <div class="form-group">
+            <label class="form-label" for="children">
+              <h3 class="heading-small">Do you have any children under 4?</h3>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice">
+                <input id="childrenTrue" type="radio" name="children" value="true" {{ checked('children', 'true') }}>
+                <label for="childrenTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="childrenFalse" type="radio" name="children" value="false" {{ checked('children', 'false') }}>
+                <label for="childrenFalse">No</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <a class="button button-start" href="#" role="button">Add another child</a>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Complete application">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
