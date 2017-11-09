@@ -31,7 +31,6 @@
                 <li>Income Support</li>
                 <li>Income based Jobseeker's Allowance</li>
                 <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
-                <li>Working Tax Credit (do not tick if you are getting WTC run-on only*)</li>
                 <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
               </ul>
             </label>
@@ -47,6 +46,11 @@
                 <label for="parentGuardianPartnerClaimBenefitsFalse">No</label>
               </div>
             </fieldset>
+
+            <div class="multiple-choice">
+              <input id="parentGuardianPartnerClaimBenefitsUnknown" type="radio" name="parentGuardianPartnerClaimBenefits" value="unknown" {{ checked('parentGuardianPartnerClaimBenefits', 'unknown') }}>
+              <label for="parentGuardianPartnerClaimBenefitsUnknown">I don't know</label>
+            </div>
           </div>
 
           <!-- Submit -->
