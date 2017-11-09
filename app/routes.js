@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
       return ageYear;
     }
 
-    var age = getAge(req.session.data['dobDay'] + '/' + req.session.data['dobMonth'] + '/' + req.session.data['dobYear']);
+    var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
 
     if (age < 20) {
       res.render('application/section/about/education')
@@ -47,7 +47,7 @@ router.get('/', function (req, res) {
       return ageYear;
     }
 
-    var age = getAge(req.session.data['dobDay'] + '/' + req.session.data['dobMonth'] + '/' + req.session.data['dobYear']);
+    var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
     var inFullTimeEducation = req.session.data['fullTimeEducation'];
 
     if (age < 18 || age < 20 && (inFullTimeEducation === 'true')) {
