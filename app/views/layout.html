@@ -55,6 +55,15 @@
 {% block body_end %}
   {% block scripts %}
     {% include "includes/scripts.html" %}
+    <script>
+      $(function() {
+        $('.link-back').on('click', function(event) {
+          event.preventDefault();
+
+          history.back();
+        })
+      })
+    </script>
     {% block page_scripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype kit {{releaseVersion}} -->
