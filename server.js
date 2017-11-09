@@ -289,6 +289,7 @@ utils.findAvailablePort(app, function (port) {
         ghostmode: false,
         open: false,
         notify: false,
+        offline: true,
         logLevel: 'info'
       })
     })
