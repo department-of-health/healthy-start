@@ -454,7 +454,7 @@
           </dd>
           <dd class="cya-change">
             <a href="/application/section/claim-to-benefits">
-              Change<span class="visually-hidden"> benfits</span>
+              Change<span class="visually-hidden"> benefits</span>
             </a>
           </dd>
         </div>
@@ -491,7 +491,7 @@
           </dd>
           <dd class="cya-change">
             <a href="/application/section/pregnant">
-              Change<span class="visually-hidden"> benfits</span>
+              Change<span class="visually-hidden"> benefits</span>
             </a>
           </dd>
         </div>
@@ -509,7 +509,7 @@
             Children
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['children'] else "No" }}
+            {{ "Yes" if data['children'] === "true" else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/children">
@@ -518,7 +518,7 @@
           </dd>
         </div>
 
-        {% if data['children'] %}
+        {% if data['children'] === "true" %}
         <div>
           <dt class="cya-question">
             First child DOB
@@ -528,7 +528,7 @@
           </dd>
           <dd class="cya-change">
             <a href="/application/section/children">
-              Change<span class="visually-hidden"> benfits</span>
+              Change<span class="visually-hidden"> child</span>
             </a>
           </dd>
         </div>
@@ -542,7 +542,7 @@
           </dd>
           <dd class="cya-change">
             <a href="/application/section/children">
-              Change<span class="visually-hidden"> benfits</span>
+              Change<span class="visually-hidden"> child</span>
             </a>
           </dd>
         </div>
@@ -557,7 +557,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -571,7 +571,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -587,7 +587,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -601,7 +601,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -617,7 +617,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -631,7 +631,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -647,7 +647,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -661,7 +661,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -677,7 +677,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
@@ -691,7 +691,7 @@
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
-                Change<span class="visually-hidden"> benfits</span>
+                Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
           </div>
