@@ -53,8 +53,19 @@
 {% endblock %}
 
 {% block body_end %}
+  <div id="content" role="main" style="padding-bottom: 0;">
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <a class="button" style="margin: 12px 0;" href="/prototype-admin/clear-data">Clear session data</a>
+      </div>
+    </div>
+
+  </div>
+
   {% block scripts %}
     {% include "includes/scripts.html" %}
+
     <script>
       $(function() {
         $('.link-back').on('click', function(event) {
