@@ -160,7 +160,7 @@
             Living with partner
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithPartner'] else "No" }}
+            {{ "Yes" if data['livingWithPartner'] === 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/partner/living-with">
@@ -472,7 +472,7 @@
             Pregnant
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['pregnant'] else "No" }}
+            {{ "Yes" if data['pregnant'] === 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/pregnant">
@@ -481,7 +481,7 @@
           </dd>
         </div>
 
-        {% if data['pregnant'] %}
+        {% if data['pregnant'] === 'true' %}
         <div>
           <dt class="cya-question">
             Expected delivery date
