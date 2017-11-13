@@ -258,7 +258,7 @@
             Living with parent/guardian
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithParentGuardian'] else "No" }}
+            {{ "Yes" if data['livingWithParentGuardian'] === 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian/living-with">
@@ -329,7 +329,7 @@
             Included in benefit claim
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['parentGuardianClaimBenefits'] else "No" }}
+            {{ "Yes" if data['parentGuardianClaimBenefits'] == 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian/benefits">
@@ -351,7 +351,7 @@
             Living with parent/guardian's partner
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['livingWithParentGuardianPartner'] else "No" }}
+            {{ "Yes" if data['livingWithParentGuardianPartner'] == 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian-partner/living-with">
@@ -422,7 +422,7 @@
               Included in benefit claim
             </dt>
             <dd class="cya-answer">
-              {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] else "No" }}
+              {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] == 'true' else "No" }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/parent-guardian-partner/benefits">
