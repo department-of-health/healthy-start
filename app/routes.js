@@ -63,7 +63,7 @@ router.get('/', function (req, res) {
     if (livingWithParentGuardian === 'true') {
       res.render('application/section/parent-guardian/relationship')
     } else {
-      res.redirect('/application/section/pregnant')
+      res.redirect('/application/section/claim-to-benefits')
     }
   })
 
@@ -73,7 +73,7 @@ router.get('/', function (req, res) {
     if (livingWithParentGuardianPartner === 'true') {
       res.render('application/section/parent-guardian-partner/relationship')
     } else {
-      res.redirect('/application/section/pregnant')
+      res.redirect('/application/section/claim-to-benefits')
     }
   })
 
