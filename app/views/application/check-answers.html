@@ -434,7 +434,7 @@
       </dl>
 
       <!-- Your claim to a parent or guardian’s benefits -->
-      {% if data['parentGuardianClaimBenefits'] and data['parentGuardianPartnerClaimBenefits'] %}
+      {% if data['parentGuardianClaimBenefits'] == 'true' or data['parentGuardianPartnerClaimBenefits'] == 'true' %}
       <h2 class="heading-medium">
         Your claim to a parent or guardian’s or parent or guardian’s partners benefits
       </h2>
