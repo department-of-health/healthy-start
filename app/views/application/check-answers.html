@@ -434,12 +434,12 @@
       </dl>
 
       <!-- Your claim to a parent or guardian’s benefits -->
+      {% if data['parentGuardianClaimBenefits'] and data['parentGuardianPartnerClaimBenefits'] %}
       <h2 class="heading-medium">
         Your claim to a parent or guardian’s or parent or guardian’s partners benefits
       </h2>
 
       <dl class="govuk-check-your-answers cya-questions-short">
-        {% if data['parentGuardianClaimBenefits'] and data['parentGuardianPartnerClaimBenefits'] %}
         <div>
           <dt class="cya-question">
             Benefits included in claim for
@@ -458,8 +458,8 @@
             </a>
           </dd>
         </div>
-        {% endif %}
       </dl>
+      {% endif %}
 
       <!-- Pregnant -->
       <h2 class="heading-medium">
