@@ -29,25 +29,32 @@
                 <h3 class="heading-small">Relationship to applicant</h3>
               </label>
 
-              <select class="form-control" id="parentGuardianPartnerRelationship" name="parentGuardianPartnerRelationship">
-                <option class="mother">Mother</option>
-                <option class="father">Father</option>
-                <option class="carer">Carer</option>
-                <option class="other" data-target="parentGuardianPartnerRelationshipOther">Other</option>
-              </select>
-
-              <div class="panel panel-border-narrow js-hidden" id="parentGuardianPartnerRelationshipOther">
-                <label class="form-label" for="parentGuardianPartnerRelationshipOther">Please specify</label>
-                <input class="form-control" name="parentGuardianPartnerRelationshipOther" type="text" id="parentGuardianPartnerRelationshipOther">
+              <div class="multiple-choice">
+                <input id="parentGuardianPartnerRelationshipMother" type="radio" name="parentGuardianPartnerRelationship" value="mother" {{ checked('parentGuardianPartnerRelationship', 'mother') }}>
+                <label for="parentGuardianPartnerRelationshipMother">Mother</label>
               </div>
 
-              <script>
-                function setSelectValue(id, val) {
-                    document.getElementById(id).value = val;
-                }
+              <div class="multiple-choice">
+                <input id="parentGuardianPartnerRelationshipFather" type="radio" name="parentGuardianPartnerRelationship" value="father" {{ checked('parentGuardianPartnerRelationship', 'father') }}>
+                <label for="parentGuardianPartnerRelationshipFather">Father</label>
+              </div>
 
-                setSelectValue('parentGuardianPartnerRelationship', '{{ data['parentGuardianPartnerRelationship'] }}');
-              </script>
+              <div class="multiple-choice">
+                <input id="parentGuardianPartnerRelationshipCarer" type="radio" name="parentGuardianPartnerRelationship" value="carer" {{ checked('parentGuardianPartnerRelationship', 'carer') }}>
+                <label for="parentGuardianPartnerRelationshipCarer">Carer</label>
+              </div>
+
+              <div class="multiple-choice" data-target="other">
+                <input id="parentGuardianPartnerRelationshipOther" type="radio" name="parentGuardianPartnerRelationship" value="other" {{ checked('parentGuardianPartnerRelationship', 'other') }}>
+                <label for="parentGuardianPartnerRelationshipOther">Other</label>
+              </div>
+
+              <div class="panel panel-border-narrow js-hidden" id="other">
+                <div class="form-group" id="parentGuardianPartnerRelationshipOtherSpecified">
+                  <label class="form-label" for="parentGuardianPartnerRelationshipOtherSpecified">Please specify</label>
+                  <input type="text" class="form-control" id="parentGuardianPartnerRelationshipOtherSpecified" name="parentGuardianPartnerRelationshipOtherSpecified" value="{{ data['parentGuardianPartnerRelationshipOtherSpecified'] }}">
+                </div>
+              </div>
 
             </fieldset>
           </div>

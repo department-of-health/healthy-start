@@ -136,8 +136,8 @@
             Address
           </dt>
           <dd class="cya-answer">
-            <div>{{ data['addressLine1']}}</div>
-            <div>{{ data['addressLine2']}}</div>
+            <div>{{ data['buildingStreet1']}}</div>
+            <div>{{ data['buildingStreet2']}}</div>
             <div>{{ data['town']}}</div>
             <div>{{ data['postCode']}}</div>
           </dd>
@@ -175,7 +175,7 @@
             Relationship
           </dt>
           <dd class="cya-answer">
-            {{ data['partnerRelationship'] if data['partnerRelationship'] != 'Other' else data['partnerRelationshipOther'] }}
+            {{ data['partnerRelationship'] | capitalize if data['partnerRelationship'] != 'other' else data['partnerRelationshipOtherSpecified'] | capitalize }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/partner/relationship">
@@ -273,7 +273,7 @@
             Relationship
           </dt>
           <dd class="cya-answer">
-            {{ data['parentGuardianRelationship'] if data['parentGuardianRelationship'] != 'Other' else data['parentGuardianRelationshipOther'] }}
+            {{ data['parentGuardianRelationship'] | capitalize  if data['parentGuardianRelationship'] != 'other' else data['parentGuardianRelationshipOtherSpecified'] | capitalize }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/parent-guardian/relationship">
@@ -366,7 +366,7 @@
               Relationship
             </dt>
             <dd class="cya-answer">
-              {{ data['parentGuardianPartnerRelationship'] if data['parentGuardianPartnerRelationship'] != 'Other' else data['parentGuardianPartnerRelationshipOther'] }}
+              {{ data['parentGuardianPartnerRelationship'] | capitalize if data['parentGuardianPartnerRelationship'] != 'other' else data['parentGuardianPartnerRelationshipOtherSpecified'] | capitalize }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/parent-guardian-partner/relationship">

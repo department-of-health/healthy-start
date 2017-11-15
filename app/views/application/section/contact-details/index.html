@@ -49,22 +49,17 @@
             </label>
 
             <div class="form-group">
-              <label class="form-label" for="addressLine1">
-                <span>Address line 1</span>
+              <label class="form-label" for="buildingStreet1">
+                <span>Building and street</span>
               </label>
-              <input class="form-control" id="addressLine1" type="text" name="addressLine1" required value="{{ data['addressLine1'] }}">
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="addressLine2">
-                <span>Address line 2</span>
-              </label>
-              <input class="form-control" id="addressLine2" type="text" name="addressLine2" value="{{ data['addressLine2'] }}">
+              <input class="form-control" id="buildingStreet1" type="text" name="buildingStreet1" required value="{{ data['buildingStreet1'] }}">
+              <input class="form-control" id="buildingStreet2" type="text" name="buildingStreet2" value="{{ data['buildingStreet2'] }}">
             </div>
 
             <div class="form-group">
               <label class="form-label" for="town">
-                <span>Town</span>
+                <span>Town or city</span>
               </label>
               <input class="form-control" id="town" type="text" name="town" required value="{{ data['town'] }}">
             </div>

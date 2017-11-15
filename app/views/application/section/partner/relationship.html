@@ -29,35 +29,39 @@
                 <h3 class="heading-small">Relationship to applicant</h3>
               </label>
 
-              <select class="form-control" id="partnerRelationship" name="partnerRelationship" onchange="showOther()" onload="showOther()">
-                <option class="husband">Husband</option>
-                <option class="wife">Wife</option>
-                <option class="boyfriend">Boyfriend</option>
-                <option class="girlfriend">Girlfriend</option>
-                <option class="other">Other</option>
-              </select>
+              <div class="multiple-choice">
+                <input id="partnerRelationshipHusband" type="radio" name="partnerRelationship" value="husband" {{ checked('partnerRelationship', 'husband') }}>
+                <label for="partnerRelationshipHusband">Husband</label>
+              </div>
 
-              <script>
-                function setSelectValue(id, val) {
-                    document.getElementById(id).value = val;
-                }
+              <div class="multiple-choice">
+                <input id="partnerRelationshipWife" type="radio" name="partnerRelationship" value="wife" {{ checked('partnerRelationship', 'wife') }}>
+                <label for="partnerRelationshipWife">Wife</label>
+              </div>
 
-                function showOther(){
-                  if (document.getElementById('partnerRelationship').value == 'Other') {
-                    document.getElementById('partnerRelationshipOther').style.display = "block";
-                  }
-                }
+              <div class="multiple-choice">
+                <input id="partnerRelationshipBoyfriend" type="radio" name="partnerRelationship" value="boyfriend" {{ checked('partnerRelationship', 'boyfriend') }}>
+                <label for="partnerRelationshipBoyfriend">Boyfriend</label>
+              </div>
 
-                setSelectValue('partnerRelationship', '{{ data['partnerRelationship'] }}');
-                showOther();
-              </script>
+              <div class="multiple-choice">
+                <input id="partnerRelationshipGirlfriend" type="radio" name="partnerRelationship" value="girlfriend" {{ checked('partnerRelationship', 'girlfriend') }}>
+                <label for="partnerRelationshipGirlfriend">Girlfriend</label>
+              </div>
+
+              <div class="multiple-choice" data-target="other">
+                <input id="partnerRelationshipOther" type="radio" name="partnerRelationship" value="other" {{ checked('partnerRelationship', 'other') }}>
+                <label for="partnerRelationshipOther">Other</label>
+              </div>
+
+              <div class="panel panel-border-narrow js-hidden" id="other">
+                <div class="form-group" id="partnerRelationshipOtherSpecified">
+                  <label class="form-label" for="partnerRelationshipOtherSpecified">Please specify</label>
+                  <input type="text" class="form-control" id="partnerRelationshipOtherSpecified" name="partnerRelationshipOtherSpecified" value="{{ data['partnerRelationshipOtherSpecified'] }}">
+                </div>
+              </div>
 
             </fieldset>
-          </div>
-
-          <div class="form-group" id="partnerRelationshipOther" style="display: none;">
-            <label class="form-label" for="partnerRelationshipOther">Please specify</label>
-            <input type="text" class="form-control" id="partnerRelationshipOther" name="partnerRelationshipOther" value="{{ data['partnerRelationshipOther'] }}">
           </div>
 
           <!-- Submit -->
