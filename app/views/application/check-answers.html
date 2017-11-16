@@ -40,7 +40,7 @@
             Full time education
           </dt>
           <dd class="cya-answer">
-            {{ "Yes" if data['fullTimeEducation'] else "No" }}
+            {{ "Yes" if data['fullTimeEducation'] == 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/about/education">
