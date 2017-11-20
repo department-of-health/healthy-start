@@ -12,7 +12,7 @@
 
       <a class="link-back" href="/application/section/pregnant">Back</a>
 
-      <form action="/application/check-answers" method="post" class="form">
+      <form action="/application/section/about/dob" method="post" class="form">
         <div class="form-group">
 
           <legend>
@@ -24,7 +24,7 @@
           <!-- Children -->
           <div class="form-group">
             <label class="form-label" for="children">
-              <h3 class="heading-small">Do you have any children under 4?</h3>
+              <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you or your partner" }} have any children under 4?</h3>
             </label>
 
             <fieldset class="inline">
@@ -418,8 +418,6 @@
 
             </div>
           </div>
-          <br>
-          <br>
 
           <!-- Submit -->
           <div class="form-group">

@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/application/section/claim-to-benefits">Back</a>
+      <a class="link-back" href="/application/section/about/who">Back</a>
 
       <form action="/application/section/children" method="post" class="form">
         <div class="form-group">
@@ -21,10 +21,10 @@
             </h1>
           </legend>
 
-          <!-- Children -->
+          <!-- Pregnancy -->
           <div class="form-group">
             <label class="form-label" for="pregnant">
-              <h3 class="heading-small">Are you pregnant?</h3>
+              <h3 class="heading-small">{{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you or your partner" }} pregnant?</h3>
             </label>
 
             <fieldset class="inline">
