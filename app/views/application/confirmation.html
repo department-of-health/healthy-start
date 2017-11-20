@@ -16,7 +16,7 @@
           Application complete
         </h1>
         <p class="font-large">
-          Your reference number is <br>
+          {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} reference number is <br>
           <strong class="bold">HDJ2123F</strong>
         </p>
       </div>
@@ -24,8 +24,8 @@
       <h2 class="heading-medium">What happens next</h2>
       <ul class="list list-bullet">
         <li>We'll check your application</li>
-        <li>We'll send you an SMS of your application status</li>
-        <li>Once your application has been approved, you will receive your card within 5-7 working days</li>
+        <li>We'll send {{ "the applicant" if data['applier'] == 'applierNotFamily' else "you" }} an SMS of {{ "their" if data['applier'] == 'applierNotFamily' else "your" }} application status</li>
+        <li>Once your application has been approved, {{ "the applicant" if data['applier'] == 'applierNotFamily' else "you" }} will receive your card within 5-7 working days</li>
         <li>If you have any questions or concerns please call us on <a href="tel:03456076823">0345 607 6823</a></li>
       </ul>
 

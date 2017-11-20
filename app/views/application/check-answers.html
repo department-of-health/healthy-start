@@ -15,7 +15,6 @@
         Check your answers before sending your application
       </h1>
 
-
       <!-- Pregnant -->
       <h2 class="heading-medium">
         Pregnancy
@@ -254,10 +253,9 @@
         {% endif %}
       </dl>
 
-
       <!-- About you -->
       <h2 class="heading-medium">
-        You
+        {{ "Applicant" if data['applier'] == 'applierNotFamily' else "You" }}
       </h2>
 
       <dl class="govuk-check-your-answers cya-questions-short">
@@ -339,7 +337,7 @@
 
       <!-- Appicant contact details -->
       <h2 class="heading-medium">
-        Your contact details
+        {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
       </h2>
 
       <dl class="govuk-check-your-answers cya-questions-short">
@@ -391,7 +389,7 @@
 
       <!-- Partner details -->
       <h2 class="heading-medium">
-        Partner
+        Partner details
       </h2>
 
       <dl class="govuk-check-your-answers cya-questions-short">
@@ -676,7 +674,7 @@
       <!-- Your claim to a parent or guardian’s benefits -->
       {% if data['parentGuardianClaimBenefits'] == 'true' or data['parentGuardianPartnerClaimBenefits'] == 'true' %}
       <h2 class="heading-medium">
-        Your claim to a parent or guardian’s or their partners benefits
+        {{ "Applicants" if data['applier'] == 'applierNotFamily' else "Your" }} claim to a parent or guardian’s or their partners benefits
       </h2>
 
       <dl class="govuk-check-your-answers cya-questions-short">
@@ -701,7 +699,7 @@
       </dl>
       {% endif %}
 
-      <h2 class="heading-medium">Now send your application</h2>
+      <h2 class="heading-medium">Now send {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} application</h2>
 
       <p class="text">
         By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
