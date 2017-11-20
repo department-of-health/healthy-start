@@ -10,15 +10,29 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <a class="link-back" href="/">Back</a>
+      <a class="link-back" href="/application/section/about/who">Back</a>
 
       <form action="/application/section/about/education" method="post" class="form">
         <div class="form-group">
 
           <legend>
-            <h1 class="heading-large">
-              About you
-            </h1>
+            {% if data['applier'] == 'applierNotFamily' %}
+              <h1 class="heading-large">
+                About the applicant
+              </h1>
+
+              <span class="form-hint">
+                The applicant is the person who is pregnant or the primary carer of the child/children
+              </span>
+            {% else %}
+              <h1 class="heading-large">
+                About you
+              </h1>
+
+              <span class="form-hint">
+                You being the person who is pregnant or the primary carer of the child/children
+              </span>
+            {% endif %}
           </legend>
 
           <!-- DOB -->

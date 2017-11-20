@@ -17,7 +17,7 @@
 
           <legend>
             <h1 class="heading-large">
-              Your partner
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} partner
             </h1>
             <!-- <p class="body-text"></p> -->
           </legend>
@@ -27,12 +27,12 @@
             <fieldset class="inline">
 
               <label class="form-label" for="livingWithPartner">
-                <h3 class="heading-small">Do you live with a partner?</h3>
+                <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a partner?</h3>
                 <span class="form-hint">
-                  By partner we mean a person you are married to, or live with or your civil partner.
+                  {{ "By partner we mean a person the applicant is married to, or live with or a civil partner. " if data['applier'] == 'applierNotFamily' else "By partner we mean a person you are married to, or live with or your civil partner." }}
                   <br>
                   <br>
-                  By providing these details it may improve your chance of qualifying for Healthy Start.
+                  {{ "By providing these details it may improve the applicants chance of qualifying for Healthy Start." if data['applier'] == 'applierNotFamily' else "By providing these details it may improve your chance of qualifying for Healthy Start." }}
                 </span>
               </label>
 

@@ -17,16 +17,16 @@
 
           <legend>
             <h1 class="heading-large">
-              Your partner
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} partner
             </h1>
           </legend>
 
           <!-- Partner National Insurance -->
           <div class="form-group">
             <label class="form-label" for="partnerNiNumber">
-              <h3 class="heading-small">Your partner's National Insurance Number</h3>
+              <h3 class="heading-small">Partner's National Insurance Number</h3>
               <span class="form-hint">
-                It's on their National Insurance card, benefit letter, payslip or P60.
+                It's on {{ "their" if data['applier'] == 'applierNotFamily' else "your" }} National Insurance card, benefit letter, payslip or P60.
                 <br>
                 For example, ‘QQ 12 34 56 C’.
               </span>

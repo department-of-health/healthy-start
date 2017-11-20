@@ -17,13 +17,13 @@
 
           <legend>
             <h1 class="heading-large">
-              Your partner
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} partner
             </h1>
           </legend>
 
           <!-- Partner Name(s) -->
           <div class="form-group">
-            <h3 class="heading-small">Your partner's name</h3>
+            <h3 class="heading-small">Partner's name</h3>
 
             <!-- First name -->
             <div class="form-group">

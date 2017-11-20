@@ -16,17 +16,17 @@
         <div class="form-group">
 
           <legend>
-            <h1 class="heading-large">
-              About you
-            </h1>
+              <h1 class="heading-large">
+                {{ "About the applicant" if data['applier'] == 'applierNotFamily' else "About you" }}
+              </h1>
           </legend>
 
           <!-- National Insurance -->
           <div class="form-group">
             <label class="form-label" for="niNumber">
-              <h3 class="heading-small">National Insurance Number</h3>
+              <h3 class="heading-small">{{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} National Insurance Number</h3>
               <span class="form-hint">
-                It's on your National Insurance card, benefit letter, payslip or P60.
+                It's on {{ "thier" if data['applier'] == 'applierNotFamily' else "your" }} National Insurance card, benefit letter, payslip or P60.
                 <br>
                 For example, ‘QQ 12 34 56 C’.
               </span>

@@ -17,16 +17,15 @@
 
           <legend>
             <h1 class="heading-large">
-              Your contact details
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
             </h1>
-            <!-- <p class="body-text"></p> -->
           </legend>
 
           <!-- Phone number -->
           <div class="form-group">
             <label class="form-label" for="phoneNumber">
-              <h3 class="heading-small">Your mobile phone number</h3>
-              <span class="form-hint">We will use this to keep you updated about your application and to help you manage your account.</span>
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} mobile phone number</h3>
+              <span class="form-hint">{{ "We will use this to keep the applicant updated about their application and to help them manage their account." if data['applier'] == 'applierNotFamily' else "We will use this to keep you updated about your application and to help you manage your account." }}</span>
             </label>
 
             <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" required value="{{ data['phoneNumber'] }}">
@@ -35,8 +34,8 @@
           <!-- Email -->
           <div class="form-group">
             <label class="form-label" for="email">
-              <h3 class="heading-small">Your email address</h3>
-              <span class="form-hint">We will only use it to tell you about any changes to Healthy Start in the future</span>
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} email address</h3>
+              <span class="form-hint">{{ "We will only use it to tell the applicant about any changes to Healthy Start in the future." if data['applier'] == 'applierNotFamily' else "We will only use it to tell you about any changes to Healthy Start in the future." }}</span>
             </label>
 
             <input type="text" class="form-control" id="email" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value="{{ data['email'] }}">
@@ -45,7 +44,7 @@
           <!-- Address -->
           <div class="form-group">
             <label class="form-label" for="address">
-              <h3 class="heading-small">Your address</h3>
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} address</h3>
             </label>
 
             <div class="form-group">

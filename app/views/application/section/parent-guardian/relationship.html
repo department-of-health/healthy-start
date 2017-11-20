@@ -26,7 +26,7 @@
             <fieldset>
 
               <label class="form-label" for="parentGuardianRelationship">
-                <h3 class="heading-small">Relationship to applicant</h3>
+                <h3 class="heading-small">Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}</h3>
               </label>
 
               <div class="multiple-choice">

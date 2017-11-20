@@ -17,14 +17,14 @@
 
           <legend>
             <h1 class="heading-large">
-              Your parent or guardian's partner
+              Parent or guardian's partner
             </h1>
           </legend>
 
           <!-- Parent or guardian's partner's Benefits -->
           <div class="form-group">
             <label class="form-label" for="parentGuardianPartnerClaimBenefits">
-              <h3 class="heading-small">Are you included in the claim for any of the following benefits that your parent or guardian’s partner receives?</h3>
+              <h3 class="heading-small">{{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} included in the claim for any of the following benefits that {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s partner receives?</h3>
 
               <ul class="list list-bullet">
                 <li>Income related Employment and Support Allowance</li>
@@ -45,12 +45,12 @@
                 <input id="parentGuardianPartnerClaimBenefitsFalse" type="radio" name="parentGuardianPartnerClaimBenefits" value="false" {{ checked('parentGuardianPartnerClaimBenefits', 'false') }}>
                 <label for="parentGuardianPartnerClaimBenefitsFalse">No</label>
               </div>
-            </fieldset>
 
-            <div class="multiple-choice">
-              <input id="parentGuardianPartnerClaimBenefitsUnknown" type="radio" name="parentGuardianPartnerClaimBenefits" value="unknown" {{ checked('parentGuardianPartnerClaimBenefits', 'unknown') }}>
-              <label for="parentGuardianPartnerClaimBenefitsUnknown">I don't know</label>
-            </div>
+              <div class="multiple-choice">
+                <input id="parentGuardianPartnerClaimBenefitsUnknown" type="radio" name="parentGuardianPartnerClaimBenefits" value="unknown" {{ checked('parentGuardianPartnerClaimBenefits', 'unknown') }}>
+                <label for="parentGuardianPartnerClaimBenefitsUnknown">I don't know</label>
+              </div>
+            </fieldset>
           </div>
 
           <!-- Submit -->

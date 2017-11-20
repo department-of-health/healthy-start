@@ -17,14 +17,14 @@
 
           <legend>
             <h1 class="heading-large">
-              Your claim to a parent or guardian’s benefits
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} claim to a parent or guardian’s benefits
             </h1>
           </legend>
 
           <!-- Living with partner -->
           <div class="form-group">
             <label class="form-label" for="parentGuardianBenfitFromBenefits">
-              <h3 class="heading-small">Please tell us which of your parent or guardian’s, or their partners, benefits you are included in a claim for</h3>
+              <h3 class="heading-small">Please tell us which of {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s, or their partners, benefits {{ "they" if data['applier'] == 'applierNotFamily' else "you" }} are included in a claim for</h3>
             </label>
 
             <div class="multiple-choice">

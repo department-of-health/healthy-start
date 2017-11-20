@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apply - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/">Back</a>
+
+      <form action="/application/section/about/dob" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              About you
+            </h1>
+          </legend>
+
+          <!-- Who -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="education">
+                <h3 class="heading-small">Who are you?</h3>
+              </label>
+
+              <div class="multiple-choice">
+                <input id="applierFamily" type="radio" name="applier" value="applierFamily" required {{ checked('applier', 'applierFamily') }}>
+                <label for="applierFamily">I am applying for me and my family</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="applierNotFamily" type="radio" name="applier" value="applierNotFamily" required {{ checked('applier', 'applierNotFamily') }}>
+                <label for="applierNotFamily">I am applying on behalf of someone</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

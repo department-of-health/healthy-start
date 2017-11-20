@@ -17,7 +17,7 @@
 
           <legend>
             <h1 class="heading-large">
-              Parent or guardian
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} Parent or guardian
             </h1>
           </legend>
 
@@ -26,9 +26,9 @@
             <fieldset class="inline">
 
               <label class="form-label" for="livingWithParentGuardian">
-                <h3 class="heading-small">Do you live with a parent or guardian?</h3>
+                <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a parent or guardian?</h3>
                 <span class="form-hint">
-                  By providing these details it may improve your chance of qualifying for Healthy Start.
+                  By providing these details it may improve {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} chance of qualifying for Healthy Start.
                 </span>
               </label>
 
