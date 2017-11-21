@@ -110,7 +110,7 @@ router.get('/', function (req, res) {
   // Referral code
   router.get('/application/referral/valid-code-eligible', function (req, res) {
 
-    if (req.session.data['refCode'] == 'EMJSMV6VkQ') {
+    if (req.session.data['refCode'] == 'ELJSMV6VkQ') {
     // Valid code & Elgibile
       // Children
         req.session.data['children']          = 'true';
@@ -182,9 +182,12 @@ router.get('/', function (req, res) {
 
       res.render('application/referral/valid-code-eligible.html')
 
-    } else if (req.session.data['refCode'] == 'IGJCC6S6VQ') {
+    } else if (req.session.data['refCode'] == 'INJCC6S6VQ') {
     // Valid code & Inelgibile
       res.redirect('/application/referral/valid-code-ineligible.html')
+    } else if (req.session.data['refCode'] == 'EXJCC6S6VQ') {
+    // Valid code & Inelgibile
+      res.redirect('/application/referral/valid-code-expired.html')
     } else {
     // Invalid code
       res.redirect('/application/referral/invalid-code.html')

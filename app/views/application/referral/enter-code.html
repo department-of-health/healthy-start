@@ -15,6 +15,8 @@
         Enter code
       </h1>
 
+      <p>If you received a code in the mail please enter it below, along with your National Insurance Number.</p>
+
       <form action="/application/referral/valid-code-eligible" method="post" class="form">
         <div class="form-group">
 
@@ -22,6 +24,7 @@
           <div class="form-group">
             <label class="form-label" for="refCode">
               <h3 class="heading-small">Code</h3>
+              <span class="form-hint">This is the 10-digit code found on the letter you received from the Department of Health.</span>
             </label>
 
             <input class="form-control" id="refCode" type="text" name="refCode" required value="{{ data['refCode'] }}">
@@ -30,9 +33,9 @@
           <!-- National Insurance -->
           <div class="form-group">
             <label class="form-label" for="refCodeNiNumber">
-              <h3 class="heading-small">Applicant's National Insurance Number</h3>
+              <h3 class="heading-small">National Insurance Number</h3>
               <span class="form-hint">
-                It's on their National Insurance card, benefit letter, payslip or P60.
+                It's on your National Insurance card, benefit letter, payslip or P60.
                 <br>
                 For example, ‘QQ 12 34 56 C’.
               </span>
