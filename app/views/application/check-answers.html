@@ -107,7 +107,7 @@
               Second child DOB
             </dt>
             <dd class="cya-answer">
-              {{ data['childTwoDobDay'] }}/{{ data['childTwoDobDay'] }}/{{ data['childTwoDobDay'] }}
+              {{ data['childTwoDobDay'] }}/{{ data['childTwoDobMonth'] }}/{{ data['childTwoDobYear'] }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
@@ -137,7 +137,7 @@
               Third child DOB
             </dt>
             <dd class="cya-answer">
-              {{ data['childThreeDobDay'] }}/{{ data['childThreeDobDay'] }}/{{ data['childThreeDobDay'] }}
+              {{ data['childThreeDobDay'] }}/{{ data['childThreeDobMonth'] }}/{{ data['childThreeDobYear'] }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
@@ -167,7 +167,7 @@
               Fourth child DOB
             </dt>
             <dd class="cya-answer">
-              {{ data['childFourDobDay'] }}/{{ data['childFourDobDay'] }}/{{ data['childFourDobDay'] }}
+              {{ data['childFourDobDay'] }}/{{ data['childFourDobMonth'] }}/{{ data['childFourDobYear'] }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
@@ -197,7 +197,7 @@
               Fifth child DOB
             </dt>
             <dd class="cya-answer">
-              {{ data['childFifthDobDay'] }}/{{ data['childFifthDobDay'] }}/{{ data['childFifthDobDay'] }}
+              {{ data['childFifthDobDay'] }}/{{ data['childFifthDobMonth'] }}/{{ data['childFifthDobYear'] }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
@@ -227,7 +227,7 @@
               Sixth child DOB
             </dt>
             <dd class="cya-answer">
-              {{ data['childSixDobDay'] }}/{{ data['childSixDobDay'] }}/{{ data['childSixDobDay'] }}
+              {{ data['childSixDobDay'] }}/{{ data['childSixDobMonth'] }}/{{ data['childSixDobYear'] }}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
@@ -242,6 +242,66 @@
             </dt>
             <dd class="cya-answer">
               {{ data['childSixFirstName']}} {{ data['childSixSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> child</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childSeventh'] %}
+          <div>
+            <dt class="cya-question">
+              Seventh child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSevenDobDay'] }}/{{ data['childSevenDobMonth'] }}/{{ data['childSevenDobYear'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> child</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Seventh child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSevenFirstName']}} {{ data['childSevenSurname']}}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> child</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childEighth'] %}
+          <div>
+            <dt class="cya-question">
+              Eighth child DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childEightDobDay'] }}/{{ data['childEightDobMonth'] }}/{{ data['childEightDobYear'] }}
+            </dd>
+            <dd class="cya-change">
+              <a href="/application/section/children">
+                Change<span class="visually-hidden"> child</span>
+              </a>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Eighth child Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childEightFirstName']}} {{ data['childEightSurname']}}
             </dd>
             <dd class="cya-change">
               <a href="/application/section/children">
