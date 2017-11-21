@@ -294,7 +294,7 @@ router.get('/', function (req, res) {
     var receivesEligibleBenefits = getEligibleBenefits();
 
     function isEligible() {
-      if ((age < 18 && weeksPregnant > 10) || ((hasChildrenUnderFour || weeksPregnant > 10)) && receivesEligibleBenefits) {
+      if ((age < 18 && weeksPregnant > 10) || ((hasChildrenUnderFour || weeksPregnant > 10) && receivesEligibleBenefits)) {
         return true;
       } else {
         return false;
