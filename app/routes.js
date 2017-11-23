@@ -184,7 +184,7 @@ router.get('/', function (req, res) {
 
   // Change of details
   router.get('/application/change-details/valid-login', function (req, res) {
-    if (req.session.data['niNumber'] == 'NY 18 89 92 C' && req.session.data['dobDay'] == '14' && req.session.data['dobMonth'] == '02' && req.session.data['dobYear'] == '1999') {
+    // if (req.session.data['niNumber'] == 'NY 18 89 92 C' && req.session.data['dobDay'] == '14' && req.session.data['dobMonth'] == '02' && req.session.data['dobYear'] == '1999') {
       // Set session var so we can tell if they are changing details or applying
         req.session.data['changingDetails'] = 'true';
 
@@ -268,10 +268,9 @@ router.get('/', function (req, res) {
         req.session.data['parentGuardianBenfitFromUniversalCredit']                 = 'true';
 
       res.redirect('/application/check-answers.html');
-    } else {
-    // Invalid code
-      res.redirect('/application/change-details/invalid-login.html');
-    }
+    // } else {
+    //   res.redirect('/application/change-details/invalid-login.html');
+    // }
   })
 
   // Eligibility Check
