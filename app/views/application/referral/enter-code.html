@@ -17,7 +17,7 @@
 
       <p>If you received a code in the mail please enter it below, along with your National Insurance Number.</p>
 
-      <form action="/application/referral/valid-code-eligible" method="post" class="form">
+      <form action="/application/details-found" method="post" class="form">
         <div class="form-group">
 
           <!-- Code -->
@@ -32,7 +32,7 @@
 
           <!-- National Insurance -->
           <div class="form-group">
-            <label class="form-label" for="refCodeNiNumber">
+            <label class="form-label" for="niNumber">
               <h3 class="heading-small">National Insurance Number</h3>
               <span class="form-hint">
                 It's on your National Insurance card, benefit letter, payslip or P60.
@@ -41,7 +41,7 @@
               </span>
             </label>
 
-            <input class="form-control" id="refCodeNiNumber" type="text" name="refCodeNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['refCodeNiNumber'] }}">
+            <input class="form-control" id="niNumber" type="text" name="niNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['niNumber'] }}">
           </div>
 
           <!-- Submit -->

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  We found your details - Healthy start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        We found your details
+      </h1>
+
+      <p>Please check and update your details below.</p>
+
+      <p>Name: {{ data['firstName'] }} {{ data['surname'] }}
+        <br>
+        Date of birth: {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}</p>
+                  
+      <a class="button button-start" href="/application/section/about/who" role="button">Continue</a>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+</script>
+
+{% endblock %}
