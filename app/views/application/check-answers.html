@@ -11,9 +11,13 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">
-        Check your answers before sending your application
-      </h1>
+      
+      {% if data['changingDetails'] == 'true' %}
+        <h1 class="heading-large">We found your details</h1>
+        <h2 class="heading-small">Please check and update your details below</h1>
+      {% else %}
+        <h1 class="heading-large">Check your answers before sending your application</h1>
+      {% endif %}
 
       <!-- Pregnant -->
       <h2 class="heading-medium">
