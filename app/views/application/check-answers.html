@@ -10,7 +10,6 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-
       
       {% if data['changingDetails'] == 'true' %}
         <h1 class="heading-large">We found your details</h1>
@@ -24,10 +23,10 @@
         Pregnancy
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Pregnant
+            {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you or your partner" }} pregnant?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['pregnant'] === 'true' else "No" }}
@@ -42,7 +41,7 @@
         {% if data['pregnant'] === 'true' %}
         <div>
           <dt class="cya-question">
-            Expected delivery date
+            Expected date of delivery
           </dt>
           <dd class="cya-answer">
             {{ data['deliveryDateDay'] }}/{{ data['deliveryDateMonth'] }}/{{ data['deliveryDateYear'] }}
@@ -61,10 +60,10 @@
         Children
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Children
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you or your partner" }} have any children under 4?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['children'] === "true" else "No" }}
@@ -79,7 +78,7 @@
         {% if data['children'] === "true" %}
         <div>
           <dt class="cya-question">
-            First child DOB
+            First Child's DOB
           </dt>
           <dd class="cya-answer">
             {{ data['childOneDobDay'] }}/{{ data['childOneDobMonth'] }}/{{ data['childOneDobYear'] }}
@@ -93,7 +92,7 @@
 
         <div>
           <dt class="cya-question">
-            First child Name
+            First Child's name
           </dt>
           <dd class="cya-answer">
             {{ data['childOneFirstName']}} {{ data['childOneSurname']}}
@@ -108,7 +107,7 @@
           {% if data['childTwoFirstName'] %}
           <div>
             <dt class="cya-question">
-              Second child DOB
+              Second child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childTwoDobDay'] }}/{{ data['childTwoDobMonth'] }}/{{ data['childTwoDobYear'] }}
@@ -122,7 +121,7 @@
 
           <div>
             <dt class="cya-question">
-              Second child Name
+              Second child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childTwoFirstName']}} {{ data['childTwoSurname']}}
@@ -138,7 +137,7 @@
           {% if data['childThree'] %}
           <div>
             <dt class="cya-question">
-              Third child DOB
+              Third child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childThreeDobDay'] }}/{{ data['childThreeDobMonth'] }}/{{ data['childThreeDobYear'] }}
@@ -152,7 +151,7 @@
 
           <div>
             <dt class="cya-question">
-              Third child Name
+              Third child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childThreeFirstName']}} {{ data['childThreeSurname']}}
@@ -168,7 +167,7 @@
           {% if data['childFour'] %}
           <div>
             <dt class="cya-question">
-              Fourth child DOB
+              Fourth child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childFourDobDay'] }}/{{ data['childFourDobMonth'] }}/{{ data['childFourDobYear'] }}
@@ -182,7 +181,7 @@
 
           <div>
             <dt class="cya-question">
-              Fourth child Name
+              Fourth child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childFourFirstName']}} {{ data['childFourSurname']}}
@@ -198,7 +197,7 @@
           {% if data['childFifth'] %}
           <div>
             <dt class="cya-question">
-              Fifth child DOB
+              Fifth child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childFifthDobDay'] }}/{{ data['childFifthDobMonth'] }}/{{ data['childFifthDobYear'] }}
@@ -212,7 +211,7 @@
 
           <div>
             <dt class="cya-question">
-              Fifth child Name
+              Fifth child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childFifthFirstName']}} {{ data['childFifthSurname']}}
@@ -228,7 +227,7 @@
           {% if data['childSixth'] %}
           <div>
             <dt class="cya-question">
-              Sixth child DOB
+              Sixth child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childSixDobDay'] }}/{{ data['childSixDobMonth'] }}/{{ data['childSixDobYear'] }}
@@ -242,7 +241,7 @@
 
           <div>
             <dt class="cya-question">
-              Sixth child Name
+              Sixth child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childSixFirstName']}} {{ data['childSixSurname']}}
@@ -258,7 +257,7 @@
           {% if data['childSeventh'] %}
           <div>
             <dt class="cya-question">
-              Seventh child DOB
+              Seventh child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childSevenDobDay'] }}/{{ data['childSevenDobMonth'] }}/{{ data['childSevenDobYear'] }}
@@ -272,7 +271,7 @@
 
           <div>
             <dt class="cya-question">
-              Seventh child Name
+              Seventh child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childSevenFirstName']}} {{ data['childSevenSurname']}}
@@ -288,7 +287,7 @@
           {% if data['childEighth'] %}
           <div>
             <dt class="cya-question">
-              Eighth child DOB
+              Eighth child's DOB
             </dt>
             <dd class="cya-answer">
               {{ data['childEightDobDay'] }}/{{ data['childEightDobMonth'] }}/{{ data['childEightDobYear'] }}
@@ -302,7 +301,7 @@
 
           <div>
             <dt class="cya-question">
-              Eighth child Name
+              Eighth child's Name
             </dt>
             <dd class="cya-answer">
               {{ data['childEightFirstName']}} {{ data['childEightSurname']}}
@@ -322,7 +321,7 @@
         {{ "Applicant" if data['applier'] == 'applierNotFamily' else "You" }}
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
             Date of birth
@@ -339,7 +338,7 @@
 
         <div>
           <dt class="cya-question">
-            Full time education
+            {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} in full time education?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['fullTimeEducation'] == 'true' else "No" }}
@@ -353,7 +352,7 @@
 
         <div>
           <dt class="cya-question">
-            National insurance number
+            {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} National Insurance Number
           </dt>
           <dd class="cya-answer">
             {{ data['niNumber'] }}
@@ -367,7 +366,7 @@
 
         <div>
           <dt class="cya-question">
-            Name
+            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "You" }} name
           </dt>
           <dd class="cya-answer">
             {{ data['firstName']}} {{ data['surname']}}
@@ -381,7 +380,7 @@
 
         <div>
           <dt class="cya-question">
-            Benefits receiving
+            Benefits {{ "the applicant receives" if data['applier'] == 'applierNotFamily' else "you receive" }}
           </dt>
           <dd class="cya-answer">
             <div>{{ "- Income-related Employment and Support Allowance" if data['incomeRelatedEmploymentAndSupportAllowance'] }}</div>
@@ -404,10 +403,10 @@
         {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Phone number
+            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} mobile phone number
           </dt>
           <dd class="cya-answer">
             {{ data['phoneNumber'] }}
@@ -421,7 +420,7 @@
 
         <div>
           <dt class="cya-question">
-            Email address
+            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} email address
           </dt>
           <dd class="cya-answer">
             {{ data['email']}}
@@ -435,7 +434,7 @@
 
         <div>
           <dt class="cya-question">
-            Address
+            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} address
           </dt>
           <dd class="cya-answer">
             <div>{{ data['buildingStreet1']}}</div>
@@ -456,10 +455,10 @@
         Partner details
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Living with partner
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a partner?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithPartner'] === 'true' else "No" }}
@@ -474,7 +473,7 @@
         {% if data['livingWithPartner'] == 'true' %}
         <div>
           <dt class="cya-question">
-            Relationship
+            Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
           </dt>
           <dd class="cya-answer">
             {{ data['partnerRelationship'] | capitalize if data['partnerRelationship'] != 'other' else data['partnerRelationshipOtherSpecified'] | capitalize }}
@@ -488,7 +487,7 @@
 
         <div>
           <dt class="cya-question">
-            Date of birth
+            {{ "Partner's" if data['applier'] == 'applierNotFamily' else "Your partner's" }} date of birth
           </dt>
           <dd class="cya-answer">
             {{ data['partnerDobDay'] }}/{{ data['partnerDobMonth'] }}/{{ data['partnerDobYear'] }}
@@ -502,7 +501,7 @@
 
         <div>
           <dt class="cya-question">
-            National insurance number
+            Partner's National Insurance Number
           </dt>
           <dd class="cya-answer">
             {{ data['partnerNiNumber'] }}
@@ -530,7 +529,7 @@
 
         <div>
           <dt class="cya-question">
-            Benefits receiving
+            Benefits {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} partner gets
           </dt>
           <dd class="cya-answer">
             <div>{{ "- Income-related Employment and Support Allowance" if data['partnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
@@ -554,10 +553,10 @@
         Parent/Guardian details
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Living with parent/guardian
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a parent or guardian?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithParentGuardian'] === 'true' else "No" }}
@@ -572,7 +571,7 @@
         {% if data['livingWithParentGuardian'] == 'true' %}
         <div>
           <dt class="cya-question">
-            Relationship
+            Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
           </dt>
           <dd class="cya-answer">
             {{ data['parentGuardianRelationship'] | capitalize  if data['parentGuardianRelationship'] != 'other' else data['parentGuardianRelationshipOtherSpecified'] | capitalize }}
@@ -586,7 +585,7 @@
 
         <div>
           <dt class="cya-question">
-            Date of birth
+            Parent or guardian's date of birth
           </dt>
           <dd class="cya-answer">
             {{ data['parentGuardianDobDay'] }}/{{ data['parentGuardianDobMonth'] }}/{{ data['parentGuardianDobYear'] }}
@@ -600,7 +599,7 @@
 
         <div>
           <dt class="cya-question">
-            National insurance number
+            Parent or guardian's National Insurance Number
           </dt>
           <dd class="cya-answer">
             {{ data['parentGuardianNiNumber'] }}
@@ -614,7 +613,7 @@
 
         <div>
           <dt class="cya-question">
-            Name
+            Parent or guardian's name
           </dt>
           <dd class="cya-answer">
             {{ data['parentGuardianFirstName']}} {{ data['parentGuardianSurname']}}
@@ -628,7 +627,7 @@
 
         <div>
           <dt class="cya-question">
-            Included in benefit claim
+            {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} included in the claim for any of the following benefits that {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian receives?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['parentGuardianClaimBenefits'] == 'true' else "No" }}
@@ -647,10 +646,10 @@
         Parent/Guardian partner details
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Living with parent/guardian's partner
+            Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with {{ "the applicant?" if data['applier'] == 'applierNotFamily' else "you?" }}
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithParentGuardianPartner'] == 'true' else "No" }}
@@ -665,7 +664,7 @@
         {% if data['livingWithParentGuardianPartner'] == 'true' %}
           <div>
             <dt class="cya-question">
-              Relationship
+              Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
             </dt>
             <dd class="cya-answer">
               {{ data['parentGuardianPartnerRelationship'] | capitalize if data['parentGuardianPartnerRelationship'] != 'other' else data['parentGuardianPartnerRelationshipOtherSpecified'] | capitalize }}
@@ -679,7 +678,7 @@
 
           <div>
             <dt class="cya-question">
-              Date of birth
+              Parent or guardian’s partner's date of birth
             </dt>
             <dd class="cya-answer">
               {{ data['parentGuardianPartnerDobDay'] }}/{{ data['parentGuardianPartnerDobMonth'] }}/{{ data['parentGuardianPartnerDobYear'] }}
@@ -693,7 +692,7 @@
 
           <div>
             <dt class="cya-question">
-              National insurance number
+              Parent or guardian’s partner's National Insurance Number
             </dt>
             <dd class="cya-answer">
               {{ data['parentGuardianPartnerNiNumber'] }}
@@ -707,7 +706,7 @@
 
           <div>
             <dt class="cya-question">
-              Name
+              Parent or guardian’s partner's name
             </dt>
             <dd class="cya-answer">
               {{ data['parentGuardianPartnerFirstName']}} {{ data['parentGuardianPartnerSurname']}}
@@ -721,7 +720,7 @@
 
           <div>
             <dt class="cya-question">
-              Included in benefit claim
+              {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} included in the claim for any of the following benefits that {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s partner receives?
             </dt>
             <dd class="cya-answer">
               {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] == 'true' else "No" }}
@@ -741,10 +740,10 @@
         {{ "Applicants" if data['applier'] == 'applierNotFamily' else "Your" }} claim to a parent or guardian’s or their partners benefits
       </h2>
 
-      <dl class="govuk-check-your-answers cya-questions-short">
+      <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Benefits included in claim for
+            Which of {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s, or their partners, benefits {{ "they" if data['applier'] == 'applierNotFamily' else "you" }} are included in a claim for
           </dt>
           <dd class="cya-answer">
             <div>{{ "- Income-related Employment and Support Allowance" if data['parentGuardianBenfitFromIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
