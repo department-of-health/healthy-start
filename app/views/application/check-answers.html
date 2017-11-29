@@ -11,7 +11,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
       
-      {% if data['changingDetails'] == 'true' %}
+      {% if data['confirmingDetails'] == 'true' %}
         <h1 class="heading-large">We found your details</h1>
         <h2 class="heading-small">Please check and update your details below</h1>
       {% else %}
@@ -330,9 +330,12 @@
             {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
           </dd>
           <dd class="cya-change">
+            {% if data['saveableFields'] == 'true' %}
+            {% else %}
             <a href="/application/section/about/dob">
               Change<span class="visually-hidden"> DOB</span>
             </a>
+            {% endif %}
           </dd>
         </div>
 
@@ -358,9 +361,12 @@
             {{ data['niNumber'] }}
           </dd>
           <dd class="cya-change">
+            {% if data['saveableFields'] == 'true' %}
+            {% else %}
             <a href="/application/section/about/ni">
               Change<span class="visually-hidden"> national insurance number</span>
             </a>
+            {% endif %}
           </dd>
         </div>
 

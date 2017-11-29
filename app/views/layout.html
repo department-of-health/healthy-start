@@ -75,7 +75,25 @@
 
           history.back();
         })
+
+        changeFormActions();
+  
+        {{ data['confirmingDetails'] == 'Test' }} 
+        console.log({{ data['confirmingDetails'] }});
       })
+
+      function changeFormActions() {
+        var saveableFields = {{ 'true' if data['saveableFields'] else 'false' }}
+
+        if (saveableFields) {
+          $('#save').show();
+
+          $('#save').click(function() {
+            $('form.form').attr('action', '/application/check-answers');
+          });
+        }
+      }
+
     </script>
     {% block page_scripts %}{% endblock %}
   {% endblock %}

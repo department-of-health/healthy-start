@@ -100,6 +100,9 @@ router.get('/', function (req, res) {
 
     if (req.session.data['refCode'] == 'ELJSMV6VkQ') {
     // Valid code & Elgibile
+        req.session.data['saveableFields']    = 'true';
+        req.session.data['editableFields']    = 'true';
+
       // Children
         req.session.data['children']          = 'true';
         req.session.data['childOneDobDay']    = '11';
@@ -129,45 +132,6 @@ router.get('/', function (req, res) {
         req.session.data['town']            = 'Bristol';
         req.session.data['postCode']        = 'BS11 0ST';
 
-      // Partner
-      //   req.session.data['livingWithPartner']                                   = 'true';
-      //   req.session.data['partnerRelationship']                                 = 'Boyfriend';
-      //   req.session.data['partnerDobDay']                                       = '27';
-      //   req.session.data['partnerDobMonth']                                     = '09';
-      //   req.session.data['partnerDobYear']                                      = '1997';
-      //   req.session.data['partnerNiNumber']                                     = 'KM 65 69 15 D';
-      //   req.session.data['partnerFirstName']                                    = 'Jack';
-      //   req.session.data['partnerSurname']                                      = 'Hart';
-      //   req.session.data['partnerIncomeRelatedEmploymentAndSupportAllowance']   = 'true';
-      //   req.session.data['partnerIncomeBasedJobseekersAllowance']               = 'true';
-      //   req.session.data['partnerUniversalCredit']                              = 'true';
-      //
-      // // Parent/Guardian
-      //   req.session.data['livingWithParentGuardian']    = 'true';
-      //   req.session.data['parentGuardianRelationship']  = 'Mother';
-      //   req.session.data['parentGuardianDobDay']        = '25';
-      //   req.session.data['parentGuardianDobMonth']      = '04';
-      //   req.session.data['parentGuardianDobYear']       = '1969';
-      //   req.session.data['parentGuardianNiNumber']      = 'LB 49 24 18 C';
-      //   req.session.data['parentGuardianFirstName']     = 'Jude';
-      //   req.session.data['parentGuardianSurname']       = 'Brown';
-      //   req.session.data['parentGuardianClaimBenefits'] = 'true';
-      //
-      // // Parent/Guardian Partner
-      //   req.session.data['livingWithParentGuardianPartner']    = 'true';
-      //   req.session.data['parentGuardianPartnerRelationship']  = 'Father';
-      //   req.session.data['parentGuardianPartnerDobDay']        = '21';
-      //   req.session.data['parentGuardianPartnerDobMonth']      = '11';
-      //   req.session.data['parentGuardianPartnerDobYear']       = '1967';
-      //   req.session.data['parentGuardianPartnerNiNumber']      = 'MK 32 35 61 A';
-      //   req.session.data['parentGuardianPartnerFirstName']     = 'Nick';
-      //   req.session.data['parentGuardianPartnerSurname']       = 'Brown';
-      //   req.session.data['parentGuardianPartnerClaimBenefits'] = 'False';
-      //
-      // // Benefit claims
-      //   req.session.data['parentGuardianBenfitFromIncomeBasedJobseekersAllowance']  = 'true';
-      //   req.session.data['parentGuardianBenfitFromUniversalCredit']                 = 'true';
-
       res.render('application/referral/valid-code-eligible.html')
 
     } else if (req.session.data['refCode'] == 'INJCC6S6VQ') {
@@ -184,11 +148,11 @@ router.get('/', function (req, res) {
 
   // Change of details
   router.get('/application/change-details/valid-login', function (req, res) {
-    // if (req.session.data['niNumber'] == 'NY 18 89 92 C' && req.session.data['dobDay'] == '14' && req.session.data['dobMonth'] == '02' && req.session.data['dobYear'] == '1999') {
-      // Set session var so we can tell if they are changing details or applying
-        req.session.data['changingDetails'] = 'true';
+      // Set session vars so we can tell if they are changing details or applying
+        req.session.data['confirmingDetails'] = 'true';
+        req.session.data['saveableFields']    = 'true';
+        req.session.data['editableFields']    = 'true';
 
-    // Valid NI & Dob
       // Pregnancy
         req.session.data['pregnant']          = 'true';
         req.session.data['deliveryDateDay']   = '24';
@@ -210,10 +174,11 @@ router.get('/', function (req, res) {
         req.session.data['childTwoFirstName'] = 'Ellie';
         req.session.data['childTwoSurname']   = 'Brown';
 
-      // Mother details
+      // Applicant details
         req.session.data['dobDay']                                        = '14';
         req.session.data['dobMonth']                                      = '02';
         req.session.data['dobYear']                                       = '1999';
+        req.session.data['fullTimeEducation']                             = 'true';
         req.session.data['niNumber']                                      = 'TR 72 14 06 C';
         req.session.data['firstName']                                     = 'Sarah';
         req.session.data['surname']                                       = 'Brown';
@@ -230,7 +195,7 @@ router.get('/', function (req, res) {
 
       //Partner
         req.session.data['livingWithPartner']                                   = 'true';
-        req.session.data['partnerRelationship']                                 = 'Boyfriend';
+        req.session.data['partnerRelationship']                                 = 'boyfriend';
         req.session.data['partnerDobDay']                                       = '27';
         req.session.data['partnerDobMonth']                                     = '09';
         req.session.data['partnerDobYear']                                      = '1997';
@@ -243,7 +208,7 @@ router.get('/', function (req, res) {
       
       // Parent/Guardian
         req.session.data['livingWithParentGuardian']    = 'true';
-        req.session.data['parentGuardianRelationship']  = 'Mother';
+        req.session.data['parentGuardianRelationship']  = 'mother';
         req.session.data['parentGuardianDobDay']        = '25';
         req.session.data['parentGuardianDobMonth']      = '04';
         req.session.data['parentGuardianDobYear']       = '1970';
@@ -254,7 +219,7 @@ router.get('/', function (req, res) {
       
       // Parent/Guardian Partner
         req.session.data['livingWithParentGuardianPartner']    = 'true';
-        req.session.data['parentGuardianPartnerRelationship']  = 'Father';
+        req.session.data['parentGuardianPartnerRelationship']  = 'father';
         req.session.data['parentGuardianPartnerDobDay']        = '21';
         req.session.data['parentGuardianPartnerDobMonth']      = '11';
         req.session.data['parentGuardianPartnerDobYear']       = '1967';
@@ -268,9 +233,6 @@ router.get('/', function (req, res) {
         req.session.data['parentGuardianBenfitFromUniversalCredit']                 = 'true';
 
       res.redirect('/application/check-answers.html');
-    // } else {
-    //   res.redirect('/application/change-details/invalid-login.html');
-    // }
   })
 
   // Eligibility Check
@@ -312,6 +274,7 @@ router.get('/', function (req, res) {
 
     // Get children age
     function getChildrenUnderFour() {
+      var hasChildrenUnderFour = req.session.data['children'];
       var childOneDob     = req.session.data['childOneDobMonth'] + '/' + req.session.data['childOneDobDay'] + '/' + req.session.data['childOneDobYear'];
       var childTwoDob     = req.session.data['childTwoDobMonth'] + '/' + req.session.data['childTwoDobDay'] + '/' + req.session.data['childTwoDobYear'];
       var childThreeDob   = req.session.data['childThreeDobMonth'] + '/' + req.session.data['childThreeDobDay'] + '/' + req.session.data['childThreeDobYear'];
@@ -322,6 +285,10 @@ router.get('/', function (req, res) {
       var childEighthDob  = req.session.data['childEighthDobMonth'] + '/' + req.session.data['childEighthDobDay'] + '/' + req.session.data['childEighthDobYear'];
 
       var childAges = [childOneDob, childTwoDob, childThreeDob, childFourDob, childFiveDob, childSixDob, childSeventhDob, childEighthDob];
+
+      if (hasChildrenUnderFour == 'false') {
+        return false;
+      }
 
       for (var i = 0; i < childAges.length; i++) {
         var childAge = getAge(childAges[i]);

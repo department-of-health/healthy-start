@@ -26,7 +26,7 @@
             <fieldset class="inline">
 
               <label class="form-label" for="livingWithParentGuardianPartner">
-                <h3 class="heading-small">Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with you?</h3>
+                <h3 class="heading-small">Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with {{ "the applicant?" if data['applier'] == 'applierNotFamily' else "you?" }}?</h3>
                 <span class="form-hint">
                   By providing these details it may improve {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} chance of qualifying for Healthy Start.
                 </span>
@@ -47,11 +47,14 @@
             </fieldset>
           </div>
 
-          <!-- Submit -->
           <div class="form-group">
+            <!-- Submit -->
             <input type="submit" class="button" value="Continue">
-          </div>
 
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
         </div>
       </form>
 
