@@ -18,6 +18,8 @@
         <h1 class="heading-large">Check your answers before sending your application</h1>
       {% endif %}
 
+      <p class="form-hint">If any details you are unable to change are incorrect, please call 0XXXX XXX XXX</p>
+
       <!-- Pregnant -->
       <h2 class="heading-medium">
         Pregnancy
@@ -372,7 +374,7 @@
 
         <div>
           <dt class="cya-question">
-            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "You" }} name
+            {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} name
           </dt>
           <dd class="cya-answer">
             {{ data['firstName']}} {{ data['surname']}}
@@ -521,7 +523,7 @@
 
         <div>
           <dt class="cya-question">
-            Name
+            Partner name
           </dt>
           <dd class="cya-answer">
             {{ data['partnerFirstName']}} {{ data['partnerSurname']}}
@@ -535,7 +537,7 @@
 
         <div>
           <dt class="cya-question">
-            Benefits {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} partner gets
+            Benefits {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} partner receives
           </dt>
           <dd class="cya-answer">
             <div>{{ "- Income-related Employment and Support Allowance" if data['partnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
@@ -655,7 +657,7 @@
       <dl class="govuk-check-your-answers cya-questions-long">
         <div>
           <dt class="cya-question">
-            Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with {{ "the applicant?" if data['applier'] == 'applierNotFamily' else "you?" }}
+            Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with them?
           </dt>
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithParentGuardianPartner'] == 'true' else "No" }}
@@ -775,7 +777,11 @@
       </p>
 
       <div class="form-group">
-        <a href="/application/confirmation" class="button">Accept and send application</a>
+        {% if data['confirmingDetails'] == 'true' %}
+          <a href="/application/confirmation" class="button">Accept and save your details</a>
+        {% else %}
+          <a href="/application/confirmation" class="button">Accept and send application</a>
+        {% endif %}
       </div>
     </div>
   </div>

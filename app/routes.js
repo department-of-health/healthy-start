@@ -226,7 +226,7 @@ router.get('/', function (req, res) {
         req.session.data['parentGuardianPartnerNiNumber']      = 'MK 32 35 61 A';
         req.session.data['parentGuardianPartnerFirstName']     = 'Nick';
         req.session.data['parentGuardianPartnerSurname']       = 'Brown';
-        req.session.data['parentGuardianPartnerClaimBenefits'] = 'False';
+        req.session.data['parentGuardianPartnerClaimBenefits'] = 'false';
       
       // Benefit claims
         req.session.data['parentGuardianBenfitFromIncomeBasedJobseekersAllowance']  = 'true';
@@ -235,6 +235,15 @@ router.get('/', function (req, res) {
       res.redirect('/application/check-answers.html');
   })
 
+  // Change of details
+  router.get('/application/check-answers', function (req, res) {
+      // Set session vars so we can tell if they are changing details or applying
+        if (req.session.data['confirmingDetails'] = 'true') {
+          req.session.data['confirmingDetails'] = 'false';
+        }
+
+        res.render('application/check-answers.html');
+  })
   // Eligibility Check
   router.get('/application/confirmation', function (req, res) {
     // Get age
