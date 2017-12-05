@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  Apply - Your partner - Healthy Start
+  Children - Healthy Start
 {% endblock %}
 
 {% block content %}
@@ -34,9 +34,18 @@
               </div>
 
               <div class="multiple-choice">
-                <input id="childrenFalse" type="radio" name="children" value="false" required {{ checked('children', 'false') }}>
+                <input id="childrenFalse" type="radio" name="children" value="false" required {{ checked('children', 'false') }} onclick="hidePanels();">
                 <label for="childrenFalse">No</label>
               </div>
+
+              <script>
+                function hidePanels() {
+                  $('.panel-border-narrow').addClass('js-hidden');
+                  $('.panel-border-narrow .multiple-choice input').each(function(){
+                      $(this).prop('checked', false);
+                  });
+                }
+              </script>
             </fieldset>
           </div>
 

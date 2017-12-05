@@ -54,7 +54,7 @@ router.get('/', function (req, res) {
     var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
     var inFullTimeEducation = req.session.data['fullTimeEducation'];
 
-    if (age < 18 || age < 20 && (inFullTimeEducation === 'true')) {
+    if (age < 18 || age < 20 && inFullTimeEducation === 'true') {
       res.render('application/section/parent-guardian/living-with')
     } else {
       res.redirect('/application/check-answers')
