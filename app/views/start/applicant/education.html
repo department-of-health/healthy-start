@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Education - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/applicant/dob">Back</a>
+
+      <form action="/start/parent-guardian/living-with" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "About the applicant" if data['applier'] == 'applierNotFamily' else "About you" }}
+            </h1>
+          </legend>
+
+          <!-- Education -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="education">
+                <h3 class="heading-small">{{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} in full time education?</h3>
+              </label>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationTrue" type="radio" name="fullTimeEducation" value="true" required {{ checked('fullTimeEducation', 'true') }}>
+                <label for="fullTimeEducationTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="fullTimeEducationFalse" type="radio" name="fullTimeEducation" value="false" required {{ checked('fullTimeEducation', 'false') }}>
+                <label for="fullTimeEducationFalse">No</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

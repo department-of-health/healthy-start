@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  National Insurance - Partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/partner/living-with">Back</a>
+
+      <form action="/start/partner/dob" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} partner
+            </h1>
+          </legend>
+
+          <!-- Partner National Insurance -->
+          <div class="form-group">
+            <label class="form-label" for="partnerNiNumber">
+              <h3 class="heading-small">Partner's National Insurance Number</h3>
+              <span class="form-hint">
+                It's on {{ "their" if data['applier'] == 'applierNotFamily' else "your" }} National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
+            </label>
+
+            <input class="form-control" id="partnerNiNumber" type="text" name="partnerNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['partnerNiNumber'] }}">
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

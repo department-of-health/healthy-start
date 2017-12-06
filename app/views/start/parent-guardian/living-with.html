@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+   Living with - Parent/guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/applicant/education">Back</a>
+
+      <form action="/start/parent-guardian/ni" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} Parent or guardian
+            </h1>
+          </legend>
+
+          <!-- Living with Parent/Guardian -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="livingWithParentGuardian">
+                <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a parent or guardian?</h3>
+                <span class="form-hint">
+                  By providing these details it may improve {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} chance of qualifying for Healthy Start.
+                </span>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice">
+                  <input id="livingWithParentGuardianTrue" type="radio" name="livingWithParentGuardian" value="true" {{ checked('livingWithParentGuardian', 'true') }}>
+                  <label for="livingWithParentGuardianTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="livingWithParentGuardianFalse" type="radio" name="livingWithParentGuardian" value="false" {{ checked('livingWithParentGuardian', 'false') }}>
+                  <label for="livingWithParentGuardianFalse">No</label>
+                </div>
+              </fieldset>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

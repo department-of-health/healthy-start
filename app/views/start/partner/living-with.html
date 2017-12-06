@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Living with - Partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/parent-guardian/dob">Back</a>
+
+      <form action="/start/partner/ni" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} partner
+            </h1>
+          </legend>
+
+          <!-- Living with partner -->
+          <div class="form-group">
+            <fieldset class="inline">
+
+              <label class="form-label" for="livingWithPartner">
+                <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} live with a partner?</h3>
+                <span class="form-hint">
+                  {{ "By partner we mean a person the applicant is married to, or live with or a civil partner. " if data['applier'] == 'applierNotFamily' else "By partner we mean a person you are married to, or live with or your civil partner." }}
+                  <br>
+                  <br>
+                  {{ "By providing these details it may improve the applicants chance of qualifying for Healthy Start." if data['applier'] == 'applierNotFamily' else "By providing these details it may improve your chance of qualifying for Healthy Start." }}
+                </span>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice">
+                  <input id="livingWithPartnerTrue" type="radio" name="livingWithPartner" value="true" {{ checked('livingWithPartner', 'true') }}>
+                  <label for="livingWithPartnerTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="livingWithPartnerFalse" type="radio" name="livingWithPartner" value="false" {{ checked('livingWithPartner', 'false') }}>
+                  <label for="livingWithPartnerFalse">No</label>
+                </div>
+              </fieldset>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

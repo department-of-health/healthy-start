@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Date of birth - Parent/guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/parent-guardian/ni">Back</a>
+
+      <form action="/start/partner/living-with" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian details
+            </h1>
+          </legend>
+
+          <!-- Parent/Guardian DOB -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="parentGuardianDob">
+                <h3 class="heading-small">Parent or guardian's date of birth</h3>
+              </label>
+
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="parentGuardianDobDay">Day</label>
+                  <input class="form-control" id="parentGuardianDobDay" name="parentGuardianDobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['parentGuardianDobDay'] }}">
+                </div>
+
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="parentGuardianDobMonth">Month</label>
+                  <input class="form-control" id="parentGuardianDobMonth" name="parentGuardianDobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['parentGuardianDobMonth'] }}">
+                </div>
+
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="parentGuardianDobYear">Year</label>
+                  <input class="form-control" id="parentGuardianDobYear" name="parentGuardianDobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['parentGuardianDobYear'] }}">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

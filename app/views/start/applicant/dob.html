@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+   Date of birth - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/applicant/ni">Back</a>
+
+      <form action="/start/applicant/education" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+              <h1 class="heading-large">
+                About {{ 'the applicant' if data['applier'] == 'applierNotFamily' else 'you' }}
+              </h1>
+
+              <span class="form-hint">
+                {% if data['applier'] == 'applierNotFamily' %}
+                  The applicant is the person who is pregnant or the primary carer of the child/children
+                {% else %}
+                  You being the person who is pregnant or the primary carer of the child/children
+                {% endif %}
+              </span>
+          </legend>
+
+          <!-- DOB -->
+          <div class="form-group">
+            <fieldset>
+
+              <label class="form-label" for="dob">
+                <h3 class="heading-small">Date of birth</h3>
+                <!-- <span class="form-hint">
+
+                </span> -->
+              </label>
+
+              <div class="form-date">
+                <div class="form-group form-group-day">
+                  <label class="form-label" for="dobDay">Day</label>
+                  <input class="form-control" id="dobDay" name="dobDay" type="number" pattern="[0-9]*" min="0" max="31" required value="{{ data['dobDay'] }}">
+                </div>
+
+                <div class="form-group form-group-month">
+                  <label class="form-label" for="dobMonth">Month</label>
+                  <input class="form-control" id="dobMonth" name="dobMonth" type="number" pattern="[0-9]*" min="0" max="12" required value="{{ data['dobMonth'] }}">
+                </div>
+
+                <div class="form-group form-group-year">
+                  <label class="form-label" for="dobYear">Year</label>
+                  <input class="form-control" id="dobYear" name="dobYear" type="number" pattern="[0-9]*" min="0" max="2017" required value="{{ data['dobYear'] }}">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <input type="submit" class="button" value="Continue">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

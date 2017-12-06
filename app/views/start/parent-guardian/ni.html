@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  National Insurance - Parent/guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/start/parent-guardian/living-with">Back</a>
+
+      <form action="/start/parent-guardian/dob" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian details
+            </h1>
+          </legend>
+
+          <!-- Parent/Guardian National Insurance -->
+          <div class="form-group">
+            <label class="form-label" for="parentGuardianNiNumber">
+              <h3 class="heading-small">Parent or guardian's National Insurance Number</h3>
+              <span class="form-hint">
+                It's on their National Insurance card, benefit letter, payslip or P60.
+                <br>
+                For example, ‘QQ 12 34 56 C’.
+              </span>
+            </label>
+
+            <input class="form-control" id="parentGuardianNiNumber" type="text" name="parentGuardianNiNumber" pattern="^\s*[a-zA-Z]{2}(?:\s*\d\s*){6}[a-zA-Z]?\s*$" required value="{{ data['parentGuardianNiNumber'] }}">
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

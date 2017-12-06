@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Name - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/existing-record/additional-details/phone">Back</a>
+
+      <form action="/application/check-answers" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "About the applicant" if data['applier'] == 'applierNotFamily' else "About you" }}
+            </h1>
+          </legend>
+
+          <!-- Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} email address</h3>
+
+            <!-- Email -->
+            <div class="form-group">
+              <input type="text" class="form-control" id="email" name="email" required value="{{ data['email'] }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

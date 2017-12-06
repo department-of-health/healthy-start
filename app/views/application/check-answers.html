@@ -50,7 +50,7 @@
           </dd>
           <dd class="cya-change">
             <a href="/application/section/pregnant">
-              Change<span class="visually-hidden"> benefits</span>
+              Change<span class="visually-hidden"> pregnancy</span>
             </a>
           </dd>
         </div>
@@ -388,19 +388,14 @@
 
         <div>
           <dt class="cya-question">
-            Benefits {{ "the applicant receives" if data['applier'] == 'applierNotFamily' else "you receive" }}
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} receive any of the qualifying benefits?
           </dt>
           <dd class="cya-answer">
-            <div>{{ "- Income-related Employment and Support Allowance" if data['incomeRelatedEmploymentAndSupportAllowance'] }}</div>
-            <div>{{ "- Income support" if data['incomeSupport'] }}</div>
-            <div>{{ "- Income-based jobseeker's Allowance" if data['incomeBasedJobseekersAllowance'] }}</div>
-            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['childTaxCredit'] }}</div>
-            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['universalCredit'] }}</div>
-            <div>{{ "- None" if data['noneOfTheAbove'] }}</div>
+            {{ "Yes" if data['claimBenefits'] == 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/about/benefits">
-              Change<span class="visually-hidden"> name</span>
+              Change<span class="visually-hidden"> benefits</span>
             </a>
           </dd>
         </div>
@@ -537,15 +532,10 @@
 
         <div>
           <dt class="cya-question">
-            Benefits {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} partner receives
+            Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} partner receive any of the qualifying benefits?
           </dt>
           <dd class="cya-answer">
-            <div>{{ "- Income-related Employment and Support Allowance" if data['partnerIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
-            <div>{{ "- Income support" if data['partnerIncomeSupport'] }}</div>
-            <div>{{ "- Income-based jobseeker's Allowance" if data['partnerIncomeBasedJobseekersAllowance'] }}</div>
-            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['partnerChildTaxCredit'] }}</div>
-            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['partnerUniversalCredit'] }}</div>
-            <div>{{ "- None" if data['partnerNoneOfTheAbove'] }}</div>
+            {{ "Yes" if data['partnerClaimBenefits'] == 'true' else "No" }}
           </dd>
           <dd class="cya-change">
             <a href="/application/section/partner/benefits">
@@ -741,34 +731,6 @@
           </div>
         {% endif %}
       </dl>
-
-      <!-- Your claim to a parent or guardian’s benefits -->
-      {% if data['parentGuardianClaimBenefits'] == 'true' or data['parentGuardianPartnerClaimBenefits'] == 'true' %}
-      <h2 class="heading-medium">
-        {{ "Applicants" if data['applier'] == 'applierNotFamily' else "Your" }} claim to a parent or guardian’s or their partners benefits
-      </h2>
-
-      <dl class="govuk-check-your-answers cya-questions-long">
-        <div>
-          <dt class="cya-question">
-            Which of {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s, or their partners, benefits {{ "they" if data['applier'] == 'applierNotFamily' else "you" }} are included in a claim for
-          </dt>
-          <dd class="cya-answer">
-            <div>{{ "- Income-related Employment and Support Allowance" if data['parentGuardianBenfitFromIncomeRelatedEmploymentAndSupportAllowance'] }}</div>
-            <div>{{ "- Income support" if data['parentGuardianBenfitFromIncomeSupport'] }}</div>
-            <div>{{ "- Income-based jobseeker's Allowance" if data['parentGuardianBenfitFromIncomeBasedJobseekersAllowance'] }}</div>
-            <div>{{ "- Child tax Credit (with a family income of £16,190 or less per year)" if data['parentGuardianBenfitFromChildTaxCredit'] }}</div>
-            <div>{{ "- Universal credit (with a family take home pay of £408 or less per month)" if data['parentGuardianBenfitFromUniversalCredit'] }}</div>
-            <div>{{ "- None" if data['parentGuardianBenfitFromNoneOfTheAbove'] }}</div>
-          </dd>
-          <dd class="cya-change">
-            <a href="/application/section/claim-to-benefits">
-              Change<span class="visually-hidden"> benefits</span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-      {% endif %}
 
       <h2 class="heading-medium">Now send {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} application</h2>
 

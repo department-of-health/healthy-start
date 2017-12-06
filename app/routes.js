@@ -9,7 +9,156 @@ router.get('/', function (req, res) {
 // add your routes here
   // Branching
 
-  // Only show edutcation question if they are the right age
+  // Set the journey type
+  router.get('/overview', function (req, res) {
+    if (req.query.record == 'existing') {
+      req.session.data['record'] = 'existing';
+    } else {
+      req.session.data['record'] = 'new';
+    }
+
+    res.render('overview')
+  })
+
+  // Applicant section
+    // Only show education page if they are over 16 and under 20
+    router.get('/start/applicant/education', function (req, res) {
+      function getAge(birth) {
+        ageMS = Date.parse(Date()) - Date.parse(birth);
+        age = new Date();
+        age.setTime(ageMS);
+        ageYear = age.getFullYear() - 1970;
+
+        return ageYear;
+      }
+
+      var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
+
+      if (age < 16) {
+        res.redirect('/parent-must-apply')
+      } else if (age < 20) {
+        res.render('start/applicant/education')
+      } else {
+        res.redirect('/start/parent-guardian/living-with')
+      }
+    })
+
+  // Parent/guardian section
+    // Only load the parent/guardian section if applicant is under 20 and in full time education, else skip to partner
+    router.get('/start/parent-guardian/living-with', function (req, res) {
+      function getAge(birth) {
+        ageMS = Date.parse(Date()) - Date.parse(birth);
+        age = new Date();
+        age.setTime(ageMS);
+        ageYear = age.getFullYear() - 1970;
+
+        return ageYear;
+      }
+
+      var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
+      var fullTimeEducation = req.session.data['fullTimeEducation'];
+
+      if (age < 20 && fullTimeEducation == 'true') {
+        res.render('start/parent-guardian/living-with')
+      } else {
+        res.redirect('/start/partner/living-with')
+      }
+    })
+
+    // Only show the parent/guardian details section if the selected they DO live with a parent/guardian
+    router.get('/start/parent-guardian/ni', function (req, res) {
+      var livingWithParentGuardian = req.session.data['livingWithParentGuardian'];
+
+      if (livingWithParentGuardian == 'true') {
+        res.render('start/parent-guardian/ni')
+      } else {
+        res.redirect('/start/partner/living-with')
+      }
+    })
+
+  // Partner section
+    // Only show the partner details section if the selected they DO live with their partner
+    router.get('/start/partner/ni', function (req, res) {
+      var livingWithPartner = req.session.data['livingWithPartner'];
+      var record = req.session.data['record'];
+
+      if (livingWithPartner == 'true') {
+        res.render('start/partner/ni')
+      } else {
+        res.redirect('/new-record')
+      }
+    })
+
+  // Existing record
+    router.get('/existing-record', function (req, res) {
+        req.session.data['applicantOnRecord'] = 'false';
+
+      // Applicant details
+        req.session.data['dobDay']            = '14';
+        req.session.data['dobMonth']          = '02';
+        req.session.data['dobYear']           = '1999';
+        req.session.data['niNumber']          = 'TR 72 14 06 C';
+        req.session.data['claimBenefits']     = 'false';
+
+        req.session.data['buildingStreet1']   = '134 Lawrence Weston Rd';
+        req.session.data['buildingStreet2']   = 'Chittening';
+        req.session.data['town']              = 'Bristol';
+        req.session.data['postCode']          = 'BS11 0ST';
+
+      // Children
+        req.session.data['children']          = 'true';
+        req.session.data['childOneDobDay']    = '11';
+        req.session.data['childOneDobMonth']  = '05';
+        req.session.data['childOneDobYear']   = '2009';
+        req.session.data['childOneFirstName'] = 'Thomas';
+        req.session.data['childOneSurname']   = 'Brown';
+
+        req.session.data['childTwo']          = 'true';
+        req.session.data['childTwoDobDay']    = '23';
+        req.session.data['childTwoDobMonth']  = '11';
+        req.session.data['childTwoDobYear']   = '2013';
+        req.session.data['childTwoFirstName'] = 'Ellie';
+        req.session.data['childTwoSurname']   = 'Brown';
+
+      // Partner
+        req.session.data['livingWithPartner']    = 'true';
+        req.session.data['partnerFirstName']     = 'Jack';
+        req.session.data['partnerSurname']       = 'Hart';
+        req.session.data['partnerPhone']         = '07894 567 123';
+        req.session.data['partnerEmail']         = 'jackhart@gmail.com';
+        req.session.data['partnerDobDay']        = '27';
+        req.session.data['partnerDobMonth']      = '09';
+        req.session.data['partnerDobYear']       = '1997';
+        req.session.data['partnerNiNumber']      = 'KM 65 69 15 D';
+        req.session.data['partnerBenefits']      = 'Universal credit';
+        req.session.data['partnerClaimBenefits'] = 'true';
+
+        res.render('existing-record/index.html');
+    })
+
+    router.get('/existing-record/details', function (req, res) {
+      var securityQuestion = req.session.data['securityQuestion'];
+
+      if (securityQuestion == 'Thomas' || securityQuestion == 'thomas') {
+        res.render('existing-record/details')
+      } else {
+        res.redirect('/existing-record/security-question-failed')
+      }
+    })
+
+  // New record    
+  router.get('/new-record', function (req, res) {
+    var record = req.session.data['record'];
+
+    if (record == 'existing') {
+      res.redirect('/existing-record')
+    } else {
+      res.render('new-record/index.html')
+    }
+  })
+
+// Original journey logic (keeping for reference, removes once new journey is complete)
+  // Only show education question if they are the right age
   router.get('/application/section/about/education', function (req, res) {
     function getAge(birth) {
       ageMS = Date.parse(Date()) - Date.parse(birth);
@@ -68,7 +217,7 @@ router.get('/', function (req, res) {
     if (livingWithParentGuardian === 'true') {
       res.render('application/section/parent-guardian/relationship')
     } else {
-      res.redirect('/application/section/claim-to-benefits')
+      res.redirect('/application/check-answers')
     }
   })
 
@@ -78,18 +227,6 @@ router.get('/', function (req, res) {
 
     if (livingWithParentGuardianPartner === 'true') {
       res.render('application/section/parent-guardian-partner/relationship')
-    } else {
-      res.redirect('/application/section/claim-to-benefits')
-    }
-  })
-
-  // Only show the claim to benefits question if they selected yes on either of the questions about weather they're included in a claim for benefits
-  router.get('/application/section/claim-to-benefits', function (req, res) {
-    var parentGuardianClaimBenefits = req.session.data['parentGuardianClaimBenefits'];
-    var parentGuardianPartnerClaimBenefits = req.session.data['parentGuardianPartnerClaimBenefits'];
-
-    if (parentGuardianClaimBenefits === 'true' || parentGuardianPartnerClaimBenefits === 'true') {
-      res.render('application/section/claim-to-benefits/index.html')
     } else {
       res.redirect('/application/check-answers')
     }
@@ -175,15 +312,14 @@ router.get('/', function (req, res) {
         req.session.data['childTwoSurname']   = 'Brown';
 
       // Applicant details
-        req.session.data['dobDay']                                        = '14';
-        req.session.data['dobMonth']                                      = '02';
-        req.session.data['dobYear']                                       = '1999';
-        req.session.data['fullTimeEducation']                             = 'true';
-        req.session.data['niNumber']                                      = 'TR 72 14 06 C';
-        req.session.data['firstName']                                     = 'Sarah';
-        req.session.data['surname']                                       = 'Brown';
-        req.session.data['incomeRelatedEmploymentAndSupportAllowance']    = 'true';
-        req.session.data['incomeBasedJobseekersAllowance']                = 'true';
+        req.session.data['dobDay']            = '14';
+        req.session.data['dobMonth']          = '02';
+        req.session.data['dobYear']           = '1999';
+        req.session.data['fullTimeEducation'] = 'true';
+        req.session.data['niNumber']          = 'TR 72 14 06 C';
+        req.session.data['firstName']         = 'Sarah';
+        req.session.data['surname']           = 'Brown';
+        req.session.data['claimBenefits']     = 'false';
 
       // Contact details
         req.session.data['phoneNumber']     = '07485 241 658';
@@ -194,18 +330,16 @@ router.get('/', function (req, res) {
         req.session.data['postCode']        = 'BS11 0ST';
 
       //Partner
-        req.session.data['livingWithPartner']                                   = 'true';
-        req.session.data['partnerRelationship']                                 = 'boyfriend';
-        req.session.data['partnerDobDay']                                       = '27';
-        req.session.data['partnerDobMonth']                                     = '09';
-        req.session.data['partnerDobYear']                                      = '1997';
-        req.session.data['partnerNiNumber']                                     = 'KM 65 69 15 D';
-        req.session.data['partnerFirstName']                                    = 'Jack';
-        req.session.data['partnerSurname']                                      = 'Hart';
-        req.session.data['partnerIncomeRelatedEmploymentAndSupportAllowance']   = 'true';
-        req.session.data['partnerIncomeBasedJobseekersAllowance']               = 'true';
-        req.session.data['partnerUniversalCredit']                              = 'true';
-      
+        req.session.data['livingWithPartner']    = 'true';
+        req.session.data['partnerRelationship']  = 'boyfriend';
+        req.session.data['partnerDobDay']        = '27';
+        req.session.data['partnerDobMonth']      = '09';
+        req.session.data['partnerDobYear']       = '1997';
+        req.session.data['partnerNiNumber']      = 'KM 65 69 15 D';
+        req.session.data['partnerFirstName']     = 'Jack';
+        req.session.data['partnerSurname']       = 'Hart';
+        req.session.data['partnerClaimBenefits'] = 'false';
+
       // Parent/Guardian
         req.session.data['livingWithParentGuardian']    = 'true';
         req.session.data['parentGuardianRelationship']  = 'mother';
@@ -227,10 +361,6 @@ router.get('/', function (req, res) {
         req.session.data['parentGuardianPartnerFirstName']     = 'Nick';
         req.session.data['parentGuardianPartnerSurname']       = 'Brown';
         req.session.data['parentGuardianPartnerClaimBenefits'] = 'false';
-      
-      // Benefit claims
-        req.session.data['parentGuardianBenfitFromIncomeBasedJobseekersAllowance']  = 'true';
-        req.session.data['parentGuardianBenfitFromUniversalCredit']                 = 'true';
 
       res.redirect('/application/check-answers.html');
   })
@@ -313,31 +443,12 @@ router.get('/', function (req, res) {
 
     // Get benefits
     function getEligibleBenefits() {
-      var incomeRelatedEmploymentAndSupportAllowance  = req.session.data['incomeRelatedEmploymentAndSupportAllowance'];
-      var incomeSupport                               = req.session.data['incomeSupport'];
-      var incomeBasedJobseekersAllowance              = req.session.data['incomeBasedJobseekersAllowance'];
-      var childTaxCredit                              = req.session.data['childTaxCredit'];
-      var universalCredit                             = req.session.data['universalCredit'];
+      var claimBenefits                       = req.session.data['claimBenefits'];
+      var partnerClaimBenefits                = req.session.data['partnerClaimBenefits'];
+      var parentGuardianClaimBenefits         = req.session.data['parentGuardianClaimBenefits'];
+      var parentGuardianPartnerClaimBenefits  = req.session.data['parentGuardianPartnerClaimBenefits'];
 
-      var partnerIncomeRelatedEmploymentAndSupportAllowance  = req.session.data['partnerIncomeRelatedEmploymentAndSupportAllowance'];
-      var partnerIncomeSupport                               = req.session.data['partnerIncomeSupport'];
-      var partnerIncomeBasedJobseekersAllowance              = req.session.data['partnerIncomeBasedJobseekersAllowance'];
-      var partnerChildTaxCredit                              = req.session.data['partnerChildTaxCredit'];
-      var partnerUniversalCredit                             = req.session.data['partnerUniversalCredit'];
-
-      var parentGuardianIncomeRelatedEmploymentAndSupportAllowance  = req.session.data['parentGuardianIncomeRelatedEmploymentAndSupportAllowance'];
-      var parentGuardianIncomeSupport                               = req.session.data['parentGuardianIncomeSupport'];
-      var parentGuardianIncomeBasedJobseekersAllowance              = req.session.data['parentGuardianIncomeBasedJobseekersAllowance'];
-      var parentGuardianChildTaxCredit                              = req.session.data['parentGuardianChildTaxCredit'];
-      var parentGuardianUniversalCredit                             = req.session.data['parentGuardianUniversalCredit'];
-
-      var parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance  = req.session.data['parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance'];
-      var parentGuardianPartnerIncomeSupport                               = req.session.data['parentGuardianPartnerIncomeSupport'];
-      var parentGuardianPartnerIncomeBasedJobseekersAllowance              = req.session.data['parentGuardianPartnerIncomeBasedJobseekersAllowance'];
-      var parentGuardianPartnerChildTaxCredit                              = req.session.data['parentGuardianPartnerChildTaxCredit'];
-      var parentGuardianPartnerUniversalCredit                             = req.session.data['parentGuardianPartnerUniversalCredit'];
-
-      var benefits = [incomeRelatedEmploymentAndSupportAllowance, incomeSupport, incomeBasedJobseekersAllowance, childTaxCredit, universalCredit, partnerIncomeRelatedEmploymentAndSupportAllowance, partnerIncomeSupport, partnerIncomeBasedJobseekersAllowance, partnerChildTaxCredit, partnerUniversalCredit, parentGuardianIncomeRelatedEmploymentAndSupportAllowance, parentGuardianIncomeSupport, parentGuardianIncomeBasedJobseekersAllowance, parentGuardianChildTaxCredit, parentGuardianUniversalCredit, parentGuardianPartnerIncomeRelatedEmploymentAndSupportAllowance, parentGuardianPartnerIncomeSupport, parentGuardianPartnerIncomeBasedJobseekersAllowance, parentGuardianPartnerChildTaxCredit, parentGuardianPartnerUniversalCredit];
+      var benefits = [claimBenefits, partnerClaimBenefits, parentGuardianClaimBenefits, parentGuardianPartnerClaimBenefits];
 
       for (var i = 0; i < benefits.length; i++) {
         var benefit = benefits[i];

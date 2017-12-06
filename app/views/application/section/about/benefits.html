@@ -23,43 +23,28 @@
 
           <!-- Benefits -->
           <div class="form-group">
-            <fieldset>
+            <label class="form-label" for="claimBenefits">
+              <h3 class="heading-small">{{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} receiving any of the following benefits?</h3>
 
-              <label class="form-label" for="benefits">
-                <h3 class="heading-small">Tick ALL benefits {{ "the applicant receives" if data['applier'] == 'applierNotFamily' else "you receive" }}</h3>
-                <!-- <span class="form-hint"></span> -->
-              </label>
+              <ul class="list list-bullet">
+                <li>Income related Employment and Support Allowance</li>
+                <li>Income Support</li>
+                <li>Income based Jobseeker's Allowance</li>
+                <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
+                <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
+              </ul>
+            </label>
 
+            <fieldset class="inline">
               <div class="multiple-choice">
-                <input id="incomeRelatedEmploymentAndSupportAllowance" name="incomeRelatedEmploymentAndSupportAllowance" type="checkbox" value="true" {{ checked('incomeRelatedEmploymentAndSupportAllowance', 'true') }}>
-                <label for="incomeRelatedEmploymentAndSupportAllowance">Income-related Employment and Support Allowance</label>
+                <input id="claimBenefitsTrue" type="radio" name="claimBenefits" value="true" {{ checked('claimBenefits', 'true') }}>
+                <label for="claimBenefitsTrue">Yes</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="incomeSupport" name="incomeSupport" type="checkbox" value="true" {{ checked('incomeSupport', 'true') }}>
-                <label for="incomeSupport">Income support</label>
+                <input id="claimBenefitsFalse" type="radio" name="claimBenefits" value="false" {{ checked('claimBenefits', 'false') }}>
+                <label for="claimBenefitsFalse">No</label>
               </div>
-
-              <div class="multiple-choice">
-                <input id="incomeBasedJobseekersAllowance" name="incomeBasedJobseekersAllowance" type="checkbox" value="true" {{ checked('incomeBasedJobseekersAllowance', 'true') }}>
-                <label for="incomeBasedJobseekersAllowance">Income-based jobseeker's Allowance</label>
-              </div>
-
-              <div class="multiple-choice">
-                <input id="childTaxCredit" name="childTaxCredit" type="checkbox" value="true" {{ checked('childTaxCredit', 'true') }}>
-                <label for="childTaxCredit">Child tax Credit (with a family income of £16,190 or less per year)</label>
-              </div>
-
-              <div class="multiple-choice">
-                <input id="universalCredit" name="universalCredit" type="checkbox" value="true" {{ checked('universalCredit', 'true') }}>
-                <label for="universalCredit">Universal credit (with a family take home pay of £408 or less per month)</label>
-              </div>
-
-              <div class="multiple-choice">
-                <input id="noneOfTheAbove" name="noneOfTheAbove" type="checkbox" value="true" {{ checked('noneOfTheAbove', 'true') }}>
-                <label for="noneOfTheAbove">None of the above</label>
-              </div>
-
             </fieldset>
           </div>
 

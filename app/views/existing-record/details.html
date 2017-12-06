@@ -1,0 +1,310 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Check answers - Healthy start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+      <h1 class="heading-large">Details we found</h1>
+
+      <p class="form-hint">If any details are incorrect, please call 0XXXX XXX XXX</p>
+
+      <p>You're eligible due to your partners benefit claims</p>
+
+      <!-- About you -->
+      <h2 class="heading-medium">
+        {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-long">
+        <div>
+          <dt class="cya-question">
+            Date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            National Insurance Number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['niNumber'] }}
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you" }} receive any of the qualifying benefits?
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['claimBenefits'] == 'true' else "No" }}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- Partner -->
+      <h2 class="heading-medium">
+        Partner details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-long">
+        <div>
+          <dt class="cya-question">
+            Partner name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerFirstName']}} {{ data['partnerSurname']}}
+          </dd>
+        </div>
+        
+        <div>
+          <dt class="cya-question">
+            {{ "Partner's" if data['applier'] == 'applierNotFamily' else "Your partner's" }} date of birth
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerDobDay'] }}/{{ data['partnerDobMonth'] }}/{{ data['partnerDobYear'] }}
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Partner's National Insurance Number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerNiNumber'] }}
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Phone
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerPhone'] }}
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Email
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerEmail'] }}
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Address
+          </dt>
+          <dd class="cya-answer">
+            <div>{{ data['buildingStreet1']}}</div>
+            <div>{{ data['buildingStreet2']}}</div>
+            <div>{{ data['town']}}</div>
+            <div>{{ data['postCode']}}</div>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Benefits received
+          </dt>
+          <dd class="cya-answer">
+            {{ data['partnerBenefits'] }}
+        </div>
+      </dl>
+
+      <!-- Children -->
+      <h2 class="heading-medium">
+        Children
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-long">
+        <div>
+          <dt class="cya-question">
+            {{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you or your partner" }} have any children under 4?
+          </dt>
+          <dd class="cya-answer">
+            {{ "Yes" if data['children'] === "true" else "No" }}
+          </dd>
+        </div>
+
+        {% if data['children'] === "true" %}
+        <div>
+          <dt class="cya-question">
+            First Child's DOB
+          </dt>
+          <dd class="cya-answer">
+            {{ data['childOneDobDay'] }}/{{ data['childOneDobMonth'] }}/{{ data['childOneDobYear'] }}
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            First Child's name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['childOneFirstName']}} {{ data['childOneSurname']}}
+          </dd>
+        </div>
+
+          {% if data['childTwoFirstName'] %}
+          <div>
+            <dt class="cya-question">
+              Second child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childTwoDobDay'] }}/{{ data['childTwoDobMonth'] }}/{{ data['childTwoDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Second child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childTwoFirstName']}} {{ data['childTwoSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childThree'] %}
+          <div>
+            <dt class="cya-question">
+              Third child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childThreeDobDay'] }}/{{ data['childThreeDobMonth'] }}/{{ data['childThreeDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Third child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childThreeFirstName']}} {{ data['childThreeSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childFour'] %}
+          <div>
+            <dt class="cya-question">
+              Fourth child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFourDobDay'] }}/{{ data['childFourDobMonth'] }}/{{ data['childFourDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Fourth child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFourFirstName']}} {{ data['childFourSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childFifth'] %}
+          <div>
+            <dt class="cya-question">
+              Fifth child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFifthDobDay'] }}/{{ data['childFifthDobMonth'] }}/{{ data['childFifthDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Fifth child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childFifthFirstName']}} {{ data['childFifthSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childSixth'] %}
+          <div>
+            <dt class="cya-question">
+              Sixth child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSixDobDay'] }}/{{ data['childSixDobMonth'] }}/{{ data['childSixDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Sixth child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSixFirstName']}} {{ data['childSixSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childSeventh'] %}
+          <div>
+            <dt class="cya-question">
+              Seventh child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSevenDobDay'] }}/{{ data['childSevenDobMonth'] }}/{{ data['childSevenDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Seventh child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childSevenFirstName']}} {{ data['childSevenSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data['childEighth'] %}
+          <div>
+            <dt class="cya-question">
+              Eighth child's DOB
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childEightDobDay'] }}/{{ data['childEightDobMonth'] }}/{{ data['childEightDobYear'] }}
+            </dd>
+          </div>
+
+          <div>
+            <dt class="cya-question">
+              Eighth child's Name
+            </dt>
+            <dd class="cya-answer">
+              {{ data['childEightFirstName']}} {{ data['childEightSurname']}}
+            </dd>
+          </div>
+          {% endif %}
+        {% endif %}
+      </dl>
+
+      <h2 class="heading-medium">We need a few more details to complete your application</h2>
+
+      <div class="form-group">
+        <a href="/existing-record/additional-details/pregnancy" class="button">Continue with application</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
