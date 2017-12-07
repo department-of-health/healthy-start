@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+   Name - Parent/guardian details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/partner/benefits">Back</a>
+
+      <form action="/new-record/parent-guardian/benefits" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Parent or guardian details
+            </h1>
+            <!-- <p class="body-text"></p> -->
+          </legend>
+
+          <!-- Parent/Guardian Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">Parent or guardian's name</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="parentGuardianFirstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="parentGuardianFirstName" name="parentGuardianFirstName" required value="{{ data['parentGuardianFirstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="parentGuardianSurname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="parentGuardianSurname" name="parentGuardianSurname" value="{{ data['parentGuardianSurname'] }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

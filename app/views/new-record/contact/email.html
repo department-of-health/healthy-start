@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Applicant contact details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/contact/phone">Back</a>
+
+      <form action="/new-record/contact/address" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
+            </h1>
+          </legend>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} email address</h3>
+              <span class="form-hint">{{ "We will only use it to tell the applicant about any changes to Healthy Start in the future." if data['applier'] == 'applierNotFamily' else "We will only use it to tell you about any changes to Healthy Start in the future." }}</span>
+            </label>
+
+            <input type="text" class="form-control" id="email" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value="{{ data['email'] }}">
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

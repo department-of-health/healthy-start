@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Benefits - Partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/partner/name">Back</a>
+
+      <form action="/new-record/parent-guardian/name" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} partner
+            </h1>
+          </legend>
+
+          <!-- Partner Benefits -->
+          <div class="form-group">
+            <label class="form-label" for="partnerClaimBenefits">
+              <h3 class="heading-small">{{ "Does the applicant's" if data['applier'] == 'applierNotFamily' else "Does your" }} partner receive any of the following benefits?</h3>
+
+              <ul class="list list-bullet">
+                <li>Income related Employment and Support Allowance</li>
+                <li>Income Support</li>
+                <li>Income based Jobseeker's Allowance</li>
+                <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
+                <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
+              </ul>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice">
+                <input id="partnerClaimBenefitsTrue" type="radio" name="partnerClaimBenefits" value="true" {{ checked('partnerClaimBenefits', 'true') }}>
+                <label for="partnerClaimBenefitsTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="partnerClaimBenefitsFalse" type="radio" name="partnerClaimBenefits" value="false" {{ checked('partnerClaimBenefits', 'false') }}>
+                <label for="partnerClaimBenefitsFalse">No</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,546 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Children - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/applicant/pregnancy">Back</a>
+
+      <form action="/new-record/applicant/benefits" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              Children
+            </h1>
+          </legend>
+
+          <!-- Children -->
+          <div class="form-group">
+            <label class="form-label" for="children">
+              <h3 class="heading-small">{{ "Does the applicant" if data['applier'] == 'applierNotFamily' else "Do you or your partner" }} have any children under 4?</h3>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice" data-target="childOneDetails">
+                <input id="childrenTrue" type="radio" name="children" value="true" required {{ checked('children', 'true') }}>
+                <label for="childrenTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="childrenFalse" type="radio" name="children" value="false" required {{ checked('children', 'false') }} onclick="hidePanels();">
+                <label for="childrenFalse">No</label>
+              </div>
+
+              <script>
+                function hidePanels() {
+                  $('.panel-border-narrow').addClass('js-hidden');
+                  $('.panel-border-narrow .multiple-choice input').each(function(){
+                      $(this).prop('checked', false);
+                  });
+                }
+              </script>
+            </fieldset>
+          </div>
+
+          <!-- Child one -->
+          <div class="panel panel-border-narrow js-hidden" id="childOneDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">First Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childOneDobDay">Day</label>
+                    <input class="form-control" id="childOneDobDay" name="childOneDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childOneDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childOneDobMonth">Month</label>
+                    <input class="form-control" id="childOneDobMonth" name="childOneDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childOneDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childOneDobYear">Year</label>
+                    <input class="form-control" id="childOneDobYear" name="childOneDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childOneDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">First Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childOneFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childOneFirstName" name="childOneFirstName" value="{{ data['childOneFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childOneSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childOneSurname" name="childOneSurname" value="{{ data['childOneSurname'] }}">
+                </div>
+              </div>
+
+              <label class="form-label" for="childTwoDetails">
+                <h3 class="heading-small">Add second child</h3>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice" data-target="childTwoDetails">
+                  <input id="childTwoTrue" type="radio" name="childTwo" value="true" {{ checked('childTwo', 'true') }}>
+                  <label for="childTwoTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="childTwoFalse" type="radio" name="childTwo" value="false" {{ checked('childTwo', 'false') }}>
+                  <label for="childTwoFalse">No</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <!-- Child two -->
+          <div class="panel panel-border-narrow js-hidden" id="childTwoDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Second Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childTwoDobDay">Day</label>
+                    <input class="form-control" id="childTwoDobDay" name="childTwoDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childTwoDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childTwoDobMonth">Month</label>
+                    <input class="form-control" id="childTwoDobMonth" name="childTwoDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childTwoDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childTwoDobYear">Year</label>
+                    <input class="form-control" id="childTwoDobYear" name="childTwoDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childTwoDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Second Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childTwoFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childTwoFirstName" name="childTwoFirstName" value="{{ data['childTwoFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childTwoSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childTwoSurname" name="childTwoSurname" value="{{ data['childTwoSurname'] }}">
+                </div>
+              </div>
+
+              <label class="form-label" for="childThreeDetails">
+                <h3 class="heading-small">Add third child</h3>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice" data-target="childThreeDetails">
+                  <input id="childThreeTrue" type="radio" name="childThree" value="true" {{ checked('childThree', 'true') }}>
+                  <label for="childThreeTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="childThreeFalse" type="radio" name="childThree" value="false" {{ checked('childThree', 'false') }}>
+                  <label for="childThreeFalse">No</label>
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+
+          <!-- Child Three -->
+          <div class="panel panel-border-narrow js-hidden" id="childThreeDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Third Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childThreeDobDay">Day</label>
+                    <input class="form-control" id="childThreeDobDay" name="childThreeDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childThreeDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childThreeDobMonth">Month</label>
+                    <input class="form-control" id="childThreeDobMonth" name="childThreeDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childThreeDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childThreeDobYear">Year</label>
+                    <input class="form-control" id="childThreeDobYear" name="childThreeDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childThreeDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Third Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childThreeFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childThreeFirstName" name="childThreeFirstName" value="{{ data['childThreeFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childThreeSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childThreeSurname" name="childThreeSurname" value="{{ data['childThreeSurname'] }}">
+                </div>
+              </div>
+
+              <label class="form-label" for="childFourDetails">
+                <h3 class="heading-small">Add fourth child</h3>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice" data-target="childFourDetails">
+                  <input id="childFourTrue" type="radio" name="childFour" value="true" {{ checked('childFour', 'true') }}>
+                  <label for="childFourTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="childFourFalse" type="radio" name="childFour" value="false" {{ checked('childFour', 'false') }}>
+                  <label for="childFourFalse">No</label>
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+
+          <!-- Child Four -->
+          <div class="panel panel-border-narrow js-hidden" id="childFourDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Fourth Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childFourDobDay">Day</label>
+                    <input class="form-control" id="childFourDobDay" name="childFourDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childFourDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childFourDobMonth">Month</label>
+                    <input class="form-control" id="childFourDobMonth" name="childFourDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childFourDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childFourDobYear">Year</label>
+                    <input class="form-control" id="childFourDobYear" name="childFourDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childFourDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Fourth Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childFourFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childFourFirstName" name="childFourFirstName" value="{{ data['childFourFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childFourSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childFourSurname" name="childFourSurname" value="{{ data['childFourSurname'] }}">
+                </div>
+              </div>
+
+              <label class="form-label" for="childFiveDetails">
+                <h3 class="heading-small">Add fifth child</h3>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice" data-target="childFiveDetails">
+                  <input id="childFiveTrue" type="radio" name="childFive" value="true" {{ checked('childFive', 'true') }}>
+                  <label for="childFiveTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="childFiveFalse" type="radio" name="childFive" value="false" {{ checked('childFive', 'false') }}>
+                  <label for="childFiveFalse">No</label>
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+
+          <!-- Child Five -->
+          <div class="panel panel-border-narrow js-hidden" id="childFiveDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Fifth Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childFiveDobDay">Day</label>
+                    <input class="form-control" id="childFiveDobDay" name="childFiveDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childFiveDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childFiveDobMonth">Month</label>
+                    <input class="form-control" id="childFiveDobMonth" name="childFiveDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childFiveDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childFiveDobYear">Year</label>
+                    <input class="form-control" id="childFiveDobYear" name="childFiveDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childFiveDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Fifth Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childFiveFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childFiveFirstName" name="childFiveFirstName" value="{{ data['childFiveFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childFiveSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childFiveSurname" name="childFiveSurname" value="{{ data['childFiveSurname'] }}">
+                </div>
+              </div>
+
+              <label class="form-label" for="childSixDetails">
+                <h3 class="heading-small">Add sixth child</h3>
+              </label>
+
+              <fieldset class="inline">
+                <div class="multiple-choice" data-target="childSixDetails">
+                  <input id="childSixTrue" type="radio" name="childSix" value="true" {{ checked('childSix', 'true') }}>
+                  <label for="childSixTrue">Yes</label>
+                </div>
+
+                <div class="multiple-choice">
+                  <input id="childSixFalse" type="radio" name="childSix" value="false" {{ checked('childSix', 'false') }}>
+                  <label for="childSixFalse">No</label>
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+
+          <!-- Child Six -->
+          <div class="panel panel-border-narrow js-hidden" id="childSixDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Sixth Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childSixDobDay">Day</label>
+                    <input class="form-control" id="childSixDobDay" name="childSixDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childSixDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childSixDobMonth">Month</label>
+                    <input class="form-control" id="childSixDobMonth" name="childSixDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childSixDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childSixDobYear">Year</label>
+                    <input class="form-control" id="childSixDobYear" name="childSixDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childSixDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Sixth Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childSixFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childSixFirstName" name="childSixFirstName" value="{{ data['childSixFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childSixSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childSixSurname" name="childSixSurname" value="{{ data['childSixSurname'] }}">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Child Seven -->
+          <div class="panel panel-border-narrow js-hidden" id="childSevenDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Seventh Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childSevenDobDay">Day</label>
+                    <input class="form-control" id="childSevenDobDay" name="childSevenDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childSevenDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childSevenDobMonth">Month</label>
+                    <input class="form-control" id="childSevenDobMonth" name="childSevenDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childSevenDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childSevenDobYear">Year</label>
+                    <input class="form-control" id="childSevenDobYear" name="childSevenDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childSevenDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Seventh Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childSevenFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childSevenFirstName" name="childSevenFirstName" value="{{ data['childSevenFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childSevenSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childSevenSurname" name="childSevenSurname" value="{{ data['childSevenSurname'] }}">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Child Eight -->
+          <div class="panel panel-border-narrow js-hidden" id="childEightDetails">
+            <div class="form-group">
+
+              <div class="form-group">
+                <h3 class="heading-small">Eighth Child's DOB</h3>
+
+                <div class="form-date">
+                  <div class="form-group form-group-day">
+                    <label class="form-label" for="childEightDobDay">Day</label>
+                    <input class="form-control" id="childEightDobDay" name="childEightDobDay" type="number" pattern="[0-9]*" min="0" max="31" value="{{ data['childEightDobDay'] }}">
+                  </div>
+
+                  <div class="form-group form-group-month">
+                    <label class="form-label" for="childEightDobMonth">Month</label>
+                    <input class="form-control" id="childEightDobMonth" name="childEightDobMonth" type="number" pattern="[0-9]*" min="0" max="12" value="{{ data['childEightDobMonth'] }}">
+                  </div>
+
+                  <div class="form-group form-group-year">
+                    <label class="form-label" for="childEightDobYear">Year</label>
+                    <input class="form-control" id="childEightDobYear" name="childEightDobYear" type="number" pattern="[0-9]*" min="0" max="2017" value="{{ data['childEightDobYear'] }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h3 class="heading-small">Eighth Child's name</h3>
+
+                <!-- First name -->
+                <div class="form-group">
+                  <label class="form-label" for="childEightFirstName">
+                    <span>First name</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childEightFirstName" name="childEightFirstName" value="{{ data['childEightFirstName'] }}">
+                </div>
+
+                <!-- Surname -->
+                <div class="form-group">
+                  <label class="form-label" for="childEightSurname">
+                    <span>Surname</span>
+                  </label>
+
+                  <input type="text" class="form-control" id="childEightSurname" name="childEightSurname" value="{{ data['childEightSurname'] }}">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -10,15 +10,15 @@ router.get('/', function (req, res) {
   // Branching
 
   // Set the journey type
-  router.get('/overview', function (req, res) {
-    if (req.query.record == 'existing') {
-      req.session.data['record'] = 'existing';
-    } else {
-      req.session.data['record'] = 'new';
-    }
+    router.get('/overview', function (req, res) {
+      if (req.query.record == 'existing') {
+        req.session.data['record'] = 'existing';
+      } else {
+        req.session.data['record'] = 'new';
+      }
 
-    res.render('overview')
-  })
+      res.render('overview')
+    })
 
   // Applicant section
     // Only show education page if they are over 16 and under 20
@@ -85,7 +85,7 @@ router.get('/', function (req, res) {
       if (livingWithPartner == 'true') {
         res.render('start/partner/ni')
       } else {
-        res.redirect('/new-record')
+        res.redirect('/new-record/applicant/pregnancy')
       }
     })
 
@@ -136,26 +136,263 @@ router.get('/', function (req, res) {
         res.render('existing-record/index.html');
     })
 
-    router.get('/existing-record/details', function (req, res) {
+    router.get('/existing-record/additional-details', function (req, res) {
       var securityQuestion = req.session.data['securityQuestion'];
 
       if (securityQuestion == 'Thomas' || securityQuestion == 'thomas') {
-        res.render('existing-record/details')
+        res.render('existing-record/additional-details/index.html')
       } else {
         res.redirect('/existing-record/security-question-failed')
       }
     })
 
-  // New record    
-  router.get('/new-record', function (req, res) {
-    var record = req.session.data['record'];
+  // New record
+    router.get('/new-record/applicant/pregnancy', function (req, res) {
+      var record = req.session.data['record'];
 
-    if (record == 'existing') {
-      res.redirect('/existing-record')
-    } else {
-      res.render('new-record/index.html')
-    }
+      if (record == 'existing') {
+        res.redirect('/existing-record')
+      } else {
+        res.render('new-record/applicant/pregnancy')
+      }
+    })
+
+    // Only show the partner details section (starting from relationship) if the selected they DO live with their partner
+    router.get('/new-record/partner/name', function (req, res) {
+      var livingWithPartner = req.session.data['livingWithPartner'];
+
+      if (livingWithPartner === 'true') {
+        res.render('new-record/partner/name')
+      } else {
+        res.redirect('/new-record/parent-guardian/name')
+      }
+    })
+
+    // Only show the parent/guardian details section (starting from relationship) if the selected they DO live with their parent/guardian
+    router.get('/new-record/parent-guardian/name', function (req, res) {
+      var livingWithParentGuardian = req.session.data['livingWithParentGuardian'];
+
+      if (livingWithParentGuardian === 'true') {
+        res.render('new-record/parent-guardian/name')
+      } else {
+        res.redirect('/new-record/contact/phone')
+      }
+    })
+    
+    // Check eligibility of applicant before continuing
+    router.get('/new-record/contact/phone', function (req, res) {
+      // Get age
+      function getAge(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            age--;
+        }
+        return age;
+      }
+      var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
+
+      // Get weeks pregnant
+      function weeksPregnant() {
+        var month = req.session.data['deliveryDateMonth'];
+        var day = req.session.data['deliveryDateDay'];
+        var year = req.session.data['deliveryDateYear'];
+
+        function calculateWeeksBetween(currentDate, dueDate) {
+          var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+          var currentDate_ms = currentDate.getTime();
+          var dueDate_ms = dueDate.getTime();
+          var difference_ms = Math.abs(currentDate_ms - dueDate_ms);
+          return Math.floor(difference_ms / ONE_WEEK);
+        }
+
+        var currentDate   = new Date();
+        var dueDate       = new Date(year, month - 1, day);
+
+        return 40 - calculateWeeksBetween(currentDate, dueDate);
+      }
+      var weeksPregnant = weeksPregnant();
+
+      // Get children age
+      function getChildrenUnderFour() {
+        var hasChildrenUnderFour = req.session.data['children'];
+        var childOneDob     = req.session.data['childOneDobMonth'] + '/' + req.session.data['childOneDobDay'] + '/' + req.session.data['childOneDobYear'];
+        var childTwoDob     = req.session.data['childTwoDobMonth'] + '/' + req.session.data['childTwoDobDay'] + '/' + req.session.data['childTwoDobYear'];
+        var childThreeDob   = req.session.data['childThreeDobMonth'] + '/' + req.session.data['childThreeDobDay'] + '/' + req.session.data['childThreeDobYear'];
+        var childFourDob    = req.session.data['childFourDobMonth'] + '/' + req.session.data['childFourDobDay'] + '/' + req.session.data['childFourDobYear'];
+        var childFiveDob    = req.session.data['childFiveDobMonth'] + '/' + req.session.data['childFiveDobDay'] + '/' + req.session.data['childFiveDobYear'];
+        var childSixDob     = req.session.data['childSixDobMonth'] + '/' + req.session.data['childSixDobDay'] + '/' + req.session.data['childSixDobYear'];
+        var childSeventhDob = req.session.data['childSeventhDobMonth'] + '/' + req.session.data['childSeventhDobDay'] + '/' + req.session.data['childSeventhDobYear'];
+        var childEighthDob  = req.session.data['childEighthDobMonth'] + '/' + req.session.data['childEighthDobDay'] + '/' + req.session.data['childEighthDobYear'];
+
+        var childAges = [childOneDob, childTwoDob, childThreeDob, childFourDob, childFiveDob, childSixDob, childSeventhDob, childEighthDob];
+
+        if (hasChildrenUnderFour == 'false') {
+          return false;
+        }
+
+        for (var i = 0; i < childAges.length; i++) {
+          var childAge = getAge(childAges[i]);
+
+          if (childAge < 4) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+      var hasChildrenUnderFour = getChildrenUnderFour();
+
+      // Get benefits
+      function getEligibleBenefits() {
+        var claimBenefits                       = req.session.data['claimBenefits'];
+        var partnerClaimBenefits                = req.session.data['partnerClaimBenefits'];
+        var parentGuardianClaimBenefits         = req.session.data['parentGuardianClaimBenefits'];
+        var parentGuardianPartnerClaimBenefits  = req.session.data['parentGuardianPartnerClaimBenefits'];
+
+        var benefits = [claimBenefits, partnerClaimBenefits, parentGuardianClaimBenefits, parentGuardianPartnerClaimBenefits];
+
+        for (var i = 0; i < benefits.length; i++) {
+          var benefit = benefits[i];
+
+          if (benefit == 'true') {
+            return true;
+          }
+        }
+
+        return false;
+      }
+      var receivesEligibleBenefits = getEligibleBenefits();
+
+      function isEligible() {
+        if ((age < 18 && weeksPregnant > 10) || ((hasChildrenUnderFour || weeksPregnant > 10) && receivesEligibleBenefits)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      var isEligible = isEligible();
+
+      if (isEligible == true) {
+        res.render('new-record/contact/phone')
+      } else {
+        res.redirect('/eligibility/ineligible')
+      }
+    })
+
+  // Check answers
+  router.get('/application/check-answers', function (req, res) {
+      req.session.data['saveableFields']    = 'true';
+
+      res.render('application/check-answers.html');
   })
+
+  // Check eligibility
+    router.get('/application/confirmation', function (req, res) {
+      // Get age
+      function getAge(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            age--;
+        }
+        return age;
+      }
+      var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
+
+      // Get weeks pregnant
+      function weeksPregnant() {
+        var month = req.session.data['deliveryDateMonth'];
+        var day = req.session.data['deliveryDateDay'];
+        var year = req.session.data['deliveryDateYear'];
+
+        function calculateWeeksBetween(currentDate, dueDate) {
+          var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+          var currentDate_ms = currentDate.getTime();
+          var dueDate_ms = dueDate.getTime();
+          var difference_ms = Math.abs(currentDate_ms - dueDate_ms);
+          return Math.floor(difference_ms / ONE_WEEK);
+        }
+
+        var currentDate   = new Date();
+        var dueDate       = new Date(year, month - 1, day);
+
+        return 40 - calculateWeeksBetween(currentDate, dueDate);
+      }
+      var weeksPregnant = weeksPregnant();
+
+      // Get children age
+      function getChildrenUnderFour() {
+        var hasChildrenUnderFour = req.session.data['children'];
+        var childOneDob     = req.session.data['childOneDobMonth'] + '/' + req.session.data['childOneDobDay'] + '/' + req.session.data['childOneDobYear'];
+        var childTwoDob     = req.session.data['childTwoDobMonth'] + '/' + req.session.data['childTwoDobDay'] + '/' + req.session.data['childTwoDobYear'];
+        var childThreeDob   = req.session.data['childThreeDobMonth'] + '/' + req.session.data['childThreeDobDay'] + '/' + req.session.data['childThreeDobYear'];
+        var childFourDob    = req.session.data['childFourDobMonth'] + '/' + req.session.data['childFourDobDay'] + '/' + req.session.data['childFourDobYear'];
+        var childFiveDob    = req.session.data['childFiveDobMonth'] + '/' + req.session.data['childFiveDobDay'] + '/' + req.session.data['childFiveDobYear'];
+        var childSixDob     = req.session.data['childSixDobMonth'] + '/' + req.session.data['childSixDobDay'] + '/' + req.session.data['childSixDobYear'];
+        var childSeventhDob = req.session.data['childSeventhDobMonth'] + '/' + req.session.data['childSeventhDobDay'] + '/' + req.session.data['childSeventhDobYear'];
+        var childEighthDob  = req.session.data['childEighthDobMonth'] + '/' + req.session.data['childEighthDobDay'] + '/' + req.session.data['childEighthDobYear'];
+
+        var childAges = [childOneDob, childTwoDob, childThreeDob, childFourDob, childFiveDob, childSixDob, childSeventhDob, childEighthDob];
+
+        if (hasChildrenUnderFour == 'false') {
+          return false;
+        }
+
+        for (var i = 0; i < childAges.length; i++) {
+          var childAge = getAge(childAges[i]);
+
+          if (childAge < 4) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+      var hasChildrenUnderFour = getChildrenUnderFour();
+
+      // Get benefits
+      function getEligibleBenefits() {
+        var claimBenefits                       = req.session.data['claimBenefits'];
+        var partnerClaimBenefits                = req.session.data['partnerClaimBenefits'];
+        var parentGuardianClaimBenefits         = req.session.data['parentGuardianClaimBenefits'];
+        var parentGuardianPartnerClaimBenefits  = req.session.data['parentGuardianPartnerClaimBenefits'];
+
+        var benefits = [claimBenefits, partnerClaimBenefits, parentGuardianClaimBenefits, parentGuardianPartnerClaimBenefits];
+
+        for (var i = 0; i < benefits.length; i++) {
+          var benefit = benefits[i];
+
+          if (benefit == 'true') {
+            return true;
+          }
+        }
+
+        return false;
+      }
+      var receivesEligibleBenefits = getEligibleBenefits();
+
+      function isEligible() {
+        if ((age < 18 && weeksPregnant > 10) || ((hasChildrenUnderFour || weeksPregnant > 10) && receivesEligibleBenefits)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      var isEligible = isEligible();
+
+      if (isEligible == true) {
+        res.render('application/confirmation.html')
+      } else {
+        res.redirect('/application/ineligible.html')
+      }
+    })
 
 // Original journey logic (keeping for reference, removes once new journey is complete)
   // Only show education question if they are the right age
@@ -363,119 +600,6 @@ router.get('/', function (req, res) {
         req.session.data['parentGuardianPartnerClaimBenefits'] = 'false';
 
       res.redirect('/application/check-answers.html');
-  })
-
-  // Change of details
-  router.get('/application/check-answers', function (req, res) {
-      // Set session vars so we can tell if they are changing details or applying
-        if (req.session.data['confirmingDetails'] = 'true') {
-          req.session.data['confirmingDetails'] = 'false';
-        }
-
-        res.render('application/check-answers.html');
-  })
-  // Eligibility Check
-  router.get('/application/confirmation', function (req, res) {
-    // Get age
-    function getAge(dateString) {
-      var today = new Date();
-      var birthDate = new Date(dateString);
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-      {
-          age--;
-      }
-      return age;
-    }
-    var age = getAge(req.session.data['dobMonth'] + '/' + req.session.data['dobDay'] + '/' + req.session.data['dobYear']);
-
-    // Get weeks pregnant
-    function weeksPregnant() {
-      var month = req.session.data['deliveryDateMonth'];
-      var day = req.session.data['deliveryDateDay'];
-      var year = req.session.data['deliveryDateYear'];
-
-      function calculateWeeksBetween(currentDate, dueDate) {
-        var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
-        var currentDate_ms = currentDate.getTime();
-        var dueDate_ms = dueDate.getTime();
-        var difference_ms = Math.abs(currentDate_ms - dueDate_ms);
-        return Math.floor(difference_ms / ONE_WEEK);
-      }
-
-      var currentDate   = new Date();
-      var dueDate       = new Date(year, month - 1, day);
-
-      return 40 - calculateWeeksBetween(currentDate, dueDate);
-    }
-    var weeksPregnant = weeksPregnant();
-
-    // Get children age
-    function getChildrenUnderFour() {
-      var hasChildrenUnderFour = req.session.data['children'];
-      var childOneDob     = req.session.data['childOneDobMonth'] + '/' + req.session.data['childOneDobDay'] + '/' + req.session.data['childOneDobYear'];
-      var childTwoDob     = req.session.data['childTwoDobMonth'] + '/' + req.session.data['childTwoDobDay'] + '/' + req.session.data['childTwoDobYear'];
-      var childThreeDob   = req.session.data['childThreeDobMonth'] + '/' + req.session.data['childThreeDobDay'] + '/' + req.session.data['childThreeDobYear'];
-      var childFourDob    = req.session.data['childFourDobMonth'] + '/' + req.session.data['childFourDobDay'] + '/' + req.session.data['childFourDobYear'];
-      var childFiveDob    = req.session.data['childFiveDobMonth'] + '/' + req.session.data['childFiveDobDay'] + '/' + req.session.data['childFiveDobYear'];
-      var childSixDob     = req.session.data['childSixDobMonth'] + '/' + req.session.data['childSixDobDay'] + '/' + req.session.data['childSixDobYear'];
-      var childSeventhDob = req.session.data['childSeventhDobMonth'] + '/' + req.session.data['childSeventhDobDay'] + '/' + req.session.data['childSeventhDobYear'];
-      var childEighthDob  = req.session.data['childEighthDobMonth'] + '/' + req.session.data['childEighthDobDay'] + '/' + req.session.data['childEighthDobYear'];
-
-      var childAges = [childOneDob, childTwoDob, childThreeDob, childFourDob, childFiveDob, childSixDob, childSeventhDob, childEighthDob];
-
-      if (hasChildrenUnderFour == 'false') {
-        return false;
-      }
-
-      for (var i = 0; i < childAges.length; i++) {
-        var childAge = getAge(childAges[i]);
-
-        if (childAge < 4) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-    var hasChildrenUnderFour = getChildrenUnderFour();
-
-    // Get benefits
-    function getEligibleBenefits() {
-      var claimBenefits                       = req.session.data['claimBenefits'];
-      var partnerClaimBenefits                = req.session.data['partnerClaimBenefits'];
-      var parentGuardianClaimBenefits         = req.session.data['parentGuardianClaimBenefits'];
-      var parentGuardianPartnerClaimBenefits  = req.session.data['parentGuardianPartnerClaimBenefits'];
-
-      var benefits = [claimBenefits, partnerClaimBenefits, parentGuardianClaimBenefits, parentGuardianPartnerClaimBenefits];
-
-      for (var i = 0; i < benefits.length; i++) {
-        var benefit = benefits[i];
-
-        if (benefit == 'true') {
-          return true;
-        }
-      }
-
-      return false;
-    }
-    var receivesEligibleBenefits = getEligibleBenefits();
-
-    function isEligible() {
-      if ((age < 18 && weeksPregnant > 10) || ((hasChildrenUnderFour || weeksPregnant > 10) && receivesEligibleBenefits)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    var isEligible = isEligible();
-
-    if (isEligible == true) {
-      res.render('application/confirmation.html')
-    } else {
-      res.redirect('/application/ineligible.html')
-    }
   })
 
 module.exports = router

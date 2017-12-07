@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Applicant contact details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/parent-guardian/benefits">Back</a>
+
+      <form action="/new-record/contact/email" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
+            </h1>
+          </legend>
+
+          <!-- Phone number -->
+          <div class="form-group">
+            <label class="form-label" for="phoneNumber">
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} mobile phone number</h3>
+              <span class="form-hint">{{ "We will use this to keep the applicant updated about their application and to help them manage their account." if data['applier'] == 'applierNotFamily' else "We will use this to keep you updated about your application and to help you manage your account." }}</span>
+            </label>
+
+            <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" required value="{{ data['phoneNumber'] }}">
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

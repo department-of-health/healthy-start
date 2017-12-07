@@ -73,6 +73,8 @@
         })
 
         changeFormActions();
+
+        removeChangeFields();
       })
 
       function changeFormActions() {
@@ -84,6 +86,14 @@
           $('#save').click(function() {
             $('form.form').attr('action', '/application/check-answers');
           });
+        }
+      }
+
+      function removeChangeFields() {
+        var existingJourney = {{ 'true' if data['record'] == 'existing' else 'false' }}
+
+        if (existingJourney) {
+          $('.cya-change.hide-on-existing').empty();
         }
       }
 

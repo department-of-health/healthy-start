@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Applicant contact details - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/contact/email">Back</a>
+
+      <form action="/application/check-answers" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} contact details
+            </h1>
+          </legend>
+
+          <!-- Address -->
+          <div class="form-group">
+            <label class="form-label" for="address">
+              <h3 class="heading-small">{{ "Applicant" if data['applier'] == 'applierNotFamily' else "Your" }} address</h3>
+            </label>
+
+            <div class="form-group">
+              <label class="form-label" for="buildingStreet1">
+                <span>Building and street</span>
+              </label>
+
+              <input class="form-control" id="buildingStreet1" type="text" name="buildingStreet1" required value="{{ data['buildingStreet1'] }}">
+              <input class="form-control" id="buildingStreet2" type="text" name="buildingStreet2" value="{{ data['buildingStreet2'] }}">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="town">
+                <span>Town or city</span>
+              </label>
+              <input class="form-control" id="town" type="text" name="town" required value="{{ data['town'] }}">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postCode">
+                <span>Post code</span>
+              </label>
+              <input class="form-control" id="postCode" type="text" name="postCode" required pattern="^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-‌​9]{1,2})|(([A-Za-z][‌​0-9][A-Za-z])|([A-Za‌​-z][A-Ha-hJ-Yj-y][0-‌​9]?[A-Za-z])))) [0-9][A-Za-z]{2})$
+  " value="{{ data['postCode'] }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

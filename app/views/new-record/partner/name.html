@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Name - Partner - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/applicant/benefits">Back</a>
+
+      <form action="/new-record/partner/benefits" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "Applicant's" if data['applier'] == 'applierNotFamily' else "Your" }} partner
+            </h1>
+          </legend>
+
+          <!-- Partner Name(s) -->
+          <div class="form-group">
+            <h3 class="heading-small">Partner's name</h3>
+
+            <!-- First name -->
+            <div class="form-group">
+              <label class="form-label" for="partnerFirstName">
+                <span>First name</span>
+              </label>
+
+              <input type="text" class="form-control" id="partnerFirstName" name="partnerFirstName" required value="{{ data['partnerFirstName'] }}">
+            </div>
+
+            <!-- Surname -->
+            <div class="form-group">
+              <label class="form-label" for="partnerSurname">
+                <span>Surname</span>
+              </label>
+
+              <input type="text" class="form-control" id="partnerSurname" name="partnerSurname" value="{{ data['partnerSurname'] }}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+          
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -34,7 +34,11 @@
             {{ "Yes" if data['pregnant'] === 'true' else "No" }}
           </dd>
           <dd class="cya-change">
-            <a href="/application/section/pregnant">
+            {% if data['record'] == 'existing' %}
+            <a href="/existing-record/additional-details/pregnancy">
+            {% else %}
+            <a href="/new-record/applicant/pregnancy">
+            {% endif %}
               Change<span class="visually-hidden"> pregnancy status</span>
             </a>
           </dd>
@@ -49,7 +53,7 @@
             {{ data['deliveryDateDay'] }}/{{ data['deliveryDateMonth'] }}/{{ data['deliveryDateYear'] }}
           </dd>
           <dd class="cya-change">
-            <a href="/application/section/pregnant">
+            <a href="/new-record/applicant/pregnancy">
               Change<span class="visually-hidden"> pregnancy</span>
             </a>
           </dd>
@@ -70,8 +74,8 @@
           <dd class="cya-answer">
             {{ "Yes" if data['children'] === "true" else "No" }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/children">
+          <dd class="cya-change hide-on-existing">
+            <a href="/new-record/applicant/children">
               Change<span class="visually-hidden"> pregnancy status</span>
             </a>
           </dd>
@@ -85,8 +89,8 @@
           <dd class="cya-answer">
             {{ data['childOneDobDay'] }}/{{ data['childOneDobMonth'] }}/{{ data['childOneDobYear'] }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/children">
+          <dd class="cya-change hide-on-existing">
+            <a href="/new-record/applicant/children">
               Change<span class="visually-hidden"> child</span>
             </a>
           </dd>
@@ -99,8 +103,8 @@
           <dd class="cya-answer">
             {{ data['childOneFirstName']}} {{ data['childOneSurname']}}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/children">
+          <dd class="cya-change hide-on-existing">
+            <a href="/new-record/applicant/children">
               Change<span class="visually-hidden"> child</span>
             </a>
           </dd>
@@ -114,8 +118,8 @@
             <dd class="cya-answer">
               {{ data['childTwoDobDay'] }}/{{ data['childTwoDobMonth'] }}/{{ data['childTwoDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -128,8 +132,8 @@
             <dd class="cya-answer">
               {{ data['childTwoFirstName']}} {{ data['childTwoSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -144,8 +148,8 @@
             <dd class="cya-answer">
               {{ data['childThreeDobDay'] }}/{{ data['childThreeDobMonth'] }}/{{ data['childThreeDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -158,8 +162,8 @@
             <dd class="cya-answer">
               {{ data['childThreeFirstName']}} {{ data['childThreeSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -174,8 +178,8 @@
             <dd class="cya-answer">
               {{ data['childFourDobDay'] }}/{{ data['childFourDobMonth'] }}/{{ data['childFourDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -188,8 +192,8 @@
             <dd class="cya-answer">
               {{ data['childFourFirstName']}} {{ data['childFourSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -204,8 +208,8 @@
             <dd class="cya-answer">
               {{ data['childFifthDobDay'] }}/{{ data['childFifthDobMonth'] }}/{{ data['childFifthDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -218,8 +222,8 @@
             <dd class="cya-answer">
               {{ data['childFifthFirstName']}} {{ data['childFifthSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -234,8 +238,8 @@
             <dd class="cya-answer">
               {{ data['childSixDobDay'] }}/{{ data['childSixDobMonth'] }}/{{ data['childSixDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -248,8 +252,8 @@
             <dd class="cya-answer">
               {{ data['childSixFirstName']}} {{ data['childSixSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -264,8 +268,8 @@
             <dd class="cya-answer">
               {{ data['childSevenDobDay'] }}/{{ data['childSevenDobMonth'] }}/{{ data['childSevenDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -278,8 +282,8 @@
             <dd class="cya-answer">
               {{ data['childSevenFirstName']}} {{ data['childSevenSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -294,8 +298,8 @@
             <dd class="cya-answer">
               {{ data['childEightDobDay'] }}/{{ data['childEightDobMonth'] }}/{{ data['childEightDobYear'] }}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -308,8 +312,8 @@
             <dd class="cya-answer">
               {{ data['childEightFirstName']}} {{ data['childEightSurname']}}
             </dd>
-            <dd class="cya-change">
-              <a href="/application/section/children">
+            <dd class="cya-change hide-on-existing">
+              <a href="/new-record/applicant/children">
                 Change<span class="visually-hidden"> child</span>
               </a>
             </dd>
@@ -331,29 +335,46 @@
           <dd class="cya-answer">
             {{ data['dobDay'] }}/{{ data['dobMonth'] }}/{{ data['dobYear'] }}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             {% if data['saveableFields'] == 'true' %}
             {% else %}
-            <a href="/application/section/about/dob">
+<!--             <a href="/start/applicant/dob">
               Change<span class="visually-hidden"> DOB</span>
-            </a>
+            </a> -->
             {% endif %}
           </dd>
         </div>
 
-        <div>
-          <dt class="cya-question">
-            {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} in full time education?
-          </dt>
-          <dd class="cya-answer">
-            {{ "Yes" if data['fullTimeEducation'] == 'true' else "No" }}
-          </dd>
-          <dd class="cya-change">
-            <a href="/application/section/about/education">
-              Change<span class="visually-hidden"> full time education</span>
-            </a>
-          </dd>
-        </div>
+        {% if data['fullTimeEducation'] == 'true' %}
+          <div>
+            <dt class="cya-question">
+              {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} in full time education?
+            </dt>
+            <dd class="cya-answer">
+              Yes
+            </dd>
+            <dd class="cya-change hide-on-existing">
+<!--               <a href="/start/applicant/education">
+                Change<span class="visually-hidden"> full time education</span>
+              </a> -->
+            </dd>
+          </div>
+        {% elif data['fullTimeEducation'] == 'false' %}
+          <div>
+            <dt class="cya-question">
+              {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} in full time education?
+            </dt>
+            <dd class="cya-answer">
+              No
+            </dd>
+            <dd class="cya-change hide-on-existing">
+<!--               <a href="/start/applicant/education">
+                Change<span class="visually-hidden"> full time education</span>
+              </a> -->
+            </dd>
+          </div>
+        {% else %}
+        {% endif %}
 
         <div>
           <dt class="cya-question">
@@ -362,12 +383,12 @@
           <dd class="cya-answer">
             {{ data['niNumber'] }}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             {% if data['saveableFields'] == 'true' %}
             {% else %}
-            <a href="/application/section/about/ni">
+<!--             <a href="/start/applicant/ni">
               Change<span class="visually-hidden"> national insurance number</span>
-            </a>
+            </a> -->
             {% endif %}
           </dd>
         </div>
@@ -380,9 +401,9 @@
             {{ data['firstName']}} {{ data['surname']}}
           </dd>
           <dd class="cya-change">
-            <a href="/application/section/about/name">
+<!--             <a href="/new-record/applicant/name">
               Change<span class="visually-hidden"> name</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
@@ -393,8 +414,8 @@
           <dd class="cya-answer">
             {{ "Yes" if data['claimBenefits'] == 'true' else "No" }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/about/benefits">
+          <dd class="cya-change hide-on-existing">
+            <a href="/new-record/applicant/benefits">
               Change<span class="visually-hidden"> benefits</span>
             </a>
           </dd>
@@ -415,7 +436,11 @@
             {{ data['phoneNumber'] }}
           </dd>
           <dd class="cya-change">
-            <a href="/application/section/contact-details">
+            {% if data['record'] == 'existing' %}
+            <a href="/existing-record/additional-details/phone">
+            {% else %}
+            <a href="/new-record/contact/phone">
+            {% endif %}
               Change<span class="visually-hidden"> phone number</span>
             </a>
           </dd>
@@ -429,8 +454,12 @@
             {{ data['email']}}
           </dd>
           <dd class="cya-change">
-            <a href="/application/section/contact-details">
-              Change<span class="visually-hidden"> name</span>
+            {% if data['record'] == 'existing' %}
+            <a href="/existing-record/additional-details/email">
+            {% else %}
+            <a href="/new-record/contact/email">
+            {% endif %}
+              Change<span class="visually-hidden"> email</span>
             </a>
           </dd>
         </div>
@@ -445,8 +474,8 @@
             <div>{{ data['town']}}</div>
             <div>{{ data['postCode']}}</div>
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/contact-details">
+          <dd class="cya-change hide-on-existing">
+            <a href="/new-record/contact/address">
               Change<span class="visually-hidden"> address</span>
             </a>
           </dd>
@@ -466,28 +495,14 @@
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithPartner'] === 'true' else "No" }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/partner/living-with">
+          <dd class="cya-change hide-on-existing">
+<!--             <a href="/start/partner/living-with">
               Change<span class="visually-hidden"> living with partner</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
         {% if data['livingWithPartner'] == 'true' %}
-        <div>
-          <dt class="cya-question">
-            Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
-          </dt>
-          <dd class="cya-answer">
-            {{ data['partnerRelationship'] | capitalize if data['partnerRelationship'] != 'other' else data['partnerRelationshipOtherSpecified'] | capitalize }}
-          </dd>
-          <dd class="cya-change">
-            <a href="/application/section/partner/relationship">
-              Change<span class="visually-hidden"> relationship</span>
-            </a>
-          </dd>
-        </div>
-
         <div>
           <dt class="cya-question">
             {{ "Partner's" if data['applier'] == 'applierNotFamily' else "Your partner's" }} date of birth
@@ -495,10 +510,10 @@
           <dd class="cya-answer">
             {{ data['partnerDobDay'] }}/{{ data['partnerDobMonth'] }}/{{ data['partnerDobYear'] }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/partner/dob">
+          <dd class="cya-change hide-on-existing">
+<!--             <a href="/start/partner/dob">
               Change<span class="visually-hidden"> DOB</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
@@ -509,10 +524,10 @@
           <dd class="cya-answer">
             {{ data['partnerNiNumber'] }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/partner/ni">
+          <dd class="cya-change hide-on-existing">
+<!--             <a href="/start/partner/ni">
               Change<span class="visually-hidden"> national insurance number</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
@@ -523,7 +538,7 @@
           <dd class="cya-answer">
             {{ data['partnerFirstName']}} {{ data['partnerSurname']}}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             <a href="/application/section/partner/name">
               Change<span class="visually-hidden"> name</span>
             </a>
@@ -537,7 +552,7 @@
           <dd class="cya-answer">
             {{ "Yes" if data['partnerClaimBenefits'] == 'true' else "No" }}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             <a href="/application/section/partner/benefits">
               Change<span class="visually-hidden"> benefits</span>
             </a>
@@ -559,28 +574,14 @@
           <dd class="cya-answer">
             {{ "Yes" if data['livingWithParentGuardian'] === 'true' else "No" }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/parent-guardian/living-with">
+          <dd class="cya-change hide-on-existing">
+<!--             <a href="/application/section/parent-guardian/living-with">
               Change<span class="visually-hidden"> living with parent/guardian</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
         {% if data['livingWithParentGuardian'] == 'true' %}
-        <div>
-          <dt class="cya-question">
-            Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
-          </dt>
-          <dd class="cya-answer">
-            {{ data['parentGuardianRelationship'] | capitalize  if data['parentGuardianRelationship'] != 'other' else data['parentGuardianRelationshipOtherSpecified'] | capitalize }}
-          </dd>
-          <dd class="cya-change">
-            <a href="/application/section/parent-guardian/relationship">
-              Change<span class="visually-hidden"> relationship</span>
-            </a>
-          </dd>
-        </div>
-
         <div>
           <dt class="cya-question">
             Parent or guardian's date of birth
@@ -588,10 +589,10 @@
           <dd class="cya-answer">
             {{ data['parentGuardianDobDay'] }}/{{ data['parentGuardianDobMonth'] }}/{{ data['parentGuardianDobYear'] }}
           </dd>
-          <dd class="cya-change">
+<!--           <dd class="cya-change hide-on-existing">
             <a href="/application/section/parent-guardian/dob">
               Change<span class="visually-hidden"> DOB</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
@@ -602,10 +603,10 @@
           <dd class="cya-answer">
             {{ data['parentGuardianNiNumber'] }}
           </dd>
-          <dd class="cya-change">
-            <a href="/application/section/parent-guardian/ni">
+          <dd class="cya-change hide-on-existing">
+<!--             <a href="/application/section/parent-guardian/ni">
               Change<span class="visually-hidden"> national insurance number</span>
-            </a>
+            </a> -->
           </dd>
         </div>
 
@@ -616,7 +617,7 @@
           <dd class="cya-answer">
             {{ data['parentGuardianFirstName']}} {{ data['parentGuardianSurname']}}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             <a href="/application/section/parent-guardian/name">
               Change<span class="visually-hidden"> name</span>
             </a>
@@ -630,105 +631,12 @@
           <dd class="cya-answer">
             {{ "Yes" if data['parentGuardianClaimBenefits'] == 'true' else "No" }}
           </dd>
-          <dd class="cya-change">
+          <dd class="cya-change hide-on-existing">
             <a href="/application/section/parent-guardian/benefits">
               Change<span class="visually-hidden"> benefits</span>
             </a>
           </dd>
         </div>
-        {% endif %}
-      </dl>
-
-      <!-- Parent/Guardian partner details -->
-      <h2 class="heading-medium">
-        Parent/Guardian partner details
-      </h2>
-
-      <dl class="govuk-check-your-answers cya-questions-long">
-        <div>
-          <dt class="cya-question">
-            Does {{ "the applicant's" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian have a partner that is over 18 and lives with them?
-          </dt>
-          <dd class="cya-answer">
-            {{ "Yes" if data['livingWithParentGuardianPartner'] == 'true' else "No" }}
-          </dd>
-          <dd class="cya-change">
-            <a href="/application/section/parent-guardian-partner/living-with">
-              Change<span class="visually-hidden"> living with parent/guardian's partner</span>
-            </a>
-          </dd>
-        </div>
-
-        {% if data['livingWithParentGuardianPartner'] == 'true' %}
-          <div>
-            <dt class="cya-question">
-              Relationship to {{ "applicant" if data['applier'] == 'applierNotFamily' else "you" }}
-            </dt>
-            <dd class="cya-answer">
-              {{ data['parentGuardianPartnerRelationship'] | capitalize if data['parentGuardianPartnerRelationship'] != 'other' else data['parentGuardianPartnerRelationshipOtherSpecified'] | capitalize }}
-            </dd>
-            <dd class="cya-change">
-              <a href="/application/section/parent-guardian-partner/relationship">
-                Change<span class="visually-hidden"> relationship</span>
-              </a>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="cya-question">
-              Parent or guardian’s partner's date of birth
-            </dt>
-            <dd class="cya-answer">
-              {{ data['parentGuardianPartnerDobDay'] }}/{{ data['parentGuardianPartnerDobMonth'] }}/{{ data['parentGuardianPartnerDobYear'] }}
-            </dd>
-            <dd class="cya-change">
-              <a href="/application/section/parent-guardian-partner/dob">
-                Change<span class="visually-hidden"> DOB</span>
-              </a>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="cya-question">
-              Parent or guardian’s partner's National Insurance Number
-            </dt>
-            <dd class="cya-answer">
-              {{ data['parentGuardianPartnerNiNumber'] }}
-            </dd>
-            <dd class="cya-change">
-              <a href="/application/section/parent-guardian-partner/ni">
-                Change<span class="visually-hidden"> national insurance number</span>
-              </a>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="cya-question">
-              Parent or guardian’s partner's name
-            </dt>
-            <dd class="cya-answer">
-              {{ data['parentGuardianPartnerFirstName']}} {{ data['parentGuardianPartnerSurname']}}
-            </dd>
-            <dd class="cya-change">
-              <a href="/application/section/parent-guardian-partner/name">
-                Change<span class="visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="cya-question">
-              {{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} included in the claim for any of the following benefits that {{ "the" if data['applier'] == 'applierNotFamily' else "your" }} parent or guardian’s partner receives?
-            </dt>
-            <dd class="cya-answer">
-              {{ "Yes" if data['parentGuardianPartnerClaimBenefits'] == 'true' else "No" }}
-            </dd>
-            <dd class="cya-change">
-              <a href="/application/section/parent-guardian-partner/benefits">
-                Change<span class="visually-hidden"> benefits</span>
-              </a>
-            </dd>
-          </div>
         {% endif %}
       </dl>
 
@@ -739,11 +647,7 @@
       </p>
 
       <div class="form-group">
-        {% if data['confirmingDetails'] == 'true' %}
-          <a href="/application/confirmation" class="button">Accept and save your details</a>
-        {% else %}
-          <a href="/application/confirmation" class="button">Accept and send application</a>
-        {% endif %}
+        <a href="/application/confirmation" class="button">Accept and send application</a>  
       </div>
     </div>
   </div>

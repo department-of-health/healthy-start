@@ -15,9 +15,33 @@
                 We found your partner
             </h1>
 
-			<p>Before you can continue, please answer the security question as follows</p>
+    		<p>Before you can continue, please answer the security question as follows</p>
 
-            <a href="/existing-record/security-question" class="button">Continue</a>
+            <form action="/existing-record/additional-details" method="post" class="form">
+                <div class="form-group">
+
+                  <legend>
+                    <h1 class="heading-large">
+                      Security question
+                    </h1>
+                  </legend>
+
+                  <!-- Security question -->
+                  <div class="form-group">
+                    <h3 class="heading-small">First name of eldest child?</h3>
+
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="securityQuestion" name="securityQuestion" required value="{{ data['securityQuestion'] }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- Submit -->
+                    <input type="submit" class="button" value="Continue">
+                  </div>
+                  
+                </div>
+            </form>
             
         </div>
     </div>

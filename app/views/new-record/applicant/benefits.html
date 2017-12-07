@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Benefits - About - Healthy Start
+{% endblock %}
+
+{% block content %}
+
+<div id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <a class="link-back" href="/new-record/applicant/children">Back</a>
+
+      <form action="/new-record/partner/name" method="post" class="form">
+        <div class="form-group">
+
+          <legend>
+            <h1 class="heading-large">
+              {{ "About the applicant" if data['applier'] == 'applierNotFamily' else "About you" }}
+            </h1>
+          </legend>
+
+          <!-- Benefits -->
+          <div class="form-group">
+            <label class="form-label" for="claimBenefits">
+              <h3 class="heading-small">{{ "Is the applicant" if data['applier'] == 'applierNotFamily' else "Are you" }} receiving any of the following benefits?</h3>
+
+              <ul class="list list-bullet">
+                <li>Income related Employment and Support Allowance</li>
+                <li>Income Support</li>
+                <li>Income based Jobseeker's Allowance</li>
+                <li>Child Tax Credit (with a family income of £16,190 or less per year)</li>
+                <li>Universal Credit (with a family take home pay of £408 or less per month)</li>
+              </ul>
+            </label>
+
+            <fieldset class="inline">
+              <div class="multiple-choice">
+                <input id="claimBenefitsTrue" type="radio" name="claimBenefits" value="true" {{ checked('claimBenefits', 'true') }}>
+                <label for="claimBenefitsTrue">Yes</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="claimBenefitsFalse" type="radio" name="claimBenefits" value="false" {{ checked('claimBenefits', 'false') }}>
+                <label for="claimBenefitsFalse">No</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <!-- Submit -->
+            <input type="submit" class="button" value="Continue">
+
+            <!-- Save -->
+            <input id="save" type="submit" class="button" value="Save">
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
